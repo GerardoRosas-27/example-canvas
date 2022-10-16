@@ -47,7 +47,8 @@
             opacity: 0.7,
             strokeWidth: 3,
             lockMovementY: true,
-            lockMovementX: true
+            lockMovementX: true,
+            selectable: false,
         });
 
         var circle2 = new fabric.Circle({
@@ -61,18 +62,19 @@
             strokeUniform: false,
             lockMovementY: true,
             lockMovementX: true,
-
+            selectable: false,
         });
 
-        let n1 = new fabric.Text("1", { name: "1", fontSize: 40, top: 340, left: 10 });
-        let n2 = new fabric.Text("2", { name: "2", fontSize: 40, top: 340, left: 50 });
-        let n3 = new fabric.Text("3", { name: "3", fontSize: 40, top: 340, left: 100 });
-        let n4 = new fabric.Text("4", { name: "4", fontSize: 40, top: 340, left: 150 });
-        let n5 = new fabric.Text("5", { name: "5", fontSize: 40, top: 340, left: 200 });
-        let n6 = new fabric.Text("6", { name: "6", fontSize: 40, top: 340, left: 250 });
-        let n7 = new fabric.Text("7", { name: "7", fontSize: 40, top: 340, left: 300 });
-        let n8 = new fabric.Text("8", { name: "8", fontSize: 40, top: 340, left: 350 });
-        let n9 = new fabric.Text("9", { name: "9", fontSize: 40, top: 340, left: 400 });
+        let n1 = new fabric.Text("1", { name: "1", fontSize: 40, top: 340, left: 10, hasBorders: false, hasControls: false });
+        let n2 = new fabric.Text("2", { name: "2", fontSize: 40, top: 340, left: 50, hasBorders: false, hasControls: false });
+        let n3 = new fabric.Text("3", { name: "3", fontSize: 40, top: 340, left: 100, hasBorders: false, hasControls: false });
+        let n4 = new fabric.Text("4", { name: "4", fontSize: 40, top: 340, left: 150, hasBorders: false, hasControls: false });
+        let n5 = new fabric.Text("5", { name: "5", fontSize: 40, top: 340, left: 200, hasBorders: false, hasControls: false });
+        let n6 = new fabric.Text("6", { name: "6", fontSize: 40, top: 340, left: 250, hasBorders: false, hasControls: false });
+        let n7 = new fabric.Text("7", { name: "7", fontSize: 40, top: 340, left: 300, hasBorders: false, hasControls: false });
+        let n8 = new fabric.Text("8", { name: "8", fontSize: 40, top: 340, left: 350, hasBorders: false, hasControls: false });
+        let n9 = new fabric.Text("9", { name: "9", fontSize: 40, top: 340, left: 400, hasBorders: false, hasControls: false });
+
 
         canvas.add(circle1);
         canvas.add(circle2);
@@ -91,7 +93,7 @@
         canvas.on({
             'mouse:up': onValidate,
         });
-       
+
 
         function onValidate(options) {
             console.log("mouseup: ", options)
