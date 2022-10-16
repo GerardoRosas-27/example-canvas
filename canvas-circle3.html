@@ -10,7 +10,7 @@
 
 
 
-    <button id="bTerminad" onclick="validarActividad()">Validar actividad</button>
+    <button onclick="validarActividad()">Validar actividad</button>
 
     <canvas id="myCanvas" width="1000" height="1000" style="border:1px solid black;">
     </canvas>
@@ -34,6 +34,9 @@
         const addCircle2 = ['7', '8', '9'];
         let arrayError = [];
         let arrayVerdadero = [];
+
+
+
 
         fabric.Object.prototype.noScaleCache = false;
         /*
@@ -99,30 +102,20 @@
 
         function validarActividad() {
 
-            let suma = arrayError.length + arrayVerdadero.length;
 
-            if (suma === 9) {
-                if (arrayError.length > 0) {
-                    swal({
-                        title: "algo eta mal",
-                        text: "Errorres: " + arrayError.length + ", Verdaderos: " + arrayVerdadero.length,
-                        icon: "error"
-                    });
-                } else {
-                    swal({
-                        title: "Todos estan correctos",
-                        text: "Errorres: " + arrayError.length + ", Verdaderos: " + arrayVerdadero.length,
-                        icon: "success"
-                    });
-                }
-            } else {
+            if (arrayError.length > 0) {
                 swal({
-                    title: "No terminas ",
-                    text: "Te falta : " + (9 - suma),
+                    title: "algo eta mal",
+                    text: "Errorres: " + arrayError.length + ", Verdaderos: " + arrayVerdadero.length,
                     icon: "error"
                 });
+            } else {
+                swal({
+                    title: "Todos estan correctos",
+                    text: "Errorres: " + arrayError.length + ", Verdaderos: " + arrayVerdadero.length,
+                    icon: "success"
+                });
             }
-
 
 
         }
@@ -134,7 +127,9 @@
 
 
         function onValidate(options) {
-
+            console.log("mouseup: ", options)
+            console.log("circle1: ", statusCircle1)
+            console.log("circle2: ", statusCircle2)
 
             if (statusCircle1 && statusCircle2) {
                 validateAmbas(options.target)
@@ -142,55 +137,50 @@
                 if (statusCircle1) {
                     validateCircle1(options.target)
                 } else {
-                    if (statusCircle2) {
-                        validateCircle2(options.target)
-                    } else {
-                        limpiar(options.target.name)
-                    }
+                    if (statusCircle2) { validateCircle2(options.target) }
                 }
             }
         }
 
 
         function validateAmbas(data) {
-
+            console.log("name: ", data.name);
             if (addAmbas.includes(data.name)) {
-                limpiar(data.name)
+                arrayError = arrayError.filter(item => item !== data.name );
+                console.log("limpiar errores: ", arrayError)
                 arrayVerdadero.push(data.name)
-
+              
             } else {
-                limpiar(data.name)
+                arrayVerdadero = arrayVerdadero.filter(item => item !== data.name );
 
                 arrayError.push(data.name)
-
+           
             }
         }
         function validateCircle1(data) {
-
+            console.log("name: ", data.name);
             if (addCircle1.includes(data.name)) {
-                limpiar(data.name)
+                arrayError = arrayError.filter(item => item !== data.name );
                 arrayVerdadero.push(data.name)
             } else {
-                limpiar(data.name)
+                arrayVerdadero = arrayVerdadero.filter(item => item !== data.name );
                 arrayError.push(data.name)
             }
         }
         function validateCircle2(data) {
-
+            console.log("name: ", data.name);
             if (addCircle2.includes(data.name)) {
-                limpiar(data.name)
+                arrayError = arrayError.filter(item => item !== data.name );
                 arrayVerdadero.push(data.name)
             } else {
-                limpiar(data.name)
+                arrayVerdadero = arrayVerdadero.filter(item => item !== data.name );
                 arrayError.push(data.name)
             }
         }
 
 
-        function limpiar(name) {
-            arrayVerdadero = arrayVerdadero.filter(item => item !== name);
-            arrayError = arrayError.filter(item => item !== name);
-        }
+
+
 
 
         canvas.on({
@@ -204,15 +194,11 @@
                 } else {
                     obj.set('opacity', options.target.intersectsWithObject(obj) ? 0.5 : 0.7);
                     if (options.target.intersectsWithObject(obj)) {
-
-
                         statusCircle1 = obj.name === nameCircle1 ? true : statusCircle1;
                         statusCircle2 = obj.name === nameCircle2 ? true : statusCircle2;
                     } else {
-                        console.log("no deveria entrar")
                         statusCircle1 = obj.name === nameCircle1 ? false : statusCircle1;
                         statusCircle2 = obj.name === nameCircle2 ? false : statusCircle2;
-
                     }
 
                 }
