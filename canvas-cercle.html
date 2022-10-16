@@ -92,13 +92,28 @@
             console.log("statusCircle2: ", statusCircle2)
             if (statusCircle1 && statusCircle2) {
                 validateAmbas(e.target)
+            } else {
+                if (statusCircle1) {
+                    validateCircle1(e.target)
+                }
+                else {
+                    if (statusCircle2) { validateCircle2(e.target) }
+                }
             }
+
+
         });
         n2.on('mouseup', function (e) {
             console.log("statusCircle1: ", statusCircle1)
             console.log("statusCircle2: ", statusCircle2)
             if (statusCircle1 && statusCircle2) {
                 validateAmbas(e.target)
+            } else {
+                if (statusCircle1) {
+                    validateCircle1(e.target)
+                } else {
+                    if (statusCircle2) { validateCircle2(e.target) }
+                }
             }
         });
         n3.on('mouseup', function (e) {
@@ -106,6 +121,13 @@
             console.log("statusCircle2: ", statusCircle2)
             if (statusCircle1 && statusCircle2) {
                 validateAmbas(e.target)
+            } else {
+                if (statusCircle1) {
+                    validateCircle1(e.target)
+                }
+                else {
+                    if (statusCircle2) { validateCircle2(e.target) }
+                }
             }
         });
         n4.on('mouseup', function (e) {
@@ -113,6 +135,13 @@
             console.log("statusCircle2: ", statusCircle2)
             if (statusCircle1 && statusCircle2) {
                 validateAmbas(e.target)
+            } else {
+                if (statusCircle1) {
+                    validateCircle1(e.target)
+                }
+                else {
+                    if (statusCircle2) { validateCircle2(e.target) }
+                }
             }
         });
         n5.on('mouseup', function (e) {
@@ -120,6 +149,13 @@
             console.log("statusCircle2: ", statusCircle2)
             if (statusCircle1 && statusCircle2) {
                 validateAmbas(e.target)
+            } else {
+                if (statusCircle1) {
+                    validateCircle1(e.target)
+                }
+                else {
+                    if (statusCircle2) { validateCircle2(e.target) }
+                }
             }
         });
         n6.on('mouseup', function (e) {
@@ -127,6 +163,13 @@
             console.log("statusCircle2: ", statusCircle2)
             if (statusCircle1 && statusCircle2) {
                 validateAmbas(e.target)
+            } else {
+                if (statusCircle1) {
+                    validateCircle1(e.target)
+                }
+                else {
+                    if (statusCircle2) { validateCircle2(e.target) }
+                }
             }
         });
         n7.on('mouseup', function (e) {
@@ -134,6 +177,13 @@
             console.log("statusCircle2: ", statusCircle2)
             if (statusCircle1 && statusCircle2) {
                 validateAmbas(e.target)
+            } else {
+                if (statusCircle1) {
+                    validateCircle1(e.target)
+                }
+                else {
+                    if (statusCircle2) { validateCircle2(e.target) }
+                }
             }
         });
         n8.on('mouseup', function (e) {
@@ -141,6 +191,13 @@
             console.log("statusCircle2: ", statusCircle2)
             if (statusCircle1 && statusCircle2) {
                 validateAmbas(e.target)
+            } else {
+                if (statusCircle1) {
+                    validateCircle1(e.target)
+                }
+                else {
+                    if (statusCircle2) { validateCircle2(e.target) }
+                }
             }
         });
         n9.on('mouseup', function (e) {
@@ -148,6 +205,12 @@
             console.log("statusCircle2: ", statusCircle2)
             if (statusCircle1 && statusCircle2) {
                 validateAmbas(e.target)
+            } else {
+                if (statusCircle1) {
+                    validateCircle1(e.target)
+                } else {
+                    if (statusCircle2) { validateCircle2(e.target) }
+                }
             }
         });
 
@@ -161,7 +224,26 @@
                     icon: "success"
                 });
             }
-
+        }
+        function validateCircle1(data) {
+            console.log("name: ", data.name);
+            if (addCircle1.includes(data.name)) {
+                swal({
+                    title: "Muy bien!",
+                    text: "el numero " + data.name + " es correcto",
+                    icon: "success"
+                });
+            }
+        }
+        function validateCircle2(data) {
+            console.log("name: ", data.name);
+            if (addCircle2.includes(data.name)) {
+                swal({
+                    title: "Muy bien!",
+                    text: "el numero " + data.name + " es correcto",
+                    icon: "success"
+                });
+            }
         }
 
 
