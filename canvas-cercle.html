@@ -87,132 +87,26 @@
         canvas.add(n9);
 
 
-        n1.on('mouseup', function (e) {
-            console.log("statusCircle1: ", statusCircle1)
-            console.log("statusCircle2: ", statusCircle2)
-            if (statusCircle1 && statusCircle2) {
-                validateAmbas(e.target)
-            } else {
-                if (statusCircle1) {
-                    validateCircle1(e.target)
-                }
-                else {
-                    if (statusCircle2) { validateCircle2(e.target) }
-                }
-            }
+        //img.on('scaling', function() { positionBtn(img) });
+        canvas.on({
+            'mouse:up': onValidate,
+        });
+       
 
-
-        });
-        n2.on('mouseup', function (e) {
-            console.log("statusCircle1: ", statusCircle1)
-            console.log("statusCircle2: ", statusCircle2)
+        function onValidate(options) {
+            console.log("mouseup: ", options)
+            console.log("circle1: ", statusCircle1)
+            console.log("circle2: ", statusCircle2)
             if (statusCircle1 && statusCircle2) {
-                validateAmbas(e.target)
+                validateAmbas(options.target)
             } else {
                 if (statusCircle1) {
-                    validateCircle1(e.target)
+                    validateCircle1(options.target)
                 } else {
-                    if (statusCircle2) { validateCircle2(e.target) }
+                    if (statusCircle2) { validateCircle2(options.target) }
                 }
             }
-        });
-        n3.on('mouseup', function (e) {
-            console.log("statusCircle1: ", statusCircle1)
-            console.log("statusCircle2: ", statusCircle2)
-            if (statusCircle1 && statusCircle2) {
-                validateAmbas(e.target)
-            } else {
-                if (statusCircle1) {
-                    validateCircle1(e.target)
-                }
-                else {
-                    if (statusCircle2) { validateCircle2(e.target) }
-                }
-            }
-        });
-        n4.on('mouseup', function (e) {
-            console.log("statusCircle1: ", statusCircle1)
-            console.log("statusCircle2: ", statusCircle2)
-            if (statusCircle1 && statusCircle2) {
-                validateAmbas(e.target)
-            } else {
-                if (statusCircle1) {
-                    validateCircle1(e.target)
-                }
-                else {
-                    if (statusCircle2) { validateCircle2(e.target) }
-                }
-            }
-        });
-        n5.on('mouseup', function (e) {
-            console.log("statusCircle1: ", statusCircle1)
-            console.log("statusCircle2: ", statusCircle2)
-            if (statusCircle1 && statusCircle2) {
-                validateAmbas(e.target)
-            } else {
-                if (statusCircle1) {
-                    validateCircle1(e.target)
-                }
-                else {
-                    if (statusCircle2) { validateCircle2(e.target) }
-                }
-            }
-        });
-        n6.on('mouseup', function (e) {
-            console.log("statusCircle1: ", statusCircle1)
-            console.log("statusCircle2: ", statusCircle2)
-            if (statusCircle1 && statusCircle2) {
-                validateAmbas(e.target)
-            } else {
-                if (statusCircle1) {
-                    validateCircle1(e.target)
-                }
-                else {
-                    if (statusCircle2) { validateCircle2(e.target) }
-                }
-            }
-        });
-        n7.on('mouseup', function (e) {
-            console.log("statusCircle1: ", statusCircle1)
-            console.log("statusCircle2: ", statusCircle2)
-            if (statusCircle1 && statusCircle2) {
-                validateAmbas(e.target)
-            } else {
-                if (statusCircle1) {
-                    validateCircle1(e.target)
-                }
-                else {
-                    if (statusCircle2) { validateCircle2(e.target) }
-                }
-            }
-        });
-        n8.on('mouseup', function (e) {
-            console.log("statusCircle1: ", statusCircle1)
-            console.log("statusCircle2: ", statusCircle2)
-            if (statusCircle1 && statusCircle2) {
-                validateAmbas(e.target)
-            } else {
-                if (statusCircle1) {
-                    validateCircle1(e.target)
-                }
-                else {
-                    if (statusCircle2) { validateCircle2(e.target) }
-                }
-            }
-        });
-        n9.on('mouseup', function (e) {
-            console.log("statusCircle1: ", statusCircle1)
-            console.log("statusCircle2: ", statusCircle2)
-            if (statusCircle1 && statusCircle2) {
-                validateAmbas(e.target)
-            } else {
-                if (statusCircle1) {
-                    validateCircle1(e.target)
-                } else {
-                    if (statusCircle2) { validateCircle2(e.target) }
-                }
-            }
-        });
+        }
 
 
         function validateAmbas(data) {
@@ -245,6 +139,7 @@
                 });
             }
         }
+
 
 
         canvas.on({
