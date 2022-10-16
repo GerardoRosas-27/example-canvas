@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/tabla.css">
+</head>
+
+<body>
+    <button onclick="calcularResultado()">Calular</button>
+    <div id="result">
+
+    </div>
+
+    <table>
+
+        <tr>
+            <th>
+                +
+            </th>
+            <th>
+                0
+            </th>
+            <th>
+                1
+            </th>
+            <th>
+                2
+            </th>
+            <th>
+                3
+            </th>
+        </tr>
+        <tr>
+            <td>0</td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td><input data-x="0" data-y="3" type="text"></td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+        </tr>
+
+    </table>
+
+    <script>
+        function calcularResultado() {
+            var datos = document.getElementsByTagName('input')
+            var suma = [0, 1, 2, 3, 1, 2, 3, 4, 2, 3, 4, 5, 3, 4, 5, 6];
+            for (let index = 0; index < datos.length; index++) {
+                var valor;
+                if (!datos[index].value) {
+                    valor = null
+                    console.log(valor)
+                } else {
+                    valor = parseInt(datos[index].value);
+                }
+
+                if (valor !== null) {
+                    if (valor >= 0 && valor <= 3) {
+                        if (valor === suma[index]) {
+                            console.log("exito: ", valor, " suma: ", suma[index])
+
+                        } else {
+                            if (valor === (suma[index] % 4)) {
+                                console.log("exito residuo: ", valor, " suma: ", suma[index])
+
+                            } else {
+                                console.log("error valor: ", valor)
+                                alert("resultado incorrecto valor: " + valor)
+                            }
+                        }
+                    } else {
+                        console.log("error valor: ", valor)
+                        alert("resultado incorrecto valor: " + valor)
+                    }
+
+
+                }
+            }
+
+        }
+
+
+    </script>
+
+
+</body>
+
+
+
+</html>

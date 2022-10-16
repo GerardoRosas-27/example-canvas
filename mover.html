@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!DOCTYPE HTML>
+    <html>
+
+    <head>
+        <style>
+            span {
+                font-size: 40px;
+                border: 1px solid #aaaaaa;
+                border-radius: 50%;
+            }
+
+            .circle {
+                position: relative;
+                display: flex;
+                flex-direction: row;
+            }
+
+            .circle div {
+                width: 300px;
+                height: 300px;
+                border: 1px solid #aaaaaa;
+                border-radius: 50%;
+            }
+
+            #div1 {
+                position: relative;
+                right: -100px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            #div3 {
+                position: relative;
+                top: 30px;
+                height: 240px;
+                width: 80px;
+                border-radius: 50%;
+                background-color: red;
+                z-index: 3;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-wrap: wrap;
+            }
+
+            #div2 {
+
+                position: relative;
+                left: -100px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        </style>
+        <script>
+            function allowDrop(ev) {
+                ev.preventDefault();
+            }
+
+            function drag(ev) {
+                ev.dataTransfer.setData("text", ev.target.id);
+            }
+
+            function drop(ev) {
+                ev.preventDefault();
+                var data = ev.dataTransfer.getData("text");
+                ev.target.appendChild(document.getElementById(data));
+            }
+        </script>
+    </head>
+
+    <body>
+
+        <p>Drag the W3Schools image into the rectangle:</p>
+        <div class="circle">
+            <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div id="div3" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+        </div>
+        <br>
+        <span id="drag1" draggable="true" ondragstart="drag(event)">1</span>
+        <span id="drag2" draggable="true" ondragstart="drag(event)">2</span>
+        <span id="drag3" draggable="true" ondragstart="drag(event)">3</span>
+        <span id="drag4" draggable="true" ondragstart="drag(event)">4</span>
+        <span id="drag5" draggable="true" ondragstart="drag(event)">5</span>
+        <span id="drag6" draggable="true" ondragstart="drag(event)">6</span>
+        <span id="drag7" draggable="true" ondragstart="drag(event)">7</span>
+        <span id="drag8" draggable="true" ondragstart="drag(event)">8</span>
+        <span id="drag9" draggable="true" ondragstart="drag(event)">9</span>
+
+
+    </body>
+
+    </html>
+
+
+
+
+</body>
+
+</html>

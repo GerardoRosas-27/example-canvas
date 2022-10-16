@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <div id="jxgbox" style="width:650px; height:400px;display:block;margin-left:auto;margin-right:auto;"> </div>
+
+
+
+
+    <script type="text/javascript" charset="UTF-8"
+        src="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraphcore.js"></script>
+
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+    <script>
+
+
+        // User supplied function to be drawn.
+        /*
+        var f = function (x) { return 1 - (x * x); };
+
+        var brd = JXG.JSXGraph.initBoard('jxgbox', { boundingbox: [-5, 2, 5, -2], axis: true, keepaspectratio: false });
+
+        var start = -2,
+            end = 2,
+            x = start,
+            step = 0.2,
+            turtle = brd.create('point', [x, f(x)], {
+                name: '',
+                fixed: true,
+                color: "#0b0eb3",
+                size: 5,
+            });
+
+        var moveForward = function () {
+            x += step;
+            if (x > end) {
+                return;
+            }
+            turtle.moveTo([x, f(x)]);
+            setTimeout(moveForward, 200); // delay by 200 ms
+        };
+
+        turtle.hideTurtle();    // Hide the turtle arrow
+        moveForward();          // Start the drawing
+    */
+
+    var f1 = function (x) { return 1 - (x * x); };
+    var f2 = function (x) { return 2 - (x * x); };
+   var x1 = -1;
+   var x2 = -1.4;
+   
+   var end1 = 1;
+   var end2 = 1.4;
+   var step1 = 0.2
+   var step2 = 0.2
+
+        var brd = JXG.JSXGraph.initBoard('jxgbox', { boundingbox: [-1.5, 1.5, 1.5, -1.5], keepaspectratio: true, axis: true });
+        var p1 = brd.create('point', [x1, 0], { face: 'o', size: 5, strokeColor: 'red', fillOpacity: 0.3, strokeOpacity: 0.3 });
+
+        var p2 = brd.create('point', [x2, 0], { face: 'o', size: 5, strokeColor: 'blue', fillOpacity: 0.3, strokeOpacity: 0.3 });
+        
+        var parabola1 = function () {
+            x1 += step1;
+            if (x1 > end1) {
+                return;
+            }
+            p1.moveTo([x1, f1(x1)]);
+            setTimeout(parabola1, 200); // delay by 200 ms
+        };
+
+        var parabola2 = function () {
+            x2 += step2;
+            if (x2 > end2) {
+                return;
+            }
+            p2.moveTo([x2, f2(x2)]);
+            setTimeout(parabola2, 200); // delay by 200 ms
+        };
+
+         parabola1();  
+         parabola2(); 
+
+
+
+    </script>
+
+</body>
+
+</html>

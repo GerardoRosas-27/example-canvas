@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/cuadrado.css">
+</head>
+
+<body>
+
+    <button onclick="rotar()">Rotación</button>
+    <button onclick="reflejar()">Reflejar</button>
+    <div id="cuadrado" class="cuadrado">
+        <div id="rotarLetra1" class="letra1">A</div>
+        <div id="rotarLetra2" class="letra2">B</div>
+        <div id="rotarLetra3" class="letra3">C</div>
+        <div id="rotarLetra4" class="letra4">D</div>
+    </div>
+
+
+    <script>
+        // variables globales
+        var rotaCuadrado = 0;
+        var rotaLetras = 0;
+        function rotar() {
+            // capturar id cuadrado y ejecutar funcion de animacion
+            document.getElementById("cuadrado").animate([
+                // fotogramas clave
+                { transform: 'rotate(' + rotaCuadrado + 'deg)' },
+                { transform: 'rotate(' + incremRotate(rotaCuadrado) + 'deg)' }
+            ], {
+                // opciones de sincronización
+                duration: 1000,
+                easing: 'ease-in-out',
+                fill: 'both'
+            });
+
+            document.getElementById("rotarLetra1").animate([
+                // fotogramas clave
+                { transform: 'rotate(' + rotaLetras + 'deg)' },
+                { transform: 'rotate(' + incremRotateLetra(rotaLetras) + 'deg)' }
+            ], {
+                easing: 'ease-in-out',
+                fill: 'both'
+            });
+
+            document.getElementById("rotarLetra2").animate([
+                // fotogramas clave
+                { transform: 'rotate(' + rotaLetras + 'deg)' },
+                { transform: 'rotate(' + incremRotateLetra(rotaLetras) + 'deg)' }
+            ], {
+                easing: 'ease-in-out',
+                fill: 'both'
+            });
+            document.getElementById("rotarLetra3").animate([
+                // fotogramas clave
+                { transform: 'rotate(' + rotaLetras + 'deg)' },
+                { transform: 'rotate(' + incremRotateLetra(rotaLetras) + 'deg)' }
+            ], {
+                easing: 'ease-in-out',
+                fill: 'both'
+            });
+            document.getElementById("rotarLetra4").animate([
+                // fotogramas clave
+                { transform: 'rotate(' + rotaLetras + 'deg)' },
+                { transform: 'rotate(' + incremRotateLetra(rotaLetras) + 'deg)' }
+            ], {
+                easing: 'ease-in-out',
+                fill: 'both'
+            });
+
+
+            rotaLetras = rotaLetras + 270
+            rotaCuadrado = rotaCuadrado + 90
+
+            if (rotaCuadrado === 360) {
+                rotaLetras = 0
+                rotaCuadrado = 0
+            }
+        }
+        function incremRotate(rotaCuadrado) {
+            return rotaCuadrado + 90
+        }
+        function incremRotateLetra(rotaLetras) {
+            return rotaLetras + 270
+        }
+        function reflejar() {
+            var letra1
+            var letra2
+            var letra3
+            var letra4
+            if (rotaCuadrado === 0 || rotaCuadrado === 180) {
+                letra1 = document.getElementById('rotarLetra1')
+                letra2 = document.getElementById('rotarLetra2')
+                letra3 = document.getElementById('rotarLetra3')
+                letra4 = document.getElementById('rotarLetra4')
+            }
+            if (rotaCuadrado === 90 || rotaCuadrado === 270) {
+                letra1 = document.getElementById('rotarLetra1')
+                letra2 = document.getElementById('rotarLetra3')
+                letra3 = document.getElementById('rotarLetra2')
+                letra4 = document.getElementById('rotarLetra4')
+            }
+            var colorTemporal = letra1.style.background
+            letra1.style.background = letra2.style.background
+            letra2.style.background = colorTemporal
+
+            var letraTemporal = letra1.innerHTML
+            letra1.innerHTML = letra2.innerHTML
+            letra2.innerHTML = letraTemporal
+
+
+            var letraTemporal2 = letra3.innerHTML
+            letra3.innerHTML = letra4.innerHTML
+            letra4.innerHTML = letraTemporal2
+        }
+
+
+
+
+    </script>
+
+</body>
+
+</html>

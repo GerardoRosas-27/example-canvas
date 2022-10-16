@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body>
+    <h1>Formularios</h1>
+
+    <form id="formLibre">
+        <h3>Respuesta Libre</h3>
+        <label for="fname">Escribe tu nombre</label><br>
+        <input type="text" id="respuestaLibre" name="fname"><br>
+    </form>
+    <button onclick="getFormLibre()">Validar Libre</button>
+
+    <form action="formRadio">
+        <h3>Opcion Multiple</h3>
+        <p>Pregunta2</p>
+        <input onclick="getRadio('respuesta1')" type="radio" id="radio1" name="opcion">
+        <label for="radio1">respuesta1</label><br>
+        <input onclick="getRadio('respuesta2')" type="radio" id="radio2" name="opcion" value="respuesta2">
+        <label for="radio2">respuesta2</label><br>
+        <input onclick="getRadio('respuesta3')" type="radio" id="radio3" name="opcion" value="respuesta3">
+        <label for="radio3">respuesta3</label>
+    </form>
+
+    <form id="formChec">
+        <h3>Opcion</h3>
+        <p>Pregunta3</p>
+        <input type="checkbox" id="chec1" name="opcion1" value="respuesta1">
+        <label for="chec1"> respuesta1</label><br>
+        <input type="checkbox" id="chec2" name="opcion2" value="respuesta2">
+        <label for="chec2"> respuesta2</label><br>
+        <input type="checkbox" id="chec3" name="opcion3" value="respuesta3">
+        <label for="chec3"> respuesta3</label>
+    </form>
+    <button onclick="getChec()">Validar</button>
+
+
+
+</body>
+
+
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"
+    integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<script>
+
+    function getFormLibre() {
+        var posibles = ['1', '2', '3', '4']
+        var valor = document.getElementById('respuestaLibre').value;
+        if (posibles.includes(valor)) {
+            console.log("respuesta correcta: ", valor)
+        } else {
+            console.log("respuesta incorrecta: ", valor)
+        }
+
+    }
+
+
+    function getRadio(valor) {
+        var opcionCorrecta = "respuesta2"
+        if (valor === opcionCorrecta) {
+
+            swal({
+                title: "Muy bien!",
+                text: "La respuesta " + valor + " es correcta.",
+                icon: "success"
+            });
+        } else {
+            swal({
+                title: "Muy mal!",
+                text: "La respuesta " + valor + " es correcta.",
+                icon: "error"
+            });
+        }
+
+    }
+
+    function getChec() {
+        console.log("entro")
+        var respuesta1 = document.getElementById('chec1').value;
+        var respuesta2 = document.getElementById('chec2').value;
+        var respuesta3 = document.getElementById('chec2').value;
+        var checked1 = document.getElementById('chec1').checked;
+        var checked2 = document.getElementById('chec2').checked;
+        var checked3 = document.getElementById('chec3').checked;
+
+        console.log("incorrecta: ", checked3);
+        if (checked3 === true) {
+
+            swal({
+                title: "Muy mal!",
+                text: "La respuesta " + respuesta3 + " es  incorrecta.",
+                icon: "error"
+            });
+        } else {
+            if (checked1 && checked2) {
+                swal({
+                    title: "Muy bien!",
+                    text: "La respuesta " + respuesta1 + respuesta2 + " es correcta.",
+                    icon: "success"
+                });
+            } else {
+                swal({
+                    title: "Muy mal!",
+                    text: "La respuesta  es incorrecta.",
+                    icon: "error"
+                });
+            }
+        }
+    }
+
+
+</script>
+
+</html>

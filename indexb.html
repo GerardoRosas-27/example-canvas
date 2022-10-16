@@ -1,0 +1,96 @@
+<html>
+
+<body>
+    <div class="DescartesAppContainer" style="width:970px; height:550px;">
+        <div id="E1" class="DescartesSpace2DContainer" style="left: 0px; top: 0px; z-index: 0; display: block;"><canvas
+                id="E1_background" width="970" height="550" style="width: 970px; height: 550px;"></canvas><canvas
+                id="E1_canvas" width="970" height="550" class="DescartesSpace2DCanvas"
+                style="z-index: 0; width:970px; height:550px;"></canvas>
+            <div id="E1_graphicControls" style="position: absolute; left: 0px; top: 0px; z-index: 0;">
+                <div class="DescartesGraphicControl" id="p0" dragged="true" tabindex="-1"
+                    style="cursor: pointer; background-color: rgba(255, 255, 255, 0); z-index: 0; width: 44px; height: 59px; left: 78px; top: 328px; display: block;">
+                </div>
+                <div class="DescartesGraphicControl" id="p1" dragged="true" tabindex="-1"
+                    style="cursor: pointer; background-color: rgba(255, 255, 255, 0); z-index: 0; width: 44px; height: 59px; left: 150px; top: 328px; display: block;">
+                </div>
+                <div class="DescartesGraphicControl" id="p2" dragged="true" tabindex="-1"
+                    style="cursor: pointer; background-color: rgba(255, 255, 255, 0); z-index: 0; width: 44px; height: 59px; left: 222px; top: 328px; display: block;">
+                </div>
+                <div class="DescartesGraphicControl" id="p3" dragged="true" tabindex="-1"
+                    style="cursor: pointer; background-color: rgba(255, 255, 255, 0); z-index: 0; width: 44px; height: 59px; left: 294px; top: 328px; display: block;">
+                </div>
+                <div class="DescartesGraphicControl" id="p4" dragged="true" tabindex="-1"
+                    style="cursor: pointer; background-color: rgba(255, 255, 255, 0); z-index: 0; width: 44px; height: 59px; left: 366px; top: 328px; display: block;">
+                </div>
+                <div class="DescartesGraphicControl" id="p5" dragged="true" tabindex="-1"
+                    style="cursor: pointer; background-color: rgba(255, 255, 255, 0); z-index: 0; width: 44px; height: 59px; left: 78px; top: 400px; display: block;">
+                </div>
+                <div class="DescartesGraphicControl" id="p6" dragged="true" tabindex="-1"
+                    style="cursor: pointer; background-color: rgba(255, 255, 255, 0); z-index: 0; width: 43px; height: 59px; left: 150px; top: 400px; display: block;">
+                </div>
+                <div class="DescartesGraphicControl" id="p7" dragged="true" tabindex="-1"
+                    style="cursor: pointer; background-color: rgba(255, 255, 255, 0); z-index: 0; width: 44px; height: 59px; left: 222px; top: 400px; display: block;">
+                </div>
+                <div class="DescartesGraphicControl" id="p8" dragged="true" tabindex="-1"
+                    style="cursor: pointer; background-color: rgba(255, 255, 255, 0); z-index: 0; width: 44px; height: 59px; left: 294px; top: 400px; display: block;">
+                </div>
+                <div class="DescartesGraphicControl" id="p9" dragged="true" tabindex="-1"
+                    style="cursor: pointer; background-color: rgba(255, 255, 255, 0); z-index: 0; width: 44px; height: 59px; left: 366px; top: 400px; display: block;">
+                </div>
+            </div>
+            <div id="E1_numericalControls" style="position: absolute; left: 0px; top: 0px; z-index: 0;">
+                <div class="DescartesButtonContainer" id="n14"
+                    style="width: 120px; height: 30px; left: 174px; top: 490px; z-index: 0; display: none; cursor: pointer;">
+                    <canvas width="120" height="30"
+                        style="position: absolute; left: 0px; top: 0px; width: 120px; height: 30px; box-sizing: border-box; cursor: pointer;"></canvas>
+                </div>
+                <div class="DescartesButtonContainer" id="goTo2"
+                    style="width: 30px; height: 30px; left: 880px; top: 22px; z-index: 0; display: block; cursor: pointer;">
+                    <canvas width="30" height="30"
+                        style="position: absolute; left: 0px; top: 0px; width: 30px; height: 30px; box-sizing: border-box; cursor: pointer;"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="DescartesLoader" style="width: 970px; height: 550px; z-index: 1000; display: none;">
+            <div class="DescartesLoaderImage"
+                style="background-image: url(data:image/png;base64,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); background-size:cover; width: 970px; height: 550px;">
+            </div><canvas width="970" height="550" class="DescartesLoaderBar"
+                style="width: 970px; height:550px;"></canvas>
+        </div>
+    </div>
+    <div
+        style="box-sizing: border-box; border-style: ridge; border-width: 5px; border-color: gray; box-shadow: rgb(0, 0, 0) 0px 0px 25px 5px; overflow: hidden scroll; position: fixed; left: 846px; top: 5px; z-index: 10000; width: 255px; height: 106px; background-color: rgb(99, 180, 251); display: none;">
+        <div class="DescartesButtonContainer" id="C"
+            style="width: 114px; height: 25px; left: 57px; top: 71px; z-index: -1; display: block; background-color: rgb(240, 248, 255); cursor: pointer;">
+            <canvas width="114" height="25"
+                style="position: absolute; left: 0px; top: 0px; width: 114px; height: 25px; box-sizing: border-box; cursor: pointer;"></canvas>
+        </div>
+        <div class="DescartesButtonContainer" id="C"
+            style="width: 114px; height: 25px; left: 114px; top: 48px; z-index: -1; display: block; background-color: rgb(240, 248, 255); cursor: pointer;">
+            <canvas width="114" height="25"
+                style="position: absolute; left: 0px; top: 0px; width: 114px; height: 25px; box-sizing: border-box; cursor: pointer;"></canvas>
+        </div>
+        <div class="DescartesButtonContainer" id="C"
+            style="width: 114px; height: 25px; left: 0px; top: 48px; z-index: -1; display: block; background-color: rgb(240, 248, 255); cursor: pointer;">
+            <canvas width="114" height="25"
+                style="position: absolute; left: 0px; top: 0px; width: 114px; height: 25px; box-sizing: border-box; cursor: pointer;"></canvas>
+        </div>
+        <div class="DescartesButtonContainer" id="C"
+            style="width: 114px; height: 25px; left: 114px; top: 25px; z-index: -1; display: block; background-color: rgb(240, 248, 255); cursor: pointer;">
+            <canvas width="114" height="25"
+                style="position: absolute; left: 0px; top: 0px; width: 114px; height: 25px; box-sizing: border-box; cursor: pointer;"></canvas>
+        </div>
+        <div class="DescartesButtonContainer" id="C"
+            style="width: 114px; height: 25px; left: 0px; top: 25px; z-index: -1; display: block; background-color: rgb(240, 248, 255); cursor: pointer;">
+            <canvas width="114" height="25"
+                style="position: absolute; left: 0px; top: 0px; width: 114px; height: 25px; box-sizing: border-box; cursor: pointer;"></canvas>
+        </div>
+        <div
+            style=" position: absolute; left: 0px; top: 0px; width: 255px; height: 25px; line-height: 25px; background-color: ddd; cursor: move; padding-left: 75px; font-family: Sans-Serif; font-size: 18px;">
+            Descartes</div>
+    </div>
+
+
+</body>
+
+</html>

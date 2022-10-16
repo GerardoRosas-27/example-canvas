@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escenario de una Sucesión </title>
+    <link rel="preload" href="css/normalize.css" as="style">
+    <link rel="stylesheet" href="css/normalize.css">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Comic+Neue&family=Krub:ital,wght@0,700;1,400&family=Staatliches&display=swap"
+        rel="stylesheet">
+
+    <link rel="preload" href="css/styles.css" as="style">
+
+    <link href="css/styles.css" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraph.css">
+    <!--MathJax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+
+<body>
+    <header class="wrapper">
+
+        <div class="one">
+            <h1>Actividad 1. Convergencia de sucesiones</h1>
+        </div>
+        <div class="two">
+            <img src="img/logo-uamc.jpg">
+        </div>
+
+    </header>
+
+    <h3> Con ayuda del siguiente interactivo muestra que: $$ \lim_{n \to \infty } \frac{n}{n+1}=1 $$</h3>
+
+    <h5> En el interactivo debes proponer un valor pequeño entre 0 y 1 para tu vecindad de radio Épsilon.
+        Posteriormente, realiza los cálculos correspondientes para deducir el valor de N que cumpla la definición de
+        límite. </h5>
+    <h4 class="text-left">Elige un valor para épsilon</h4>
+
+    <div class="boton">
+        <label for="inputEpsilon">\( \varepsilon : \)</label>
+        <input onchange="ejecutarEpsilon()" type="number" class="form-control w-50" id="inputEpsilon" value="0" max="1"
+            min="0" step="0.1">
+
+    </div>
+
+    <div id="validaEpsilonTexto"> 
+        
+    </div>
+    <div id="validaEpsilonAccion"> </div>
+
+    <div id="edvi" style="width:650px; height:400px;display:block;margin-left:auto;margin-right:auto;"> </div>
+
+    <script type="text/javascript" charset="UTF-8"
+        src="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraphcore.js"></script>
+
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"
+        integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script type="text/javascript" language="javascript" src="js2/sucesion.js"></script>
+</body>
+
+</html>

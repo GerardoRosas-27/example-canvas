@@ -1,0 +1,194 @@
+<html>
+
+
+
+<head>
+
+</head>
+
+<body>
+    <canvas id="myCanvas" width="1000" height="1000" style="border:1px solid black;">
+    </canvas>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.2.4/fabric.min.js"
+        integrity="sha512-HkRNCiaZYxQAkHpLFYI90ObSzL0vaIXL8Xe3bM51vhdYI79RDFMLTAsmVH1xVPREmTlUWexgrQMk+c3RBTsLGw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script>
+
+        let statusCircle1 = false;
+        let statusCircle2 = false;
+        const nameCircle1 = "circle1";
+        const nameCircle2 = "circle2";
+        const addAmbas = ['1', '2', '3'];
+        const addCircle1 = ['4', '5', '6'];
+        const addCircle2 = ['7', '8', '9'];
+
+
+
+        fabric.Object.prototype.noScaleCache = false;
+        /*
+            strokeUniform works better without scalingCache
+            Objects in group are not scaled directly, so stroke uniform will not have effect.
+        */
+
+
+        var canvas = this.__canvas = new fabric.Canvas('myCanvas');
+        // create a rectangle object
+
+
+        var circle1 = new fabric.Circle({
+            name: nameCircle1,
+            radius: 150,
+            fill: '#039BE5',
+            left: 0,
+            stroke: 'red',
+            opacity: 0.7,
+            strokeWidth: 3,
+            lockMovementY: true,
+            lockMovementX: true
+        });
+
+        var circle2 = new fabric.Circle({
+            name: nameCircle2,
+            radius: 150,
+            fill: '#4FC3F7',
+            left: 160,
+            opacity: 0.7,
+            stroke: 'blue',
+            strokeWidth: 3,
+            strokeUniform: false,
+            lockMovementY: true,
+            lockMovementX: true,
+
+        });
+
+        let n1 = new fabric.Text("1", { name: "1", fontSize: 40, top: 340, left: 10 });
+        let n2 = new fabric.Text("2", { name: "2", fontSize: 40, top: 340, left: 50 });
+        let n3 = new fabric.Text("3", { name: "3", fontSize: 40, top: 340, left: 100 });
+        let n4 = new fabric.Text("4", { name: "4", fontSize: 40, top: 340, left: 150 });
+        let n5 = new fabric.Text("5", { name: "5", fontSize: 40, top: 340, left: 200 });
+        let n6 = new fabric.Text("6", { name: "6", fontSize: 40, top: 340, left: 250 });
+        let n7 = new fabric.Text("7", { name: "7", fontSize: 40, top: 340, left: 300 });
+        let n8 = new fabric.Text("8", { name: "8", fontSize: 40, top: 340, left: 350 });
+        let n9 = new fabric.Text("9", { name: "9", fontSize: 40, top: 340, left: 400 });
+
+        canvas.add(circle1);
+        canvas.add(circle2);
+        canvas.add(n1);
+        canvas.add(n2);
+        canvas.add(n3);
+        canvas.add(n4);
+        canvas.add(n5);
+        canvas.add(n6);
+        canvas.add(n7);
+        canvas.add(n8);
+        canvas.add(n9);
+
+
+        n1.on('mouseup', function (e) {
+            console.log("statusCircle1: ", statusCircle1)
+            console.log("statusCircle2: ", statusCircle2)
+            if (statusCircle1 && statusCircle2) {
+                validateAmbas(e.target)
+            }
+        });
+        n2.on('mouseup', function (e) {
+            console.log("statusCircle1: ", statusCircle1)
+            console.log("statusCircle2: ", statusCircle2)
+            if (statusCircle1 && statusCircle2) {
+                validateAmbas(e.target)
+            }
+        });
+        n3.on('mouseup', function (e) {
+            console.log("statusCircle1: ", statusCircle1)
+            console.log("statusCircle2: ", statusCircle2)
+            if (statusCircle1 && statusCircle2) {
+                validateAmbas(e.target)
+            }
+        });
+        n4.on('mouseup', function (e) {
+            console.log("statusCircle1: ", statusCircle1)
+            console.log("statusCircle2: ", statusCircle2)
+            if (statusCircle1 && statusCircle2) {
+                validateAmbas(e.target)
+            }
+        });
+        n5.on('mouseup', function (e) {
+            console.log("statusCircle1: ", statusCircle1)
+            console.log("statusCircle2: ", statusCircle2)
+            if (statusCircle1 && statusCircle2) {
+                validateAmbas(e.target)
+            }
+        });
+        n6.on('mouseup', function (e) {
+            console.log("statusCircle1: ", statusCircle1)
+            console.log("statusCircle2: ", statusCircle2)
+            if (statusCircle1 && statusCircle2) {
+                validateAmbas(e.target)
+            }
+        });
+        n7.on('mouseup', function (e) {
+            console.log("statusCircle1: ", statusCircle1)
+            console.log("statusCircle2: ", statusCircle2)
+            if (statusCircle1 && statusCircle2) {
+                validateAmbas(e.target)
+            }
+        });
+        n8.on('mouseup', function (e) {
+            console.log("statusCircle1: ", statusCircle1)
+            console.log("statusCircle2: ", statusCircle2)
+            if (statusCircle1 && statusCircle2) {
+                validateAmbas(e.target)
+            }
+        });
+        n9.on('mouseup', function (e) {
+            console.log("statusCircle1: ", statusCircle1)
+            console.log("statusCircle2: ", statusCircle2)
+            if (statusCircle1 && statusCircle2) {
+                validateAmbas(e.target)
+            }
+        });
+
+
+        function validateAmbas(data) {
+            console.log("name: ", data.name);
+            if (addAmbas.includes(data.name)) {
+                swal({
+                    title: "Muy bien!",
+                    text: "el numero " + data.name + " es correcto",
+                    icon: "success"
+                });
+            }
+
+        }
+
+
+        canvas.on({
+            'object:moving': onChange,
+        });
+        function onChange(options) {
+            options.target.setCoords();
+            canvas.forEachObject(function (obj) {
+                if (obj.name === options.target.name) {
+                    return;
+                } else {
+                    obj.set('opacity', options.target.intersectsWithObject(obj) ? 0.5 : 1);
+                    if (options.target.intersectsWithObject(obj)) {
+                        statusCircle1 = obj.name === nameCircle1 ? true : statusCircle1;
+                        statusCircle2 = obj.name === nameCircle2 ? true : statusCircle2;
+                    } else {
+                        statusCircle1 = obj.name === nameCircle1 ? false : statusCircle1;
+                        statusCircle2 = obj.name === nameCircle2 ? false : statusCircle2;
+                    }
+
+                }
+            });
+        }
+    </script>
+
+
+</body>
+
+</html>
