@@ -1,0 +1,227 @@
+<html>
+
+
+
+<head>
+
+</head>
+
+<body>
+
+
+
+    <button onclick="validarActividad()">Validar actividad</button>
+
+    <canvas id="myCanvas" width="1000" height="1000" style="border:1px solid black;">
+    </canvas>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.2.4/fabric.min.js"
+        integrity="sha512-HkRNCiaZYxQAkHpLFYI90ObSzL0vaIXL8Xe3bM51vhdYI79RDFMLTAsmVH1xVPREmTlUWexgrQMk+c3RBTsLGw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!--Libreria de alertas-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script>
+        //variables booleanas que peuden cambiar
+        let statusCircle1 = false;
+        let statusCircle2 = false;
+        // variable constantes para nombrar las figuras
+        const nameCircle1 = "circle1";
+        const nameCircle2 = "circle2";
+        // variables constantes de arreglos, para validar opcion correcta
+        const addAmbas = ['1', '2', '3'];
+        const addCircle1 = ['4', '5', '6'];
+        const addCircle2 = ['7', '8', '9'];
+        let arrayError = [];
+        let arrayVerdadero = [];
+
+
+
+
+        fabric.Object.prototype.noScaleCache = false;
+        /*
+            strokeUniform works better without scalingCache
+            Objects in group are not scaled directly, so stroke uniform will not have effect.
+        */
+
+
+        var canvas = this.__canvas = new fabric.Canvas('myCanvas');
+        // create a rectangle object
+
+
+        var circle1 = new fabric.Circle({
+            name: nameCircle1, //id nombre de la figura 
+            radius: 150,
+            fill: '#039BE5',
+            left: 0,
+            stroke: 'red',
+            opacity: 0.7,
+            strokeWidth: 3,
+            lockMovementY: true,
+            lockMovementX: true,
+            selectable: false // no se pueden seleccionar
+        });
+
+        var circle2 = new fabric.Circle({
+            name: nameCircle2,
+            radius: 150,
+            fill: '#4FC3F7',
+            left: 160,
+            opacity: 0.7,
+            stroke: 'blue',
+            strokeWidth: 3,
+            strokeUniform: false,
+            lockMovementY: true,
+            lockMovementX: true,
+            selectable: false,
+        });
+
+        let n1 = new fabric.Text("1", { name: "1", fontSize: 40, top: 340, left: 10, hasBorders: false, hasControls: false });
+        let n2 = new fabric.Text("2", { name: "2", fontSize: 40, top: 340, left: 50, hasBorders: false, hasControls: false });
+        let n3 = new fabric.Text("3", { name: "3", fontSize: 40, top: 340, left: 100, hasBorders: false, hasControls: false });
+        let n4 = new fabric.Text("4", { name: "4", fontSize: 40, top: 340, left: 150, hasBorders: false, hasControls: false });
+        let n5 = new fabric.Text("5", { name: "5", fontSize: 40, top: 340, left: 200, hasBorders: false, hasControls: false });
+        let n6 = new fabric.Text("6", { name: "6", fontSize: 40, top: 340, left: 250, hasBorders: false, hasControls: false });
+        let n7 = new fabric.Text("7", { name: "7", fontSize: 40, top: 340, left: 300, hasBorders: false, hasControls: false });
+        let n8 = new fabric.Text("8", { name: "8", fontSize: 40, top: 340, left: 350, hasBorders: false, hasControls: false });
+        let n9 = new fabric.Text("9", { name: "9", fontSize: 40, top: 340, left: 400, hasBorders: false, hasControls: false });
+
+
+        canvas.add(circle1);
+        canvas.add(circle2);
+        canvas.add(n1);
+        canvas.add(n2);
+        canvas.add(n3);
+        canvas.add(n4);
+        canvas.add(n5);
+        canvas.add(n6);
+        canvas.add(n7);
+        canvas.add(n8);
+        canvas.add(n9);
+
+
+        function validarActividad() {
+
+
+            if (arrayError.length > 0) {
+                swal({
+                    title: "algo eta mal",
+                    text: "Errorres: " + arrayError.length + ", Verdaderos: " + arrayVerdadero.length,
+                    icon: "error"
+                });
+            } else {
+                swal({
+                    title: "Todos estan correctos",
+                    text: "Errorres: " + arrayError.length + ", Verdaderos: " + arrayVerdadero.length,
+                    icon: "success"
+                });
+            }
+
+
+        }
+
+        //img.on('scaling', function() { positionBtn(img) });
+        canvas.on({
+            'mouse:up': onValidate,
+        });
+
+
+        function onValidate(options) {
+            console.log("mouseup: ", options)
+            console.log("circle1: ", statusCircle1)
+            console.log("circle2: ", statusCircle2)
+
+            if (statusCircle1 && statusCircle2) {
+                validateAmbas(options.target)
+            } else {
+                if (statusCircle1) {
+                    validateCircle1(options.target)
+                } else {
+                    if (statusCircle2) { validateCircle2(options.target) }
+                }
+            }
+        }
+
+
+        function validateAmbas(data) {
+            console.log("name: ", data.name);
+            if (addAmbas.includes(data.name)) {
+                arrayError = arrayError.filter(item => item !== data.name );
+                console.log("limpiar errores: ", arrayError)
+                arrayVerdadero.push(data.name)
+              
+            } else {
+                arrayVerdadero = arrayVerdadero.filter(item => item !== data.name );
+
+                arrayError.push(data.name)
+           
+            }
+        }
+        function validateCircle1(data) {
+            console.log("name: ", data.name);
+            if (addCircle1.includes(data.name)) {
+                arrayError = arrayError.filter(item => item !== data.name );
+                arrayVerdadero.push(data.name)
+            } else {
+                arrayVerdadero = arrayVerdadero.filter(item => item !== data.name );
+                arrayError.push(data.name)
+            }
+        }
+        function validateCircle2(data) {
+            console.log("name: ", data.name);
+            if (addCircle2.includes(data.name)) {
+                arrayError = arrayError.filter(item => item !== data.name );
+                arrayVerdadero.push(data.name)
+            } else {
+                arrayVerdadero = arrayVerdadero.filter(item => item !== data.name );
+                arrayError.push(data.name)
+            }
+        }
+
+
+
+
+
+
+        canvas.on({
+            'object:moving': onChange,
+        });
+        function onChange(options) {
+            options.target.setCoords();
+            canvas.forEachObject(function (obj) {
+                if (obj.name === options.target.name) {
+                    return;
+                } else {
+                    obj.set('opacity', options.target.intersectsWithObject(obj) ? 0.5 : 0.7);
+                    if (options.target.intersectsWithObject(obj)) {
+                        statusCircle1 = obj.name === nameCircle1 ? true : statusCircle1;
+                        statusCircle2 = obj.name === nameCircle2 ? true : statusCircle2;
+                    } else {
+                        statusCircle1 = obj.name === nameCircle1 ? false : statusCircle1;
+                        statusCircle2 = obj.name === nameCircle2 ? false : statusCircle2;
+                    }
+
+                }
+            });
+        }
+
+
+        function getObject(name) {
+            let objet;
+            canvas.forEachObject(function (obj) {
+                if (obj.name === name) {
+                    objet = obj
+                }
+            })
+            return objet
+        }
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>
