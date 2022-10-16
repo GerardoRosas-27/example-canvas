@@ -13,14 +13,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.2.4/fabric.min.js"
         integrity="sha512-HkRNCiaZYxQAkHpLFYI90ObSzL0vaIXL8Xe3bM51vhdYI79RDFMLTAsmVH1xVPREmTlUWexgrQMk+c3RBTsLGw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <!--Libreria de alertas-->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <script>
-
+        //variables booleanas que peuden cambiar
         let statusCircle1 = false;
         let statusCircle2 = false;
+        // variable constantes para nombrar las figuras
         const nameCircle1 = "circle1";
         const nameCircle2 = "circle2";
+        // variables constantes de arreglos, para validar opcion correcta
         const addAmbas = ['1', '2', '3'];
         const addCircle1 = ['4', '5', '6'];
         const addCircle2 = ['7', '8', '9'];
@@ -39,7 +42,7 @@
 
 
         var circle1 = new fabric.Circle({
-            name: nameCircle1,
+            name: nameCircle1, //id nombre de la figura 
             radius: 150,
             fill: '#039BE5',
             left: 0,
@@ -48,7 +51,7 @@
             strokeWidth: 3,
             lockMovementY: true,
             lockMovementX: true,
-            selectable: false,
+            selectable: false // no se pueden seleccionar
         });
 
         var circle2 = new fabric.Circle({
@@ -65,7 +68,7 @@
             selectable: false,
         });
 
-        let n1 = new fabric.Text("1", { name: "1", fontSize: 40, top: 340, left: 10, hasBorders: false, hasControls: false });
+        let n1 = new fabric.Text("1", { name: "1", fontSize: 40,  fill: '#039BE5', top: 340, left: 10, hasBorders: false, hasControls: false });
         let n2 = new fabric.Text("2", { name: "2", fontSize: 40, top: 340, left: 50, hasBorders: false, hasControls: false });
         let n3 = new fabric.Text("3", { name: "3", fontSize: 40, top: 340, left: 100, hasBorders: false, hasControls: false });
         let n4 = new fabric.Text("4", { name: "4", fontSize: 40, top: 340, left: 150, hasBorders: false, hasControls: false });
@@ -99,6 +102,7 @@
             console.log("mouseup: ", options)
             console.log("circle1: ", statusCircle1)
             console.log("circle2: ", statusCircle2)
+            
             if (statusCircle1 && statusCircle2) {
                 validateAmbas(options.target)
             } else {
@@ -144,16 +148,20 @@
 
 
 
+
+
+
         canvas.on({
             'object:moving': onChange,
         });
         function onChange(options) {
             options.target.setCoords();
+            console.log('object:moving', options)
             canvas.forEachObject(function (obj) {
                 if (obj.name === options.target.name) {
                     return;
                 } else {
-                    obj.set('opacity', options.target.intersectsWithObject(obj) ? 0.5 : 1);
+                    obj.set('opacity', options.target.intersectsWithObject(obj) ? 0.5 : 0.7);
                     if (options.target.intersectsWithObject(obj)) {
                         statusCircle1 = obj.name === nameCircle1 ? true : statusCircle1;
                         statusCircle2 = obj.name === nameCircle2 ? true : statusCircle2;
