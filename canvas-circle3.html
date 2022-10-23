@@ -10,7 +10,7 @@
 
 
 
-    <button onclick="validarActividad()">Validar actividad</button>
+    <button id="bTerminad" onclick="validarActividad()">Validar actividad</button>
 
     <canvas id="myCanvas" width="1000" height="1000" style="border:1px solid black;">
     </canvas>
@@ -22,21 +22,17 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <script>
-        //variables booleanas que peuden cambiar
-        let statusCircle1 = false;
-        let statusCircle2 = false;
+
         // variable constantes para nombrar las figuras
         const nameCircle1 = "circle1";
         const nameCircle2 = "circle2";
+        let statusFinal = false;
         // variables constantes de arreglos, para validar opcion correcta
         const addAmbas = ['1', '2', '3'];
         const addCircle1 = ['4', '5', '6'];
         const addCircle2 = ['7', '8', '9'];
         let arrayError = [];
         let arrayVerdadero = [];
-
-
-
 
         fabric.Object.prototype.noScaleCache = false;
         /*
@@ -45,7 +41,7 @@
         */
 
 
-        var canvas = this.__canvas = new fabric.Canvas('myCanvas');
+        var canvas = this.__canvas = new fabric.Canvas('myCanvas', { backgroundColor: 'rgb(216, 221, 151)' });
         // create a rectangle object
 
 
@@ -59,14 +55,20 @@
             strokeWidth: 3,
             lockMovementY: true,
             lockMovementX: true,
+            hasBorders: false, hasControls: false,
             selectable: false // no se pueden seleccionar
         });
+
+
+
+
+
 
         var circle2 = new fabric.Circle({
             name: nameCircle2,
             radius: 150,
             fill: '#4FC3F7',
-            left: 160,
+            left: 150,
             opacity: 0.7,
             stroke: 'blue',
             strokeWidth: 3,
@@ -74,6 +76,7 @@
             lockMovementY: true,
             lockMovementX: true,
             selectable: false,
+            hasBorders: false, hasControls: false
         });
 
         let n1 = new fabric.Text("1", { name: "1", fontSize: 40, top: 340, left: 10, hasBorders: false, hasControls: false });
@@ -102,20 +105,32 @@
 
         function validarActividad() {
 
+            let suma = arrayError.length + arrayVerdadero.length;
+            if (arrayVerdadero.length === 9) {
+                statusFinal = true;
+            }
 
-            if (arrayError.length > 0) {
+            if (suma === 9) {
+
                 swal({
-                    title: "algo eta mal",
-                    text: "Errorres: " + arrayError.length + ", Verdaderos: " + arrayVerdadero.length,
-                    icon: "error"
-                });
-            } else {
-                swal({
-                    title: "Todos estan correctos",
+                    title: "Tu puntaje es:",
                     text: "Errorres: " + arrayError.length + ", Verdaderos: " + arrayVerdadero.length,
                     icon: "success"
                 });
+
+                arrayVerdadero.map(item => setColorN(item, true))
+                arrayError.map(item => setColorN(item, false))
+                disabledN();
+                canvas.renderAll();
+
+            } else {
+                swal({
+                    title: "No terminas ",
+                    text: "Te falta : " + (9 - suma),
+                    icon: "error"
+                });
             }
+
 
 
         }
@@ -125,67 +140,111 @@
             'mouse:up': onValidate,
         });
 
-
         function onValidate(options) {
-            console.log("mouseup: ", options)
-            console.log("circle1: ", statusCircle1)
-            console.log("circle2: ", statusCircle2)
+            console.log("options: ", options)
+            
+            
+            if (!statusFinal) {
+                let statusCircle1 = validarCirculo1(options.absolutePointer.x, options.absolutePointer.y)
+                let statusCircle2 = validarCirculo2(options.absolutePointer.x, options.absolutePointer.y)
+                console.log("validarCirculo1: ", statusCircle1)
+                console.log("validarCirculo1: ", statusCircle2)
 
-            if (statusCircle1 && statusCircle2) {
-                validateAmbas(options.target)
-            } else {
-                if (statusCircle1) {
-                    validateCircle1(options.target)
+                if (statusCircle1 && statusCircle2) {
+                    validateAmbas(options.target)
                 } else {
-                    if (statusCircle2) { validateCircle2(options.target) }
+                    if (statusCircle1) {
+                        validateCircle1(options.target)
+                    } else {
+                        if (statusCircle2) {
+                            validateCircle2(options.target)
+                        } else {
+                            limpiar(options.target.name)
+                        }
+                    }
                 }
+                console.log("arrayError: ", arrayError)
+                console.log("arrayVerdadero: ", arrayVerdadero)
             }
         }
 
 
         function validateAmbas(data) {
-            console.log("name: ", data.name);
+
             if (addAmbas.includes(data.name)) {
-                arrayError = arrayError.filter(item => item !== data.name );
-                console.log("limpiar errores: ", arrayError)
+                limpiar(data.name)
                 arrayVerdadero.push(data.name)
-              
+
             } else {
-                arrayVerdadero = arrayVerdadero.filter(item => item !== data.name );
+                limpiar(data.name)
 
                 arrayError.push(data.name)
-           
+
             }
         }
         function validateCircle1(data) {
-            console.log("name: ", data.name);
+
             if (addCircle1.includes(data.name)) {
-                arrayError = arrayError.filter(item => item !== data.name );
+                limpiar(data.name)
                 arrayVerdadero.push(data.name)
             } else {
-                arrayVerdadero = arrayVerdadero.filter(item => item !== data.name );
+                limpiar(data.name)
                 arrayError.push(data.name)
             }
         }
         function validateCircle2(data) {
-            console.log("name: ", data.name);
+
             if (addCircle2.includes(data.name)) {
-                arrayError = arrayError.filter(item => item !== data.name );
+                limpiar(data.name)
                 arrayVerdadero.push(data.name)
             } else {
-                arrayVerdadero = arrayVerdadero.filter(item => item !== data.name );
+                limpiar(data.name)
                 arrayError.push(data.name)
             }
         }
 
+        function validarCirculo1(x, y) {
+            if (Math.sqrt(Math.pow((x - 150), 2) + Math.pow((y - 150), 2)) <= 150) {
+                return true
+            } else {
+                return false
+            }
+        }
+
+        function validarCirculo2(x, y) {
+            if (Math.sqrt(Math.pow((x - 300), 2) + Math.pow((y - 150), 2)) <= 150) {
+                return true
+            } else {
+                return false
+            }
+        }
 
 
-
-
+        function limpiar(name) {
+            arrayVerdadero = arrayVerdadero.filter(item => item !== name);
+            arrayError = arrayError.filter(item => item !== name);
+        }
+        function setColorN(name, verdadero) {
+            canvas.forEachObject(function (obj) {
+                console.log(obj)
+                
+                if (obj.name === name) {
+                    
+                    if (verdadero) {
+                        obj.set('fill', 'green');
+                    } else {
+                        obj.set('fill', 'red')
+                    }
+                }
+            });
+        }
 
         canvas.on({
             'object:moving': onChange,
         });
+
+
+
         function onChange(options) {
             options.target.setCoords();
             canvas.forEachObject(function (obj) {
@@ -193,27 +252,32 @@
                     return;
                 } else {
                     obj.set('opacity', options.target.intersectsWithObject(obj) ? 0.5 : 0.7);
-                    if (options.target.intersectsWithObject(obj)) {
-                        statusCircle1 = obj.name === nameCircle1 ? true : statusCircle1;
-                        statusCircle2 = obj.name === nameCircle2 ? true : statusCircle2;
-                    } else {
-                        statusCircle1 = obj.name === nameCircle1 ? false : statusCircle1;
-                        statusCircle2 = obj.name === nameCircle2 ? false : statusCircle2;
-                    }
-
                 }
             });
         }
 
 
-        function getObject(name) {
-            let objet;
-            canvas.forEachObject(function (obj) {
-                if (obj.name === name) {
-                    objet = obj
-                }
-            })
-            return objet
+        function disabledN() {
+
+            n1.set('lockMovementY', true);
+            n1.set('lockMovementX', true);
+            n2.set('lockMovementY', true);
+            n2.set('lockMovementX', true);
+            n3.set('lockMovementY', true);
+            n3.set('lockMovementX', true);
+            n4.set('lockMovementY', true);
+            n4.set('lockMovementX', true);
+            n5.set('lockMovementY', true);
+            n5.set('lockMovementX', true);
+            n6.set('lockMovementY', true);
+            n6.set('lockMovementX', true);
+            n7.set('lockMovementY', true);
+            n7.set('lockMovementX', true);
+            n8.set('lockMovementY', true);
+            n8.set('lockMovementX', true);
+            n9.set('lockMovementY', true);
+            n9.set('lockMovementX', true);
+
         }
 
 
