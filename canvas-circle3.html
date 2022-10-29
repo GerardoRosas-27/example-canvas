@@ -8,9 +8,9 @@
 
 <body>
 
-
-
     <button id="bTerminad" onclick="validarActividad()">Validar actividad</button>
+    <a class="custom-button" href="./canvas-circle3.html">reinicio</a>
+  
 
     <canvas id="myCanvas" width="1000" height="1000" style="border:1px solid black;">
     </canvas>
@@ -90,6 +90,13 @@
         let n9 = new fabric.Text("9", { name: "9", fontSize: 40, top: 340, left: 400, hasBorders: false, hasControls: false });
 
 
+        new fabric.Group([n1, n2, n3, n4, n5, n6, n7, n8, n9], {
+            selectable: false
+        });
+
+
+        // Render the Group in canvas
+        //canvas.add(group);
         canvas.add(circle1);
         canvas.add(circle2);
         canvas.add(n1);
@@ -142,8 +149,8 @@
 
         function onValidate(options) {
             console.log("options: ", options)
-            
-            
+
+
             if (!statusFinal) {
                 let statusCircle1 = validarCirculo1(options.absolutePointer.x, options.absolutePointer.y)
                 let statusCircle2 = validarCirculo2(options.absolutePointer.x, options.absolutePointer.y)
@@ -227,9 +234,9 @@
         function setColorN(name, verdadero) {
             canvas.forEachObject(function (obj) {
                 console.log(obj)
-                
+
                 if (obj.name === name) {
-                    
+
                     if (verdadero) {
                         obj.set('fill', 'green');
                     } else {

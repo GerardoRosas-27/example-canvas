@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/tabla.css">
+</head>
+
+<body>
+
+
+
+    <table class="custom-table">
+        <tr>
+            <td onclick="validarMultiplo(this)">A</td>
+            <td onclick="validarMultiplo(this)">M</td>
+            <td onclick="validarMultiplo(this)">31</td>
+            <td onclick="validarMultiplo(this)">14</td>
+            <td onclick="validarMultiplo(this)">25</td>
+        </tr>
+        <tr>
+            <td onclick="validarMultiplo(this)">11</td>
+            <td onclick="validarMultiplo(this)">12</td>
+            <td onclick="validarMultiplo(this)">15</td>
+            <td onclick="validarMultiplo(this)">18</td>
+            <td onclick="validarMultiplo(this)">19</td>
+        </tr>
+
+        <tr>
+            <td onclick="validarMultiplo(this)">40</td>
+            <td onclick="validarMultiplo(this)">42</td>
+            <td onclick="validarMultiplo(this)">43</td>
+            <td onclick="validarMultiplo(this)">45</td>
+            <td onclick="validarMultiplo(this)">46</td>
+        </tr>
+
+    </table>
+
+    <table id="tableGenerica" class="custom-table">
+
+    </table>
+
+    <script src="./js2/jquery.2.2.4.js"></script>
+    <script>
+
+        let opciones = [['A', 'B', 'C', 'D', 'E'], ['F', 'G', 'H', 'I', 'J']];
+
+        let arrayVerdadero = ['A', 'B', 'C', 'D'];
+
+
+
+        function validarMultiplo(elemnt) {
+            console.log("ement: ", elemnt)
+            console.log("ement2: ",)
+            let value = $(elemnt).text();
+            if (arrayVerdadero.includes(value)) {
+                $(elemnt).css("background", 'rgb(98, 177, 28)')
+            } else {
+                $(elemnt).css("background", 'rgb(241, 48, 86)')
+            }
+
+        }
+
+        function tablaOpciones() {
+            let tr = '';
+            opciones.map(item => {
+                let td = ''
+                console.log("item : ", item)
+                item.map(item2 => {
+                    td = td + '<td onclick="validarMultiplo(this)">' + item2 + '</td>'
+                    console.log("item2 : ", item2)
+                })
+                tr = tr + '<tr>' + td + '</tr>'
+
+            })
+            $('#tableGenerica').html(tr)
+        }
+        tablaOpciones()
+
+    </script>
+
+
+
+
+</body>
+
+</html>
