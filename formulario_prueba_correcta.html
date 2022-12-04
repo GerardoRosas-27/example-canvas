@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!DOCTYPE HTML>
+    <html>
+
+    <head>
+        <style>
+            .posiciones {
+                width: 100px;
+                height: 20px;
+                background: rgb(240, 240, 240);
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .respuestas {
+                width: 200px;
+                height: 20px;
+                padding-left: 20px;
+                padding-right: 20px;
+                background: rgb(184, 254, 87);
+            }
+        </style>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script>
+            function allowDrop(ev) {
+                ev.preventDefault();
+            }
+
+            function drag(ev) {
+                ev.dataTransfer.setData("text", ev.target.id);
+            }
+
+            function drop(ev) {
+                ev.preventDefault();
+                console.log("ev.toElement.id", ev.toElement.id)
+                let posiciones = document.getElementById(ev.toElement.id).children
+                if (posiciones.length > 0) {
+                    swal({
+                        title: "Error.",
+                        text: "Solo se permite una respuesta en la " + ev.toElement.id,
+                        icon: "error"
+                    });
+                } else {
+                    let itemId = ev.toElement.id.substr(0, ev.toElement.id.length - 1);
+                    console.log("itemId: ", itemId)
+                    if ('posicion' === itemId) {
+                        var data = ev.dataTransfer.getData("text");
+                        ev.target.appendChild(document.getElementById(data));
+                    } else {
+                        swal({
+                            title: "Error.",
+                            text: "Solo puedes colocar la respuesta dentro de una casilla ",
+                            icon: "error"
+                        });
+                    }
+                }
+            }
+            function validarRespuesta() {
+                let numPosicion = 3;
+
+                let posicionesRespuestas = [
+                    'respuesta1',
+                    'respuesta2',
+                    'respuesta3',
+                ];
+
+                let correctas = [];
+
+
+                for (let index = 0; index < posicionesRespuestas.length; index++) {
+                    let num = index + 1;
+                    let itemPosicionId = 'posicion' + num;
+                    const element = document.getElementById(itemPosicionId).children;
+
+                    if (element[0]) {
+
+                        if (posicionesRespuestas[index] === element[0].getAttribute('id')) {
+                            correctas.push(posicionesRespuestas[index])
+                        }
+
+                    }
+                }
+                if (correctas.length === numPosicion) {
+                    swal({
+                        title: "Exito",
+                        text: "Las respuestas son correctas.",
+                        icon: "success"
+                    });
+                }else{
+                    swal({
+                        title: "Error.",
+                        text: "Las respuestas son incorrectas.",
+                        icon: "error"
+                    });
+                }
+
+            }
+        </script>
+    </head>
+
+    <body>
+
+
+        <div>
+            <div class="card1">
+
+                <p>Lorem ipsum dolor
+                    <span class="posiciones" id="posicion1" ondrop="drop(event)" ondragover="allowDrop(event)"></span>
+                    Corrupti adipisci est reiciendis illo. Dolores, <span class="posiciones" id="posicion2"
+                        ondrop="drop(event)" ondragover="allowDrop(event)"></span>
+                </p>
+                <p>Lorem ipsum dolor
+                    <span class="posiciones" id="posicion3" ondrop="drop(event)" ondragover="allowDrop(event)"></span>
+                    Corrupti adipisci est reiciendis illo. Dolores, et
+                    iste!
+                </p>
+
+            </div>
+            <div class="card2">
+
+                <span class="respuestas" id="respuesta1" draggable="true" ondragstart="drag(event)">respueta1</span>
+                <span class="respuestas" id="respuesta2" draggable="true" ondragstart="drag(event)">respueta2</span>
+                <span class="respuestas" id="respuesta3" draggable="true" ondragstart="drag(event)">respueta3</span>
+                <span class="respuestas" id="respuesta4" draggable="true" ondragstart="drag(event)">respueta4</span>
+                <span class="respuestas" id="respuesta5" draggable="true" ondragstart="drag(event)">respueta5</span>
+            </div>
+
+        </div>
+
+        <button onclick="validarRespuesta()">Validar respuestas</button>
+
+
+
+
+
+    </body>
+
+    </html>
+
+
+
+
+</body>
+
+</html>
