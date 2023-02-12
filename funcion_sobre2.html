@@ -32,9 +32,10 @@
         let textDerechos = ["20", "10", "15", "40"];
 
         const arrayOpcionesBasura = ['15', '20'];
+        let arrayOpcionesBasuraEliminados = [];
 
         let arrayRespuestas = [];
-        let boleano1, boleano2, boleano3, boleano4 = false;
+
         //let boleano2 = false;
 
 
@@ -295,6 +296,8 @@
                     animate(e, 0);
                     setTimeout(() => {
                         console.log('eliminar objet', e)
+                        arrayOpcionesBasuraEliminados.push(e.target.name)
+                        console.log('arrayOpcionesBasuraEliminados', arrayOpcionesBasuraEliminados)
                         canvas.remove(e.target);
                     }, 400);
                 } else {
@@ -379,30 +382,32 @@
                     }
                 })
             });
+            let correctosBasura = [];
+            if (arrayOpcionesBasuraEliminados && arrayOpcionesBasuraEliminados.length > 0) {
+                arrayOpcionesBasura.map(item => {
+                    arrayOpcionesBasuraEliminados.map(item2 => {
+                        if (item === item2) {
+                            correctosBasura.push(item)
+                        }
+                    })
+                })
+            }
+
 
             console.log("correctos: ", correctos)
-            console.log(boleano1);
-            console.log(boleano2);
 
-            if (correctos.length === 4 && boleano1 && boleano3) {
 
-                if (boleano2 || boleano4) {
+            if (correctos.length === 4 && correctosBasura.length === arrayOpcionesBasura.length) {
 
-                    swal({
-                        title: "Error.",
-                        text: "Respuesta incorrecta",
-                        icon: "error"
-                    });
 
-                } else {
 
-                    swal({
-                        title: "Exito.",
-                        text: "Respuesta correcta",
-                        icon: "success"
+                swal({
+                    title: "Exito.",
+                    text: "Respuesta correcta",
+                    icon: "success"
 
-                    });
-                }
+                });
+
 
             } else {
 
