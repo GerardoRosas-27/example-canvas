@@ -1,0 +1,33 @@
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    grid-gap: 10px;
+    
+  }
+  .one {
+    background-color: aqua;
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .two {
+    background-color: rgb(202, 237, 237);
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .animateDelete {
+    animation-duration: 2s;
+    animation-name: deleteAnimate;
+  }
+  
+  @keyframes deleteAnimate {
+    from {
+      font-size: 30px;
+      color: rgb(108, 108, 108);
+    }
+  
+    to {
+        font-size: 5px;
+        color: rgba(153, 153, 153, 0.732);
+    }
+  }

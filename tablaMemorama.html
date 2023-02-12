@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/tablaMemorama.css">
+</head>
+
+<body>
+    <h1>Validación de tabla</h1>
+    <div class="wrapper">
+        <div class="one" id="content1">
+
+        </div>
+        <div class="two" id="content2">
+
+        </div>
+
+    </div>
+    <!--Libreria de alertas-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+
+
+        let arrarConten1 = [
+            { id: 1, texto: 'opcion1' },
+            { id: 2, texto: 'opcion2' },
+            { id: 3, texto: 'opcion3' },
+            { id: 4, texto: 'opcion4' }
+        ]
+        let arrarConten2 = [
+            { id: 1, texto: 'respuesta1' },
+            { id: 2, texto: 'respuesta2' },
+            { id: 3, texto: 'respuesta3' },
+            { id: 4, texto: 'respuesta4' }
+        ]
+        let arrarConten1Filter = [...arrarConten1];
+        let arrarConten2Filter = [...arrarConten2];
+
+
+        function getTabla(arrarConten1, arrarConten2) {
+            let content1 = document.getElementById('content1');
+            let content2 = document.getElementById('content2');
+
+            let contenHTML1 = '';
+            let contenHTML2 = '';
+            arrarConten1.map(item => {
+                contenHTML1 = contenHTML1 + '<h4 id="col1-' + item.id + '" onclick="onClickValidar(' + item.id + ',' + 1 + ')">' + item.texto + '</h4>';
+            })
+            arrarConten2.map(item => {
+                contenHTML2 = contenHTML2 + '<h4 id="col2-' + item.id + '" onclick="onClickValidar(' + item.id + ',' + 2 + ')">' + item.texto + '</h4>';
+            })
+
+            content1.innerHTML = contenHTML1;
+            content2.innerHTML = contenHTML2;
+        }
+        getTabla(arrarConten1, arrarConten2);
+
+
+
+
+        let resultCol1 = 0;
+        let resultCol1Col2 = 0;
+        function onClickValidar(id, col) {
+            console.log("onClickValidar: ", id, col)
+            if (col === 1) {
+                resultCol1 = id
+            }
+            if (col === 2) {
+
+                if (resultCol1 === id) {
+                    console.log("correcto")
+                    document.getElementById("col1-" + resultCol1).setAttribute("class", "animateDelete")
+                    document.getElementById("col2-" + id).setAttribute("class", "animateDelete")
+                    
+                    setTimeout(() => {
+                        eliminarElemtnt(resultCol1, id);
+                    }, 1000);
+                    
+                } else {
+                    console.log("incorrecto")
+                    swal({
+                        title: "Error.",
+                        text: "Respuesta incorrecta",
+                        icon: "error"
+                    });
+                }
+            }
+
+        }
+
+        function eliminarElemtnt(id1, id2) {
+            arrarConten1Filter = arrarConten1Filter.filter(item => item.id !== id1)
+            arrarConten2Filter = arrarConten2Filter.filter(item => item.id !== id2)
+            getTabla(arrarConten1Filter, arrarConten2Filter);
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>
