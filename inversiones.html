@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculo de inversiones</title>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraph.css" />
+    <script type="text/javascript" charset="UTF-8"
+        src="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraphcore.js"></script>
+
+</head>
+
+<body>
+    <h1> Inversiones especiales</h1>
+
+    <form id="formLibre">
+        <label for="fname">Escribe tu nombre</label><br>
+        <input type="text" id="nombre" placeholder="Nombre"><br>
+
+        <label for="cantidad"> Ingresa tu inversión inicial</label><br>
+        <input type="text" id="ahorro" placeholder="Inversión inicial" /><br>
+
+        <label for="anios"> Ingresa el número de años de tu ahorro</label><br>
+        <input type="text" id="anios" placeholder="Número de años" />
+
+    </form>
+
+    <p> Si el número de años de tu inversión es menor a 5, tu interés será de 5% anual.</p>
+    <p> Si el número de años de tu inversión es mayor o igual a 5, tu interés será de 10% anual.</p>
+
+    <div>
+
+        <h3> Selecciona sólo una opción para el tipo de inversión</h3>
+        <form id="formChec">
+    
+            <input type="checkbox" id="chec1" name="opcion1" value="respuesta1">
+            <label for="chec1"> Fondo de inversión sin riesgo</label>
+            <br>
+            <input type="checkbox" id="chec2" name="opcion2" value="respuesta2">
+            <label for="chec2"> Fondo de inversión con riesgo moderado</label>
+            <br>
+            <input type="checkbox" id="chec3" name="opcion3" value="respuesta3">
+            <label for="chec3"> Fondo de inversión en dólares </label>
+        </form>
+        
+    </div>
+
+    <div>
+
+        <button id="cal">Ahorro total por cada año</button>
+        <h1>Tu ahorro total fue:</h1>
+        <h1 id="resp">- - -</h1>
+
+    </div>
+
+    <div id="box4" class="jxgbox" style="width:600px; height:400px;"></div>
+
+    <div>
+      <!-- En el atributo value se poe la función -->
+        <br>
+        Escribe el modelo: <input type="text" id="input" value=" " style="width: 8rem">,
+        Inicio en = <input type="number" id="startval" value="1" style="width: 3rem">   
+        <br />
+        <br>
+        <input type="button" value="Comenzar" onClick="start_approx()">
+        <input type="button" value="Parar" onClick="clear_all()">
+        <br />
+    </div>
+
+    <br>
+
+   <!-- <script src="js/ahorro.js"></script> --> 
+
+    <script src="js/graficaAnimada.js"></script>
+
+</body>
+
+</html>

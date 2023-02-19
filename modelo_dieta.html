@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculo de inversiones</title>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraph.css" />
+    <link rel="stylesheet" href="./css/modelo_dieta.css">
+    <script type="text/javascript" charset="UTF-8"
+        src="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraphcore.js"></script>
+
+</head>
+
+<body>
+    <style>
+
+    </style>
+    <h1>Calcula tu peso en el tiempo</h1>
+
+    <div class="wrapper">
+        <div class="one">
+
+            <label for="calorias">Calorias</label>
+            <input id="calorias" type="text">
+            <br>
+            <label for="peso">Peso</label>
+            <input id="peso" type="text">
+            <br>
+            <label for="dias">Dias</label>
+            <input id="dias" type="text">
+
+            <br>
+            <button onclick="onCalcular()">Calcular</button>
+
+        </div>
+        <div class="two">
+            <div id="box4" class="jxgbox" style="width:1100px; height:800px;"></div>
+        </div>
+
+    </div>
+
+
+    <script>
+
+        /*  <math> (a_n)_{n\in{\mathbb N}}</math> */
+
+        var board; 
+        var seq;
+        var t;
+        var n = 0;
+        var c;
+        var w;
+        var txt1;
+
+        var seq_add = function () {
+            console.log("c w n : ", c, w, t)
+            var val = ((c / 40) + ((w-c/40) * (Math.exp(-0.0052 * n ))));
+            console.log("y: ", val, " x: ", n)
+            seq.dataX.push(n);
+            seq.dataY.push(val);
+            n++;
+        };
+
+     
+        var TO;
+
+        var approx = function () {
+            seq_add();
+            board.update();
+            if (n <= t) {
+                TO = setTimeout(approx, 500);
+            }
+        };
+
+        var start_approx = function () {
+            console.log("entro")
+            seq.dataX = [];
+            seq.dataY = [];
+            approx();
+        }
+
+        var clear_all = function () {
+            clearTimeout(TO);
+        };
+
+        function onCalcular() {
+            const calorias = document.getElementById("calorias").value;
+            const peso = document.getElementById("peso").value;
+            const dias = document.getElementById("dias").value;
+            console.log("valores: ", calorias, peso, dias)
+            nInicial = parseInt(dias);
+            t = parseInt(dias);
+            c = parseInt(calorias);
+            w = parseInt(peso);
+            clear_all();
+
+
+           board = JXG.JSXGraph.initBoard('box4', { axis: true, boundingbox: [-1, w + 30 , t, -1] });
+           seq = board.create('curve', [[], []], { strokeColor: 'red' });
+           txt1 = board.create('text', [8, 2, function () { return 'n=' + (seq.dataX.length - 1) + ': value = ' + seq.dataY[seq.dataY.length - 1]; }], { strokeColor: 'green' });
+
+            start_approx();
+
+
+        }
+
+
+
+    </script>
+
+
+
+</body>
+
+</html>
