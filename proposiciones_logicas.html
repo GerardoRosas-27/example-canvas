@@ -33,35 +33,25 @@
     <script>
 
         let arrayOpcionesCorrectas = [
-            { valor1: '1', valor2: '10' },
-            { valor1: '2', valor2: '40' },
-            { valor1: '3', valor2: '10' },
-            { valor1: '4', valor2: '40' },
+            { flecha: "1", idInicio: "rect1", idFinal: "rect4" },
+            { flecha: "4", idInicio: "rect6", idFinal: "rect3" },
+            { flecha: "5", idInicio: "rect3", idFinal: "rect6" },
+            { flecha: "11", idInicio: "rect9", idFinal: "rect8" }
+
+        ]
+
+
+        let arrayValores = [
+            { name: "rect1", valor: "proposición 1" },
+            { name: "rect2", valor: "proposición 2" },
+            { name: "rect3", valor: "proposición 3" },
+            { name: "rect4", valor: "proposición 4" },
+            { name: "rect5", valor: "proposición 5" },
+            { name: "rect6", valor: "proposición 6" },
+            { name: "rect7", valor: "proposición 7" },
+            { name: "rect8", valor: "proposición 8" },
+            { name: "rect9", valor: "proposición 9" },
         ];
-
-        const arrayOpcionesBasura = ['15', '20'];
-
-        let arrayRespuestas = [];
-        let boleano1, boleano2, boleano3, boleano4 = false;
-        //let boleano2 = false;
-
-
-
-        function validarCirculo(x, y, h, k) {
-            if (Math.sqrt(Math.pow((x - h), 2) + Math.pow((y - k), 2)) <= 20) {
-                return true
-            } else {
-                return false
-            }
-        }
-
-        function validarRectangulo(abscisa, ordenada) {
-            if (149 < abscisa && abscisa < 514 && 324 < ordenada && ordenada < 437) {
-                return true;
-            } else {
-                return false;
-            }
-        }
 
 
         (function () {
@@ -102,7 +92,10 @@
                 }
 
 
-                let c = new fabric.Triangle({ name: text, top: newTop, left: newLeft, width: 25, height: 30, fill: '#3D78FE', angle: 90 + angulo })
+                let c = new fabric.Triangle({
+                    name: text, top: newTop, left: newLeft, width: 25, height: 30, fill: '#3D78FE', angle: 90 + angulo, selectable: false,
+                    evented: true
+                })
                 c.hasControls = c.hasBorders = false;
 
                 c.line = line;
@@ -110,78 +103,54 @@
                 return c;
             }
 
-            //function makeTextIzq(left, top, text, line1, line2, line3, line4) 
-            function makeTextIzq(left, top, text, line) {
-                /* construye los números de la izquierda del diagrama */
-                let c = new fabric.Text(text, { name: text, fontSize: 20, top: top, left: left, hasBorders: false, hasControls: false, selectable: false });
 
-                c.hasControls = c.hasBorders = false;
-
-                c.line = line;
-
-                return c;
-            }
-            /* construye los números de la derecha del diagrama */
-
-            function makeTextDerecha(left, top, text) {
-                let c = new fabric.Text(text, { name: text, fontSize: 20, top: top, left: left });
-                c.hasControls = c.hasBorders = false;
-                return c;
-            }
-
-            function makeLine(coords) {
-                return new fabric.Line(coords, {
+            function makeLine(coords, name) {
+                let c = new fabric.Line(coords, {
                     fill: 'pink',
                     stroke: '#3D78FE',
                     strokeWidth: 10,
                     selectable: false,
-                    evented: false,
+                    evented: true,
+                    name: name
                 });
+                c.hasControls = c.hasBorders = false;
+                return c;
             }
 
 
-            /* se manda a llamar a la función hacer linea mediante las coordenadas del punto inicial y final */
-            /*
-                let line1 = makeLine([220, 100, 415, 100]);
-                let line2 = makeLine([220, 150, 415, 150]);
-                let line3 = makeLine([220, 200, 415, 200]);
-                let line4 = makeLine([220, 250, 415, 250]);
-        */
+            let rct1 = rectangulos(50, 50, "#BCBCBC", arrayValores[0].name);
+            let rct2 = rectangulos(50, 150, "#AFE83E", arrayValores[1].name)
+            let rct3 = rectangulos(50, 250, "#F0B760", arrayValores[2].name)
+            let rct4 = rectangulos(650, 50, "#CA60F0", arrayValores[3].name)
+            let rct5 = rectangulos(650, 150, "#F0D460", arrayValores[4].name)
+            let rct6 = rectangulos(650, 250, "#7C8080", arrayValores[5].name)
+            let rct7 = rectangulos(1250, 50, "#46E9E9", arrayValores[6].name)
+            let rct8 = rectangulos(1250, 150, "#6FDE9F", arrayValores[7].name)
+            let rct9 = rectangulos(1250, 250, "#F03D85", arrayValores[8].name)
+            let text1 = textRectangulo(rct1.left, rct1.top, arrayValores[0].valor);
+            let text2 = textRectangulo(rct2.left, rct2.top, arrayValores[1].valor);
+            let text3 = textRectangulo(rct3.left, rct3.top, arrayValores[2].valor);
+            let text4 = textRectangulo(rct4.left, rct4.top, arrayValores[3].valor);
+            let text5 = textRectangulo(rct5.left, rct5.top, arrayValores[4].valor);
+            let text6 = textRectangulo(rct6.left, rct6.top, arrayValores[5].valor);
+            let text7 = textRectangulo(rct7.left, rct7.top, arrayValores[6].valor);
+            let text8 = textRectangulo(rct8.left, rct8.top, arrayValores[7].valor);
+            let text9 = textRectangulo(rct9.left, rct9.top, arrayValores[8].valor);
 
+            let line1 = makeLine([rct1.left + rct1.width, rct1.top + 5, rct4.left, rct1.top + 5], "line1");
+            let line2 = makeLine([rct1.left + rct1.width, rct1.top + 30, rct4.left, rct1.top + 30], "line2");
 
-            let rct1 = rectangulos(50, 50, "#BCBCBC");
-            let rct2 = rectangulos(50, 150, "#AFE83E")
-            let rct3 = rectangulos(50, 250, "#F0B760")
-            let rct4 = rectangulos(650, 50, "#CA60F0")
-            let rct5 = rectangulos(650, 150, "#F0D460")
-            let rct6 = rectangulos(650, 250, "#7C8080")
-            let rct7 = rectangulos(1250, 50, "#46E9E9")
-            let rct8 = rectangulos(1250, 150, "#6FDE9F")
-            let rct9 = rectangulos(1250, 250, "#F03D85")
-            let text1 = textRectangulo(rct1.left, rct1.top, "proposición 1");
-            let text2 = textRectangulo(rct2.left, rct2.top, "proposición 2");
-            let text3 = textRectangulo(rct3.left, rct3.top, "proposición 3");
-            let text4 = textRectangulo(rct4.left, rct4.top, "proposición 4");
-            let text5 = textRectangulo(rct5.left, rct5.top, "proposición 5");
-            let text6 = textRectangulo(rct6.left, rct6.top, "proposición 6");
-            let text7 = textRectangulo(rct7.left, rct7.top, "proposición 7");
-            let text8 = textRectangulo(rct8.left, rct8.top, "proposición 8");
-            let text9 = textRectangulo(rct9.left, rct9.top, "proposición 9");
+            let line3 = makeLine([rct2.left + rct2.width, rct2.top + 30, rct5.left, rct2.top + 30], "line3");
 
-            let line1 = makeLine([rct1.left + rct1.width, rct1.top + 5, rct4.left, rct1.top + 5]);
-            let line2 = makeLine([rct1.left + rct1.width, rct1.top + 30, rct4.left, rct1.top + 30]);
+            let line4 = makeLine([rct3.left + rct3.width, rct3.top + 5, rct6.left, rct3.top + 5], "line4");
+            let line5 = makeLine([rct3.left + rct3.width, rct3.top + 30, rct6.left, rct3.top + 30], "line5");
+            let line6 = makeLine([rct4.left + rct4.width, rct4.top + 30, rct7.left, rct4.top + 30], "line6");
+            let line7 = makeLine([rct4.left + rct4.width, rct4.top + 50, rct8.left, rct8.top + 5], "line7");
 
-            let line3 = makeLine([rct2.left + rct2.width, rct2.top + 30, rct5.left, rct2.top + 30]);
-
-            let line4 = makeLine([rct3.left + rct3.width, rct3.top + 5, rct6.left, rct3.top + 5]);
-            let line5 = makeLine([rct3.left + rct3.width, rct3.top + 30, rct6.left, rct3.top + 30]);
-            let line6 = makeLine([rct4.left + rct4.width, rct4.top + 30, rct7.left, rct4.top + 30]);
-            let line7 = makeLine([rct4.left + rct4.width, rct4.top + 50, rct8.left, rct8.top + 5]);
-
-            let line8 = makeLine([rct5.left + rct5.width, rct5.top + 30, rct8.left, rct5.top + 30]);
-            let line9 = makeLine([rct6.left + rct6.width, rct6.top + 5, rct8.left, rct8.top + 50]);
-            let line10 = makeLine([rct6.left + rct6.width, rct6.top + 30, rct9.left, rct6.top + 30]);
-            let line11 = makeLine([rct9.left + (rct9.width / 2), rct9.top, rct8.left + (rct8.width / 2), rct8.top + rct8.height]);
+            let line8 = makeLine([rct5.left + rct5.width, rct5.top + 30, rct8.left, rct5.top + 30], "line8");
+            let line9 = makeLine([rct6.left + rct6.width, rct6.top + 5, rct8.left, rct8.top + 50], "line9");
+            let line10 = makeLine([rct6.left + rct6.width, rct6.top + 30, rct9.left, rct6.top + 30], "line10");
+            let line11 = makeLine([rct9.left + (rct9.width / 2), rct9.top, rct8.left + (rct8.width / 2), rct8.top + rct8.height], "line11");
 
 
 
@@ -190,182 +159,78 @@
             canvas.add(line1, line2, line3, line4, line5, line6, line7, line8, line9, line10, line11, rct1, rct2, rct3, rct4, rct5, rct6, rct7, rct8, rct9, text1, text2, text3, text4, text5, text6, text7, text8, text9);
 
 
-            // console.log("linea 1: ", line1.get('x1'));
-
-            // Se agregan al canvas los textos izquierdos y los triángulos 
-
             canvas.add(
 
-                makeTriangle(line1.get('x2'), line1.get('y2'), 'fecha1', line1, 0),
-                makeTriangle(line2.get('x1'), line2.get('y1'), 'fecha2', line2, 180),
-                makeTriangle(line3.get('x2'), line3.get('y2'), 'fecha3', line3, 0),
-                makeTriangle(line4.get('x1'), line4.get('y1'), 'fecha4', line4, 180),
-                makeTriangle(line5.get('x2'), line5.get('y2'), 'fecha5', line5, 0),
-                makeTriangle(line6.get('x2'), line6.get('y2'), 'fecha6', line6, 0),
-                makeTriangle(line7.get('x1'), line7.get('y1'), 'fecha7', line7, 195),
-                makeTriangle(line8.get('x2'), line8.get('y2'), 'fecha8', line8, 0),
-                makeTriangle(line9.get('x2'), line9.get('y2'), 'fecha9', line9, -20),
-                makeTriangle(line10.get('x2'), line10.get('y2'), 'fecha10', line10, 0),
-                makeTriangle(line11.get('x2'), line11.get('y2'), 'fecha11', line11, -90),
+                makeTriangle(line1.get('x2'), line1.get('y2'), 'flecha1', line1, 0),
+                makeTriangle(line2.get('x1'), line2.get('y1'), 'flecha2', line2, 180),
+                makeTriangle(line3.get('x2'), line3.get('y2'), 'flecha3', line3, 0),
+                makeTriangle(line4.get('x1'), line4.get('y1'), 'flecha4', line4, 180),
+                makeTriangle(line5.get('x2'), line5.get('y2'), 'flecha5', line5, 0),
+                makeTriangle(line6.get('x2'), line6.get('y2'), 'flecha6', line6, 0),
+                makeTriangle(line7.get('x1'), line7.get('y1'), 'flecha7', line7, 195),
+                makeTriangle(line8.get('x2'), line8.get('y2'), 'flecha8', line8, 0),
+                makeTriangle(line9.get('x2'), line9.get('y2'), 'flecha9', line9, -20),
+                makeTriangle(line10.get('x2'), line10.get('y2'), 'flecha10', line10, 0),
+                makeTriangle(line11.get('x2'), line11.get('y2'), 'flecha11', line11, -90),
 
 
             );
 
-
-            canvas.on('object:moving', function (e) {
-                var p = e.target;
-                fijaAnguloCordenadasMouse(p);
-
-
-                p.line && p.line.set({ 'x2': p.left, 'y2': p.top });
-                arrayRespuestas = removeArray(arrayRespuestas, p.name, textDerecho1.name)
-                if (validarCirculo(p.left, p.top, textDerecho1.left, textDerecho1.top)) {
-                    console.log("entro puntero al circulo: ");
-                    console.log(p.line);
-                    console.log("Estamos probando el texto Derecho1 : " + p.name + " --> " + textDerecho1.name)
-                    //console.log(p);
-                    console.log("coordenada de TextDerecho1:" + "(" + textDerecho1.left + " , " + textDerecho1.top + ")");
-                    console.log("coordenadas del Mouse:" + "(" + p.left + " , " + p.top + ")");
-                    console.log("entro respuesta 1: ", arrayRespuestas)
-                    arrayRespuestas.push({ valor1: p.name, valor2: textDerecho1.name });
-                    //text1.set('fill', '#BCBCBC')
-                    textDerecho1.set('fill', '#BCBCBC')
-
-                } else {
-                    textDerecho1.set('fill', '#393939')
-                }
-                arrayRespuestas = removeArray(arrayRespuestas, p.name, textDerecho2.name)
-                if (validarCirculo(p.left, p.top, textDerecho2.left, textDerecho2.top)) {
-                    console.log("entro respuesta 2: ", arrayRespuestas)
-
-                    arrayRespuestas.push({ valor1: p.name, valor2: textDerecho2.name });
-                    textDerecho2.set('fill', '#BCBCBC')
-                } else {
-
-                    textDerecho2.set('fill', '#393939')
-                }
-                arrayRespuestas = removeArray(arrayRespuestas, p.name, textDerecho3.name)
-                if (validarCirculo(p.left, p.top, textDerecho3.left, textDerecho3.top)) {
-                    console.log("entro respuesta 3: ", arrayRespuestas)
-                    arrayRespuestas.push({ valor1: p.name, valor2: textDerecho3.name });
-                    textDerecho3.set('fill', '#BCBCBC')
-
-                } else {
-
-                    textDerecho3.set('fill', '#393939')
-
-                }
-                arrayRespuestas = removeArray(arrayRespuestas, p.name, textDerecho4.name)
-                if (validarCirculo(p.left, p.top, textDerecho4.left, textDerecho4.top)) {
-
-                    console.log("entro respuesta 4: ", arrayRespuestas)
-
-                    arrayRespuestas.push({ valor1: p.name, valor2: textDerecho4.name });
-                    textDerecho4.set('fill', '#BCBCBC')
-
-                } else {
-
-                    textDerecho4.set('fill', '#393939')
-
-                }
-
-                boleano1 = validarRectangulo(textDerecho1.left, textDerecho1.top);
-                boleano3 = validarRectangulo(textDerecho3.left, textDerecho3.top);
-                boleano2 = validarRectangulo(textDerecho2.left, textDerecho2.top);
-                boleano4 = validarRectangulo(textDerecho4.left, textDerecho4.top);
-
-                canvas.renderAll();
-            });
-
-            canvas.on('selection:created', function (e) {
-
-                console.log("selection:created: ", e);
-
+            canvas.on({
+                'mouse:up': validarflecha,
             });
 
 
+            function validarflecha(opciones) {
+                if (opciones.target.rectangulo) {
+                    console.log("es rectangulo: ", opciones);
+                } else {
+                    let triangulo = false;
+                    console.log("opciones: ", opciones);
+                    let name = ""
+                    name = opciones.target.name;
+
+                    if (opciones.target.line) {
+                        triangulo = true;
+                        console.log("es triangulo: ", name)
+                    } else {
+                        console.log("es linea: ", name)
+                    }
+
+                    let flechasCorrectas = []
+                    arrayOpcionesCorrectas.map(item => {
+                        let valor = triangulo ? "flecha" + item.flecha : "line" + item.flecha;
+                        if (name === valor) {
+                            flechasCorrectas.push(name);
+                        }
+                    })
+                    //console.log("es correcto: ",  arrayOpcionesCorrectas.includes({flecha: name}))
+
+                    if (flechasCorrectas.includes(name)) {
+                        swal({
+                            title: "Exito.",
+                            text: "Respuesta correcta",
+                            icon: "success"
+
+                        });
+                    } else {
+                        swal({
+                            title: "Error.",
+                            text: "Respuesta incorrecta",
+                            icon: "error"
+
+                        });
+                    }
+                }
 
 
+            }
 
 
         })();
 
 
-        function fijaAnguloCordenadasMouse(objeto) {
-            console.log("move: ", objeto)
-
-            let angulo;
-
-            if (objeto.line) {
-
-                angulo = (180 / 3.1416) * Math.atan((objeto.line.get('y1') - objeto.top) / (objeto.line.get('x1') - objeto.left));
-
-                if (objeto.line.get('x1') < objeto.left) {
-                    angulo = angulo + 90;
-                }
-                else {
-                    angulo = angulo + 270;
-                }
-
-            }
-
-            objeto.set('angle', angulo);
-        }
-
-
-
-        function validarRespuestas() {
-
-            let correctos = [];
-            arrayOpcionesCorrectas.map(item => {
-                arrayRespuestas.map(item2 => {
-                    if (item.valor1 === item2.valor1 && item.valor2 === item2.valor2) {
-                        correctos.push({ valor1: item.valor1, valor2: item.valor2 })
-                    }
-                })
-            });
-
-            console.log("correctos: ", correctos)
-            console.log(boleano1);
-            console.log(boleano2);
-
-            if (correctos.length === 4 && boleano1 && boleano3) {
-
-                if (boleano2 || boleano4) {
-
-                    swal({
-                        title: "Error.",
-                        text: "Respuesta incorrecta",
-                        icon: "error"
-                    });
-
-                } else {
-
-                    swal({
-                        title: "Exito.",
-                        text: "Respuesta correcta",
-                        icon: "success"
-
-                    });
-                }
-
-            } else {
-
-                swal({
-                    title: "Error.",
-                    text: "Respuesta incorrecta",
-                    icon: "error"
-                });
-            }
-        }
-
-
-        function removeArray(data, valor1, valor2) {
-            return data.filter(item => item.valor1 !== valor1 || item.valor2 !== valor2)
-        }
-
-
-        function rectangulos(left, top, color) {
+        function rectangulos(left, top, color, name) {
             const rectangulo = new fabric.Rect({
                 top: top,
                 left: left,
@@ -380,11 +245,16 @@
                 hasBorders: false,
                 hasControl: false,
                 selectable: false,
+                name: name,
+                rectangulo: true
             });
             return rectangulo
         }
         function textRectangulo(left, top, text) {
-            let c = new fabric.Text(text, { name: text, fontSize: 20, top: top + 5, left: left + 10 });
+            let c = new fabric.Text(text, {
+                name: text, fontSize: 20, top: top + 5, left: left + 10, selectable: false,
+                evented: true
+            });
             c.hasControls = c.hasBorders = false;
             return c;
         }
