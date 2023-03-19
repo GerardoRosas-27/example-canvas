@@ -242,7 +242,7 @@
             canvas.on('object:moving', function (e) {
                 var p = e.target;
                 fijaAnguloCordenadasMouse(p);
-                p.line && p.line.set({ 'x2': p.left, 'y2': p.top });
+                p.line && p.line.set({ 'x2': p.left -15 , 'y2': p.top  + 8});
 
                 canvas.renderAll();
             });
@@ -257,7 +257,7 @@
 
             if (objeto.line) {
 
-                angulo = (180 / 3.1416) * Math.atan((objeto.line.get('y1') - objeto.top) / (objeto.line.get('x1') - objeto.left));
+                angulo = (180 / 3.1416) * Math.atan((objeto.line.get('y1') - objeto.top -20) / (objeto.line.get('x1') - objeto.left -10));
 
                 if (objeto.line.get('x1') < objeto.left) {
                     angulo = angulo + 90;

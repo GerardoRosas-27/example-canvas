@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuestionario móvil</title>
+</head>
+
+<body>
+
+    <p>Si f es diferenciable, entonces f es continua</p>
+    <ul id="list">
+        <li data-id="4">
+            D
+        </li>
+        <li data-id="2">
+            B
+        </li>
+        <li data-id="3">
+            C
+        </li>
+        <li data-id="5">
+            E
+        </li>
+        <li data-id="1">
+            A
+        </li>
+    </ul>
+
+    <button onclick="verificarLista()">Verificar</button>
+
+    <a  href="Formulario-lista.html">Reinincio</a> 
+
+
+
+    <!--Libreria mover listas-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"
+        integrity="sha512-Eezs+g9Lq4TCCq0wae01s9PuNWzHYoCMkE97e2qdkYthpI0pzC3UGB03lgEHn2XM85hDOUF6qgqqszs+iXU4UA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!--Libreria de alertas-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script src="./js2/jquery.2.2.4.js"></script> 
+
+  
+
+    
+     <script src="https://cdn.jsdelivr.net/npm/jquery-sortablejs@latest/jquery-sortable.js"></script>
+ 
+
+    <script>
+
+        let arrayOpcionesCorrectas = ['1', '2', '3', '4', '5'];
+
+        let arrayErrores = [];
+        let arrayVerdaderos = [];
+
+
+        let listaTotal = document.getElementById('list');
+
+
+        function verificarLista() {
+            //let array_list = Array.from($('#list'))
+            let lista = $('#list').children();
+            console.log(lista)
+            arrayVerdaderos = [];
+
+            for (let index = 0; index < arrayOpcionesCorrectas.length; index++) {
+                const respuesta = arrayOpcionesCorrectas[index];
+                const evaluarLista = lista[index]
+
+                let valorDataId = parseFloat($(evaluarLista).data('id'))
+                console.log("respuesta: ", respuesta)
+                console.log("evaluarLista: ", valorDataId)
+
+
+                if (parseFloat(respuesta) === valorDataId) {
+                    arrayVerdaderos.push(respuesta);
+                }
+
+            }
+
+            console.log('arrayVerdaderos: ', arrayVerdaderos)
+            console.log('arrayOpcionesCorrectas: ', arrayOpcionesCorrectas)
+            if (arrayVerdaderos.length === arrayOpcionesCorrectas.length) {
+                swal({
+                    title: "Exito.",
+                    text: "Respuesta correcta",
+                    icon: "success"
+                });
+            } else {
+                swal({
+                    title: "Error.",
+                    text: "Respuesta incorrecta",
+                    icon: "error"
+                });
+            }
+
+        }
+
+        let move = new Sortable(listaTotal, {
+            multiDrag: true, // Enable multi-drag
+            selectedClass: 'selected', // The class applied to the selected items
+            filter: '.filtered',
+            fallbackTolerance: 3, // So that we can select items on mobile
+            animation: 150,
+
+        });
+
+    </script>
+
+</body>
+
+</html>

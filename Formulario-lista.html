@@ -5,36 +5,34 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Cuestionario móvil</title>
 </head>
 
 <body>
 
-
-
-
-    <p>Promer pregunta 1</p>
-    <ul id="list1">
-        <li data-id="1">
-            1.- primero
+    <p>Si f es diferenciable, entonces f es continua</p>
+    <ul id="list">
+        <li data-id="4">
+            D
         </li>
         <li data-id="2">
-            2.- segundo
+            B
         </li>
         <li data-id="3">
-            3.- tercero
-        </li>
-        <li data-id="4">
-            4.- cuarto
+            C
         </li>
         <li data-id="5">
-            5.- quinto
+            E
+        </li>
+        <li data-id="1">
+            A
         </li>
     </ul>
 
-   
-
     <button onclick="verificarLista()">Verificar</button>
+
+    <a  href="Formulario-lista.html">Reinincio</a> 
+
 
 
     <!--Libreria mover listas-->
@@ -44,21 +42,23 @@
     <!--Libreria de alertas-->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-    <script src="./js2/jquery.2.2.4.js"></script>
+    <script src="./js2/jquery.2.2.4.js"></script> 
 
-    <!-- 
+  
+
+    
      <script src="https://cdn.jsdelivr.net/npm/jquery-sortablejs@latest/jquery-sortable.js"></script>
- -->
+ 
 
     <script>
 
-        let arrayOpcionesCorrectas = ['1', '3', '5', '2', '4'];
+        let arrayOpcionesCorrectas = ['1', '2', '3', '4', '5'];
 
         let arrayErrores = [];
         let arrayVerdaderos = [];
 
 
-        let multiDragDemo = document.getElementById('list');
+        let listaTotal = document.getElementById('list');
 
 
         function verificarLista() {
@@ -100,17 +100,16 @@
 
         }
 
-        let move = new Sortable(multiDragDemo, {
+        let move = new Sortable(listaTotal, {
             multiDrag: true, // Enable multi-drag
             selectedClass: 'selected', // The class applied to the selected items
+            filter: '.filtered',
             fallbackTolerance: 3, // So that we can select items on mobile
             animation: 150,
 
         });
 
     </script>
-
-
 
 </body>
 

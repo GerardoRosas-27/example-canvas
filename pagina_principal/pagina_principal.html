@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/pagina_principal.css">
+    <link rel="stylesheet" href="./css/stylesCuestionario.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled">Disabled</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <div id="carouselExample" class="carousel slide">
+        <div class="carousel-inner baner-principal">
+            <div class="carousel-item active">
+                <div class="row justify-content-center">
+                    <img src="./images/1b.png" class="d-block img-fluid" alt="...">
+                    <!-- <video src="./video/video1.mp4" autoplay controls></video> -->
+                </div>
+
+            </div>
+            <div class="carousel-item">
+                <div class="row justify-content-center">
+                    <img src="./images/1b.png" class="d-block img-fluid" alt="...">
+                </div>
+
+            </div>
+            <div class="carousel-item">
+                <div class="row justify-content-center">
+                    <img src="/images/1b.png" class="d-block img-fluid" alt="...">
+                </div>
+
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <button onclick="siguiente()">Siguiente</button>
+
+    <script type="text/javascript"> 
+        $(document).ready(function() {
+            $('#contenido').load('texto.html', function() {
+                alert('Archivo cargado correctamente');
+            });
+        });
+        </script>
+
+
+    <div class="container text-center">
+        <div class="row align-items-center custom-container">
+            <div class="col-12 h-30">
+
+                <h1 class="title-center"> Actividad Leyes de Morgan </h1>
+
+
+                <h1> $$ \text{Leyes de Morgan} $$ </h1>
+
+                <p> Las leyes de De Morgan son dos postulados sobre la interacción entre los conjuntos. Estas leyes
+                    registran
+                    antecedentes en Aristóteles y en William de Ockham. Augustus De Morgan vivió entre 1806 y 1871 y fue
+                    el primero
+                    en incluir las leyes que postuló en la estructura formal de la lógica matemática.</p>
+                <h4>Actividad</h4>
+                <p>En la siguiente actividad se muestran los pasos de manera desordenada de la demostración de la
+                    primera ley de Morgan. ¿Puedes ponerla en orden? </p>
+
+                <h3>$$(A \cup B)^c= A^c \cap B^c$$
+                    <!-- Con doble signo de dolar centra el texto, con un sólo signo de dollar lo pone en la izquierda  -->
+                </h3>
+                <h4>Demostración</h4>
+
+            </div>
+            <div class="col-md-8 h-30">
+                <div class="row justify-content-center custom-pading">
+
+                    <ul id="list">
+
+                    </ul>
+                </div>
+
+            </div>
+            <div class="col-md-4 h-60">
+                <div class="row custom-pading">
+                    <h4> Procederemos por contenciones</h4>
+
+                    <p> $ \left( \subseteq \\ \right) $ </p>
+                    <p> $ \text{Sea} x\in \left( A\cup B \right)^{c}. $</p>
+                        <p>$ \text{De manera que,} \ x\notin A\cup B. $</p>
+                       <p>$ \text{Así,} \ x\notin A \ \text{y} \ x\notin B. $ </p>
+                    <p> $ \text{Luego,} \ x\in A^{c} \ \text{y} \ \ x\in B^{c}.$</p>
+                    <p> $\text{Por lo tanto,} \ x\in A^{c} \cap B^{c}. $ </p>
+                    <br>
+                </div>
+
+            </div>
+            <div class="col-12 h-60">
+                <div class="row custom-pading">
+                    <div class="col-12 col-md-4">
+                        <button class="btn" onclick="verificarLista()">Verificar </button>
+
+                        <a class="reinicio" href="./cuestionario1.html">Reinicio</a>
+                    </div>
+                   
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+        <script src="./js/jquery.2.2.4.js"></script>
+          <!--Libreria de alertas-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- Libreria mover listas -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"
+        integrity="sha512-Eezs+g9Lq4TCCq0wae01s9PuNWzHYoCMkE97e2qdkYthpI0pzC3UGB03lgEHn2XM85hDOUF6qgqqszs+iXU4UA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js"></script>
+    
+
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script
+        type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath:  [['$','$'],['\\(','\\)']]}});</script>
+    <script src="./js/cuestionario1.js"></script>
+
+</body>
+
+</html>
