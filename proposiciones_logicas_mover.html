@@ -55,35 +55,6 @@
 
 
 
-
-
-
-
-        const arrayOpcionesBasura = ['15', '20'];
-
-        let arrayRespuestas = [];
-        let boleano1, boleano2, boleano3, boleano4 = false;
-        //let boleano2 = false;
-
-
-
-        function validarCirculo(x, y, h, k) {
-            if (Math.sqrt(Math.pow((x - h), 2) + Math.pow((y - k), 2)) <= 20) {
-                return true
-            } else {
-                return false
-            }
-        }
-
-        function validarRectangulo(abscisa, ordenada) {
-            if (149 < abscisa && abscisa < 514 && 324 < ordenada && ordenada < 437) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-
-
         (function () {
             var canvas = this.__canvas = new fabric.Canvas('myCanvas', { backgroundColor: '#F1F1F1' }, { selection: false });
             //fabric.Object.prototype.originX = fabric.Object.prototype.originY = 'center';
@@ -130,24 +101,10 @@
                 return c;
             }
 
-            //function makeTextIzq(left, top, text, line1, line2, line3, line4) 
-            function makeTextIzq(left, top, text, line) {
-                /* construye los números de la izquierda del diagrama */
-                let c = new fabric.Text(text, { name: text, fontSize: 20, top: top, left: left, hasBorders: false, hasControls: false, selectable: false });
-
-                c.hasControls = c.hasBorders = false;
-
-                c.line = line;
-
-                return c;
-            }
+         
             /* construye los números de la derecha del diagrama */
 
-            function makeTextDerecha(left, top, text) {
-                let c = new fabric.Text(text, { name: text, fontSize: 20, top: top, left: left });
-                c.hasControls = c.hasBorders = false;
-                return c;
-            }
+          
 
             function makeLine(coords, name) {
                 let c = new fabric.Line(coords, {
@@ -285,79 +242,10 @@
             canvas.on('object:moving', function (e) {
                 var p = e.target;
                 fijaAnguloCordenadasMouse(p);
-
-
                 p.line && p.line.set({ 'x2': p.left, 'y2': p.top });
-                arrayRespuestas = removeArray(arrayRespuestas, p.name, textDerecho1.name)
-                if (validarCirculo(p.left, p.top, textDerecho1.left, textDerecho1.top)) {
-                    console.log("entro puntero al circulo: ");
-                    console.log(p.line);
-                    console.log("Estamos probando el texto Derecho1 : " + p.name + " --> " + textDerecho1.name)
-                    //console.log(p);
-                    console.log("coordenada de TextDerecho1:" + "(" + textDerecho1.left + " , " + textDerecho1.top + ")");
-                    console.log("coordenadas del Mouse:" + "(" + p.left + " , " + p.top + ")");
-                    console.log("entro respuesta 1: ", arrayRespuestas)
-                    arrayRespuestas.push({ valor1: p.name, valor2: textDerecho1.name });
-                    //text1.set('fill', '#BCBCBC')
-                    textDerecho1.set('fill', '#BCBCBC')
-
-                } else {
-                    textDerecho1.set('fill', '#393939')
-                }
-                arrayRespuestas = removeArray(arrayRespuestas, p.name, textDerecho2.name)
-                if (validarCirculo(p.left, p.top, textDerecho2.left, textDerecho2.top)) {
-                    console.log("entro respuesta 2: ", arrayRespuestas)
-
-                    arrayRespuestas.push({ valor1: p.name, valor2: textDerecho2.name });
-                    textDerecho2.set('fill', '#BCBCBC')
-                } else {
-
-                    textDerecho2.set('fill', '#393939')
-                }
-                arrayRespuestas = removeArray(arrayRespuestas, p.name, textDerecho3.name)
-                if (validarCirculo(p.left, p.top, textDerecho3.left, textDerecho3.top)) {
-                    console.log("entro respuesta 3: ", arrayRespuestas)
-                    arrayRespuestas.push({ valor1: p.name, valor2: textDerecho3.name });
-                    textDerecho3.set('fill', '#BCBCBC')
-
-                } else {
-
-                    textDerecho3.set('fill', '#393939')
-
-                }
-                arrayRespuestas = removeArray(arrayRespuestas, p.name, textDerecho4.name)
-                if (validarCirculo(p.left, p.top, textDerecho4.left, textDerecho4.top)) {
-
-                    console.log("entro respuesta 4: ", arrayRespuestas)
-
-                    arrayRespuestas.push({ valor1: p.name, valor2: textDerecho4.name });
-                    textDerecho4.set('fill', '#BCBCBC')
-
-                } else {
-
-                    textDerecho4.set('fill', '#393939')
-
-                }
-
-                boleano1 = validarRectangulo(textDerecho1.left, textDerecho1.top);
-                boleano3 = validarRectangulo(textDerecho3.left, textDerecho3.top);
-                boleano2 = validarRectangulo(textDerecho2.left, textDerecho2.top);
-                boleano4 = validarRectangulo(textDerecho4.left, textDerecho4.top);
 
                 canvas.renderAll();
             });
-
-
-            canvas.on('selection:created', function (e) {
-
-                console.log("selection:created: ", e);
-
-            });
-
-
-
-
-
 
         })();
 
@@ -381,58 +269,6 @@
             }
 
             objeto.set('angle', angulo);
-        }
-
-
-
-        function validarRespuestas() {
-
-            let correctos = [];
-            arrayOpcionesCorrectas.map(item => {
-                arrayRespuestas.map(item2 => {
-                    if (item.valor1 === item2.valor1 && item.valor2 === item2.valor2) {
-                        correctos.push({ valor1: item.valor1, valor2: item.valor2 })
-                    }
-                })
-            });
-
-            console.log("correctos: ", correctos)
-            console.log(boleano1);
-            console.log(boleano2);
-
-            if (correctos.length === 4 && boleano1 && boleano3) {
-
-                if (boleano2 || boleano4) {
-
-                    swal({
-                        title: "Error.",
-                        text: "Respuesta incorrecta",
-                        icon: "error"
-                    });
-
-                } else {
-
-                    swal({
-                        title: "Exito.",
-                        text: "Respuesta correcta",
-                        icon: "success"
-
-                    });
-                }
-
-            } else {
-
-                swal({
-                    title: "Error.",
-                    text: "Respuesta incorrecta",
-                    icon: "error"
-                });
-            }
-        }
-
-
-        function removeArray(data, valor1, valor2) {
-            return data.filter(item => item.valor1 !== valor1 || item.valor2 !== valor2)
         }
 
 
