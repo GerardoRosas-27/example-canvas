@@ -88,101 +88,86 @@
             <span class="visually-hidden">Next</span>
         </button>
     </div>
-    <button onclick="siguiente()">Siguiente</button>
+    <button onclick="siguienteHtml()">Siguiente</button>
+    <script
+        type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath:  [['$','$'],['\\(','\\)']]}});</script>
 
-    <script type="text/javascript"> 
-        $(document).ready(function() {
-            $('#contenido').load('texto.html', function() {
-                alert('Archivo cargado correctamente');
-            });
-        });
-        </script>
+    <div id="contenPrincipal" class="container text-center">
 
-
-    <div class="container text-center">
-        <div class="row align-items-center custom-container">
-            <div class="col-12 h-30">
-
-                <h1 class="title-center"> Actividad Leyes de Morgan </h1>
-
-
-                <h1> $$ \text{Leyes de Morgan} $$ </h1>
-
-                <p> Las leyes de De Morgan son dos postulados sobre la interacción entre los conjuntos. Estas leyes
-                    registran
-                    antecedentes en Aristóteles y en William de Ockham. Augustus De Morgan vivió entre 1806 y 1871 y fue
-                    el primero
-                    en incluir las leyes que postuló en la estructura formal de la lógica matemática.</p>
-                <h4>Actividad</h4>
-                <p>En la siguiente actividad se muestran los pasos de manera desordenada de la demostración de la
-                    primera ley de Morgan. ¿Puedes ponerla en orden? </p>
-
-                <h3>$$(A \cup B)^c= A^c \cap B^c$$
-                    <!-- Con doble signo de dolar centra el texto, con un sólo signo de dollar lo pone en la izquierda  -->
-                </h3>
-                <h4>Demostración</h4>
-
-            </div>
-            <div class="col-md-8 h-30">
-                <div class="row justify-content-center custom-pading">
-
-                    <ul id="list">
-
-                    </ul>
-                </div>
-
-            </div>
-            <div class="col-md-4 h-60">
-                <div class="row custom-pading">
-                    <h4> Procederemos por contenciones</h4>
-
-                    <p> $ \left( \subseteq \\ \right) $ </p>
-                    <p> $ \text{Sea} x\in \left( A\cup B \right)^{c}. $</p>
-                        <p>$ \text{De manera que,} \ x\notin A\cup B. $</p>
-                       <p>$ \text{Así,} \ x\notin A \ \text{y} \ x\notin B. $ </p>
-                    <p> $ \text{Luego,} \ x\in A^{c} \ \text{y} \ \ x\in B^{c}.$</p>
-                    <p> $\text{Por lo tanto,} \ x\in A^{c} \cap B^{c}. $ </p>
-                    <br>
-                </div>
-
-            </div>
-            <div class="col-12 h-60">
-                <div class="row custom-pading">
-                    <div class="col-12 col-md-4">
-                        <button class="btn" onclick="verificarLista()">Verificar </button>
-
-                        <a class="reinicio" href="./cuestionario1.html">Reinicio</a>
-                    </div>
-                   
-                </div>
-
-            </div>
-
-        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
         crossorigin="anonymous"></script>
-        <script src="./js/jquery.2.2.4.js"></script>
-          <!--Libreria de alertas-->
+    <script src="./js/jquery.2.2.4.js"></script>
+    <!--Libreria de alertas-->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- Libreria mover listas -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"
-        integrity="sha512-Eezs+g9Lq4TCCq0wae01s9PuNWzHYoCMkE97e2qdkYthpI0pzC3UGB03lgEHn2XM85hDOUF6qgqqszs+iXU4UA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-  
+    <script src="./js/helpers.js"></script>
+    <script type="text/javascript">
+        const arrayPaginas = ["cuestionario1", "cuestionario4", "cuestionario5"];
+        $(document).ready(function () {
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js"></script>
-    
+            cargarHtml("contenPrincipal", arrayPaginas[0]);
+            guardarEnSesionStorage("PAGINA_ACTUAL", "0");
+
+        });
+
+        function siguienteHtml() {
+            let paginaId = leerDeSesionStorage("PAGINA_ACTUAL");
+            if (paginaId) {
+                paginaId = parseInt(paginaId) + 1;
+                console.log("cargar pagina siguiente: ", paginaId);
+                cargarHtml("contenPrincipal", arrayPaginas[paginaId]);
+                guardarEnSesionStorage("PAGINA_ACTUAL", paginaId.toString());
+            }
+        }
+
+        function cargarHtml(elementId, fileHtml) {
+            switch (fileHtml) {
+                case "cuestionario1":
+                    console.log("entro cargar: ", elementId, fileHtml);
+                    $("#" + elementId).load("htmls/" + fileHtml + ".html", function () {
+                        $.getScript("https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js");
+                        $.getScript("https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js");
+                        $.getScript("https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML");
+                        $.getScript("./js/cuestionario1.js", function () {
+                            console.log("El script cuestionario1.js se ha cargado correctamente");
+            
+                        }).fail(function () {
+                            console.log("Error al cargar el script cuestionario1.js");
+                        });
+
+                        // Agrega más scripts según sea necesario
+                    });
+                    break;
+                case "cuestionario2":
+                    console.log("entro cargar: ", elementId, fileHtml);
+                    $("#" + elementId).load("htmls/" + fileHtml + ".html", function () {
+                        //$.getScript("https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js");
+                        //$.getScript("https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js");
+                        //$.getScript("https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML");
+                        //$.getScript("js/cuestionario1.js");
+                        // Agrega más scripts según sea necesario
+                    });
+
+                    break;
+
+                default:
+                    console.log("No hay seccion por cargar")
+                    $("#" + elementId).load("htmls/sinSeccion.html", function () {
+
+                        // Agrega más scripts según sea necesario
+                    });
+                    break;
+            }
+        }
+
+    </script>
 
 
-    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
-    <script
-        type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath:  [['$','$'],['\\(','\\)']]}});</script>
-    <script src="./js/cuestionario1.js"></script>
 
 </body>
 

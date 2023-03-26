@@ -17,8 +17,6 @@ function htmlForm() {
 console.log("cargo listas: ", datahtml)
 }
 
-htmlForm();
-
 let arrayOpcionesCorrectas = ['1', '2', '3', '4', '5'];
 
 
