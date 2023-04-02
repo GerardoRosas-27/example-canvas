@@ -57,7 +57,7 @@
 
 
 
-    <div id="carouselExample" class="carousel slide">
+    <div id="carouselExample" class="carousel slide custom-container-p ">
         <div class="carousel-inner baner-principal">
             <div class="carousel-item active">
                 <div class="row justify-content-center">
@@ -106,7 +106,7 @@
 
     <script src="./js/helpers.js"></script>
     <script type="text/javascript">
-        const arrayPaginas = ["cuestionario1", "cuestionario4", "cuestionario5"];
+        const arrayPaginas = ["cuestionario1", "flechas_correctas", "cuestionario5"];
         $(document).ready(function () {
 
             cargarHtml("contenPrincipal", arrayPaginas[0]);
@@ -149,7 +149,7 @@
 
 
                     break;
-                case "cuestionario2":
+                case "flechas_correctas":
                     console.log("entro cargar: ", elementId, fileHtml);
                     $("#" + elementId).load("htmls/" + fileHtml + ".html", function () {
                         //$.getScript("https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js");

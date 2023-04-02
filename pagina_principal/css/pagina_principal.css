@@ -2,25 +2,14 @@
     height: 90vh !important;
 }
 
-.custom-container {
-    height: 600px;
-}
+
 .custom-pading{
     background: rgb(228, 228, 228);
     border-radius: 20px;
 }
-.custom-container div {
-    padding: 20px; 
-}
+
 .custom-pading p{
     word-wrap: break-word;
 }
 
 
-.custom-container div:nth-child(1) {
-
-}
-
-.custom-container div:nth-child(2) {
-  
-}
