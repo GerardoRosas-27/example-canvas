@@ -73,3 +73,5 @@ let move = new Sortable(multiDragDemo, {
     animation: 150,
 
 });
+
+htmlForm();

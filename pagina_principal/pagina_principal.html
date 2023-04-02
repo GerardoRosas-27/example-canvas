@@ -129,18 +129,25 @@
                 case "cuestionario1":
                     console.log("entro cargar: ", elementId, fileHtml);
                     $("#" + elementId).load("htmls/" + fileHtml + ".html", function () {
-                        $.getScript("https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js");
-                        $.getScript("https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js");
-                        $.getScript("https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML");
-                        $.getScript("./js/cuestionario1.js", function () {
-                            console.log("El script cuestionario1.js se ha cargado correctamente");
-            
-                        }).fail(function () {
-                            console.log("Error al cargar el script cuestionario1.js");
+
+                        $.getScript("https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js", function () {
+                            console.log("El archivo JS cargado correctamente. 0");
+
+                            $.getScript("https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js", function () {
+                                console.log("El archivo JS cargado correctamente. 1");
+
+                                $.getScript("https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML", function () {
+                                    console.log("El archivo JS cargado correctamente. 2");
+                                    $.getScript("js/cuestionario1.js");
+                                });
+
+                            });
                         });
 
-                        // Agrega más scripts según sea necesario
                     });
+
+
+
                     break;
                 case "cuestionario2":
                     console.log("entro cargar: ", elementId, fileHtml);

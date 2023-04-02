@@ -21,3 +21,29 @@ function leerDeSesionStorage(nombre) {
     }
     return valor;
 }
+
+async function cargarJS(urls) {
+    if(urls && urls.length > 0){
+        urls.map(async url => {
+            try {
+                await cargaDinamicaJS(url);
+            } catch (error) {
+                console.log("error: ", error)
+                return url
+            }
+        })
+    }else{
+        return null
+    }
+}
+
+async function cargaDinamicaJS(url) {
+    try {
+        const response = await fetch(url);
+        const js = await response.text();
+        eval(js);
+        return true
+    } catch (error) {
+        return false
+    }
+}
