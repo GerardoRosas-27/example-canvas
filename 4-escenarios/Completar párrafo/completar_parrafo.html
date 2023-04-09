@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Completar párrafo</title>
+
+    <link rel="preload" href="css/normalize.css" as="style">
+    <link rel="stylesheet" href="css/normalize.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Krub:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="preload" href="css/completa_parrafo.css" as="style">
+    <link rel="stylesheet" href="css/completa_parrafo.css">
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+
+<body>
+
+    <section class="contenedor">
+        <div>
+
+            <p>La función es continua y derivable \(  \)
+                <span class="posiciones" id="posicion1" ondrop="drop(event)" ondragover="allowDrop(event)">respuesta</span> \(  \) 
+                Por lo tanto, tiene un máximo local en el punto, <span class="posiciones" id="posicion2"
+                    ondrop="drop(event)" ondragover="allowDrop(event)">respuesta</span>
+            </p>
+
+            <br>
+
+            <p>Como la segunda derivada es positiva en el intervalo 
+                <span class="posiciones" id="posicion3" ondrop="drop(event)" ondragover="allowDrop(event)">respuesta</span>
+                \( \) podemos deducir que la función es cóncava hacia arriba.
+            </p>
+
+        </div>
+
+    </section>
+
+    <section class="contenedor ">
+
+        <div class="sombra">
+
+            <span class="respuestas" id="respuesta1" draggable="true" ondragstart="drag(event)"> Sea la función \( f(x)=x^2 \)</span>
+            <span class="respuestas" id="respuesta2" draggable="true" ondragstart="drag(event)">Para cada \( a \in A \)</span>
+            <span class="respuestas" id="respuesta3" draggable="true" ondragstart="drag(event)">El máximo de \( f \) se alcanza</span>
+            <span class="respuestas" id="respuesta4" draggable="true" ondragstart="drag(event)">\( a^2+b^2=c^2 \)</span>
+            <span class="respuestas" id="respuesta5" draggable="true" ondragstart="drag(event)">\(x \in A \)</span>
+
+        </div>
+
+        <div class="button-container">
+
+            <button class="  modern-button" onclick="validarRespuesta()">Validar respuestas</button>
+
+            <a class="modern-button" href="./completar_parrafo.html">reinicio</a>
+
+        </div>
+
+    </section>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="../js/parrafo.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,191 @@
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+  /* Hack para Box Model **/
+  scroll-snap-type: y mandatory;
+}
+
+body {
+  font-size: 16px;
+  /* 1rem = 10px */
+  font-family: 'Krub', sans-serif;
+  background-image: linear-gradient(to top, var(--grisClaro) 0%, var(--blanco) 100%);
+}
+
+span {
+  font-size: 12px;
+  /* 1rem = 10px */
+  font-family: 'Krub', sans-serif;
+  background-image: linear-gradient(to top, var(--grisClaro) 0%, var(--blanco) 100%);
+}
+
+.principal{
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+.contenedor {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: rgb(236, 236, 241);
+
+}
+
+.sombra {
+  display: grid;
+  grid-template-columns: repeat(5,auto);
+  justify-content: center;
+  align-content: center;
+  gap: 1rem;
+  background-color: rgba(101, 65, 122, 0.4);
+  padding: 5rem;
+  height: auto;
+  width: auto;
+}
+
+/* Contenedor de Grid */
+
+.grid-container {
+  position: relative !important;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding: 0px;
+  margin: 0px;
+}
+
+.grid-container>div:nth-child(1) {
+  background-color: hsl(192, 75%, 72%);
+  justify-items: center;
+  justify-content: center;
+ 
+  height: 50px;
+  margin-left: 0px;
+  margin-top: 0px;
+  border-radius: 5px;
+  padding: 25px;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+}
+
+.grid-container>div:nth-child(3) {
+  background-color: hsl(312, 83%, 51%);
+  
+  height: 50px;
+  margin-left: 0px;
+  margin-top: 0px;
+  border-radius: 5px;
+  padding: 25px;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+}
+
+.grid-container>div:nth-child(7) {
+  background-color: hsl(138, 85%, 59%);
+  
+  height: 50px;
+  margin-left: 0px;
+  margin-top: 0px;
+  border-radius: 5px;
+  padding: 25px;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+}
+
+
+.grid-container>div:nth-child(9) {
+  background-color: hsl(56, 92%, 64%);
+ 
+  height: 50px;
+  margin-left: 0px;
+  margin-top: 0px;
+  border-radius: 5px;
+  padding: 25px;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+}
+
+/*Construcción de flechas */
+.flecha .flecha-up {
+  width: 0px;
+  height: 6px;
+  border-left: 25px solid transparent;
+  /* izquierda flecha */
+  border-right: 25px solid transparent;
+  /* derecha flecha */
+  border-bottom: 25px solid #0A0A0A;
+  /* base flecha y color*/
+  font-size: 0px;
+  line-height: 0px;
+}
+.content-flecha{
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  
+}
+.content-flecha-row{
+  padding: 20px 0px;
+}
+
+.flecha .flecha-up-linea {
+  position: relative;
+  width: 20px;
+  height: 60px;
+  background: red;
+  margin-left: 13px;
+}
+
+.flecha {
+  width: 50px;
+  position: relative;
+}
+
+
+/* Sección de respuestas dinámicas */
+
+.respuestas {
+
+  padding: 15px 10px;
+  background: rgba(238, 206, 124, 0.746);
+  border-radius: 5px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease-in-out;
+}
+
+.respuestas:hover {
+  background-color: #3e8e41;
+}
+
+.button-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  height: 10vh;
+
+}
+
+.modern-button {
+  background-color: rgba(161, 133, 187, 0.699);
+  
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease-in-out;
+}
+
+.modern-button:hover {
+  background-color: #3e8e41;
+}

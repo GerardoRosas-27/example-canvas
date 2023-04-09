@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposiciones matemáticas</title>
+
+    <link rel="stylesheet" href="css/normalize.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Krub:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/flechas.css">
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+
+
+<body>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="js/flechas_correctas.js"></script>
+
+
+
+    <div class="principal">
+        <section class="contenedor">
+
+            <div class="grid-container ">
+
+                <div id="posicion1" ondrop="drop(event)" ondragover="allowDrop(event)"> </div>
+
+
+                <div class="content-flecha">
+                    <div class="flecha" style="transform: rotate(90deg);">
+                        <div class="flecha-up"></div>
+                        <div class="flecha-up-linea"></div>
+                    </div>
+                </div>
+
+
+                <div id="posicion2" ondrop="drop(event)" ondragover="allowDrop(event)"> </div>
+
+                <div class="content-flecha content-flecha-row">
+                    <div class="flecha">
+                        <div class="flecha-up"></div>
+                        <div class="flecha-up-linea"></div>
+                    </div>
+                </div>
+
+
+
+                <div> </div>
+
+
+                <div> </div>
+
+
+                <div id="posicion3" ondrop="drop(event)" ondragover="allowDrop(event)"> </div>
+
+                <div class="content-flecha">
+                    <div class="flecha" style="transform: rotate(-90deg);">
+                        <div class="flecha-up"></div>
+                        <div class="flecha-up-linea"></div>
+                    </div>
+                </div>
+
+
+                <div id="posicion4" ondrop="drop(event)" ondragover="allowDrop(event)"> </div>
+
+
+            </div>
+
+
+        </section>
+
+        <br>
+
+        <section class="contenedor">
+
+            <div class="sombra">
+
+                <span class="respuestas" id="respuesta2" draggable="true" ondragstart="drag(event)"> \( \left\{ x_{n}
+                    \right\} \ \text{ no oscila} \)</span>
+                <span class="respuestas" id="respuesta3" draggable="true" ondragstart="drag(event)"> \( \left\{ x_{n}
+                    \right\} \ \text{ converge} \)</span>
+                <span class="respuestas" id="respuesta1" draggable="true" ondragstart="drag(event)"> \( \left\{ x_{n}
+                    \right\} \ \text{converge al supremo} \)</span>
+                <span class="respuestas" id="respuesta4" draggable="true" ondragstart="drag(event)"> \( \left\{ x_{n}
+                    \right\} \ \text{creciente y acotada} \)</span>
+
+                <span class="respuestas" id="respuesta5" draggable="true" ondragstart="drag(event)"> \( \left\{ x_{n}
+                    \right\} \ \text{no converge} \)</span>
+
+            </div>
+
+            <div class="button-container">
+
+                <button class="modern-button modern-button:hover" onclick="validarRespuesta()">Validar
+                    respuestas</button>
+
+
+                <a class="modern-button" href="./flechas.html">Reinicio</a>
+
+            </div>
+
+        </section>
+    </div>
+
+
+
+
+
+
+</body>
+
+</html>

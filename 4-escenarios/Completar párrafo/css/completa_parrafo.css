@@ -1,0 +1,101 @@
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+  /* Hack para Box Model **/
+  scroll-snap-type: y mandatory;
+}
+
+body {
+  font-size: 12px;
+  /* 1rem = 10px */
+  font-family: 'Krub', sans-serif;
+  background-image: linear-gradient(to top, var(--grisClaro) 0%, var(--blanco) 100%);
+}
+
+p {
+  font-size: 16px;
+}
+
+span {
+  font-size: 14px;
+  /* 1rem = 10px */
+  font-family: 'Krub', sans-serif;
+  background-image: linear-gradient(to top, var(--grisClaro) 0%, var(--blanco) 100%);
+}
+
+.contenedor {
+  max-width: 110rem;
+  margin-top: 20px;
+  margin-left: 100px;
+  padding: 20px;
+  background-color: rgb(231, 227, 238);
+}
+
+.sombra {
+  max-width: 90rem;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  
+  box-shadow: 0px 0px 0px 0px rgba(212, 46, 46, 0.48);
+  background-color: rgba(101, 65, 122, 0.4);
+  padding: 5rem 0rem;
+  margin: 0rem;
+  border-radius: 0rem;
+}
+
+
+.posiciones {
+  width: 100px;
+  height: 20px;
+  background: rgb(240, 240, 240);
+  padding: 15px 60px;
+  color: rgb(131, 131, 131);
+}
+
+
+/* Sección de respuestas dinámicas */
+
+.respuestas {
+  text-align:center;
+  padding: 15px 10px;
+  background: rgba(238, 206, 124, 0.746);
+  border-radius: 5px;
+  gap: 1rem;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease-in-out;
+  color: rgb(30, 30, 30);
+}
+
+.respuestas:hover {
+  background-color: #3e8e41;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  height: 10vh;
+
+}
+
+.modern-button {
+  background-color: rgba(161, 133, 187, 0.699);
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease-in-out;
+}
+
+.modern-button:hover {
+  background-color: #3e8e41;
+}
