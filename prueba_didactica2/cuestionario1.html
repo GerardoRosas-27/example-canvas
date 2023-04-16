@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog de Matemáticas Acatlán</title>
+    <meta name="description" content="Facultad de Estudios Superiores de Acatlán">
+
+    <!-- Prefetch -->
+
+
+    <!-- Preload -->
+    <link rel="preload" href="css/normalize.css" as="style">
+    <link rel="stylesheet" href="css/normalize.css">
+
+    <link rel="preload"
+        href="https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans:wght@400;700&display=swap"
+        crossorigin="crossorigin" as="font">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="preload" href="css/style.css" as="style">
+    <link rel="stylesheet" href="css/style.css">
+
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"
+        integrity="sha512-Eezs+g9Lq4TCCq0wae01s9PuNWzHYoCMkE97e2qdkYthpI0pzC3UGB03lgEHn2XM85hDOUF6qgqqszs+iXU4UA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js"></script>
+    
+
+
+</head>
+
+<body>
+
+    <header class="header ">
+
+        <div class="contenedor">
+            <div class="barra">
+                <a class="logo" href="index.html">
+                    <h1 class="logo__nombre no-margin centrar-texto">Prueba Didáctica para el COA, FES Acatlán</h1>
+                    <h1 class="logo__nombre no-margin centrar-texto">Abril de 2023</h1>
+                    <h1 class="logo__nombre no-margin centrar-texto">Dr. Gabriel Herrera Alva</h1>
+
+                </a>
+
+            </div>
+        </div>
+
+        <div class="header__texto">
+            <h2 class="no-margin">Blog dinámico de Matemáticas </h2>
+            <p class="no-margin">Un espacio para la imaginación y el aprendizaje colaborativo</p>
+        </div>
+    </header>
+
+    <br>
+    <br>
+
+    <div class="contenedor contenido-principal">
+
+
+        <main class="blog">
+
+            <h3 class="no-margin">Actividad 2. Demostración de un teorema: </h3>
+
+            <article class="entrada">
+                <div class="principal">
+
+
+                    <div class="entrada__contenido">
+                        \(\text{Sean} \) \( x,y,z \) \( \text{vectores diferente de 0.}\)
+                        \( \text{Si} \) \( x\parallel y \) \( \text{ y } \) \( y\bot z \) \( \text{entonces} \) \( \
+                        x\bot z \)
+
+                        <!--  <a href="entrada.html" class="boton boton--primario">Leer Entrada</a>  -->
+
+                    </div>
+
+                    <section class="contenedor2">
+
+                        <!--   <hr>   -->
+
+                        <ul id="list" style="width: auto; margin: 0px; padding: 0px;">
+
+                        </ul>
+                        <br>
+
+                        <div class="button-container">
+
+                            <button class="modern-button" onclick="verificarLista()">Validar respuesta </button>
+
+
+                            <a class="modern-button modern-button:hover modern-button-a" href="./cuestionario1.html">
+                                <span>Reinicio</span>
+                            </a>
+
+                        </div>
+
+                    </section>
+
+
+                </div>
+
+
+
+                <br>
+                <br>
+
+                <a href="index.html" class="boton boton--primario">Implicaciones correctas</a>
+
+            </article>
+
+
+        </main>
+        <aside class="sidebar">
+            <h3>Un poco de teoría</h3>
+
+            <ul class="cursos no-padding">
+                <li class="widget-curso">
+                    <h4 class="no-margin">Vectores paralelos y ortogonales</h4>
+                    <p class="widget-curso__label">Definición 1.
+                        <span class="widget-curso__info">Los vectores \( x \) \( \text{y}\) \( y\)
+                            \( \text{son ortogonales} \) \( x\bot y \) \( \text{si forman un ángulo de 90°.} \) </span>
+                    </p>
+
+                    <p class="widget-curso__label">Definición 2.
+                        <span class="widget-curso__info">Los vectores \( x \) \( \text{y}\) \( y,\)
+                            \( \text{son paralelos} \) \( x\parallel y \) \( \text{ si el ángulo entre ellos es} \) \( 0
+                            \) \( \text{ó} \) \( 180 \)
+                        </span>
+                    </p>
+
+                    <p class="widget-curso__label">Teorema 1.
+                        <span class="widget-curso__info">Los vectores \( x \) \( \text{y}\) \( y,\) son ortogonales
+                            \( x\bot y \) \( \text{ si} \) \( x\cdot y=0 \) </span>
+                    </p>
+
+                    <p class="widget-curso__label">Teorema 2.
+                        <span class="widget-curso__info">Los vectores \( x \) \( \text{y}\) \( y,\)
+                            \( \text{son paralelos} \) \( x\parallel y \) \( \text{ si} \) \( v= \lambda y. \) </span>
+                    </p>
+                    <!--  <a href="entrada.html" class="boton boton--secundario">Más Información sobre nuestros cursos</a>  -->
+
+
+                </li>
+            </ul>
+            <div class="contentbutton">
+                <a href="cuestionario1.html" class="modern-button">Consulta la teoría completa</a>
+            </div>
+        </aside>
+
+    </div>
+
+
+
+    <footer class="footer">
+
+        <div class="contenedor">
+
+            <div class="barra logo__nombre no-margin centrar-texto">
+                <h5> </h5>
+
+                <a class="logo" href="index.html">
+                    <h4 class="logo__nombre no-margin centrar-texto">Blog de Matemáticas interactivas </h>
+
+                </a>
+
+
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script
+        type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath:  [['$','$'],['\\(','\\)']]}});</script>
+    
+   
+    <script src="js/jquery.2.2.4.js"></script>
+    <script src="js/lista.js"> </script>
+
+    <script src="js/modernizr.js"></script>
+
+
+
+    <style>
+        span{  
+            color: rgb(74, 74, 74);
+            font-size: 20px;
+        }
+       
+        a>span  {
+            font-size: 20px;
+            color: rgb(235, 235, 235);
+        }
+       
+    </style>
+
+</body>
+
+</html>

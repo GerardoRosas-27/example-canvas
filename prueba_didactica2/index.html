@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog de Matemáticas Acatlán</title>
+    <meta name="description" content="Facultad de Estudios Superiores de Acatlán">
+
+    <!-- Preload -->
+
+    <link rel="stylesheet" href="css/normalize.css">
+
+    <link rel="preload"
+        href="https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans:wght@400;700&display=swap"
+        crossorigin="crossorigin" as="font">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+
+
+
+</head>
+
+<body>
+
+    <header class="header ">
+
+        <div class="contenedor">
+            <div class="barra">
+                <h1 class="logo__nombre no-margin centrar-texto">Prueba Didáctica para el COA, FES Acatlán</h1>
+                <h1 class="logo__nombre no-margin centrar-texto">Abril de 2023</h1>
+                <h1 class="logo__nombre no-margin centrar-texto">Dr. Gabriel Herrera Alva</h1>
+            </div>
+        </div>
+
+        <div class="header__texto">
+            <h2 class="no-margin centrar-texto">Blog dinámico de asdasdadsad </h2>
+            <p class="no-margin centrar-texto">Un espacio para la imaginación y el aprendizaje colaborativo</p>
+        </div>
+    </header>
+
+    <div class="contenedor contenido-principal">
+
+
+        <main class="blog">
+
+            <h3>Actividad 1. Implicaciones correctas</h3>
+            <p class="no-margin cortartext"> \( \text{Sea} \) \(\theta \) \( \text{el ángulo entre los vectores} \) \( x
+                \) \(
+                \text{y}\) \( y,\) \( \text{y sea} \) \( y\bot z .\)
+            </p>
+            <p>Arrastra las respuestas a las casillas vacías respetando la implicación. asdasdasdasd asdasdasd asdasdsad</p>
+
+
+            <!-- Flechas correctas -->
+
+            <article class="entrada">
+
+
+
+                <section class="contenedor2">
+
+                    <div class="grid-container ">
+
+                        <div id="posicion1" ondrop="drop(event)" ondragover="allowDrop(event)"> </div>
+
+
+                        <div class="content-flecha">
+                            <div class="flecha content-flecha-columm" style="transform: rotate(90deg);">
+                                <div class="flecha-up"></div>
+                                <div class="flecha-up-linea"></div>
+                            </div>
+                        </div>
+
+
+                        <div id="posicion2" ondrop="drop(event)" ondragover="allowDrop(event)"> </div>
+
+                        <div class="content-flecha content-flecha-row">
+                            <div class="flecha">
+                                <div class="flecha-up"></div>
+                                <div class="flecha-up-linea"></div>
+                            </div>
+                        </div>
+
+
+
+                        <div> </div>
+
+
+                        <div> </div>
+
+
+                        <div id="posicion3" ondrop="drop(event)" ondragover="allowDrop(event)"> </div>
+
+                        <div class="content-flecha">
+                            <div class="flecha content-flecha-columm " style="transform: rotate(-90deg);">
+                                <div class="flecha-up"></div>
+                                <div class="flecha-up-linea"></div>
+                            </div>
+                        </div>
+
+
+                        <div id="posicion4" ondrop="drop(event)" ondragover="allowDrop(event)"> </div>
+
+
+                    </div>
+
+
+                </section>
+
+
+                <section class="contenedor2">
+
+                    <div class="sombra">
+
+                        <span class="respuestas" id="respuesta3" draggable="true" ondragstart="drag(event)">
+                            \( x\parallel y \)</span>
+                        <span class="respuestas" id="respuesta1" draggable="true" ondragstart="drag(event)">
+                            \( x \bot z \)</span>
+                        <span class="respuestas" id="respuesta4" draggable="true" ondragstart="drag(event)">
+                            \( \theta=0 \)</span>
+                        <span class="respuestas" id="respuesta2" draggable="true" ondragstart="drag(event)">
+                            \(x\cdot z=0 \)
+                        </span>
+
+
+                    </div>
+
+                    <div class="button-container">
+
+                        <button class="modern-button modern-button:hover" onclick="validarRespuesta()">Validar
+                            respuestas</button>
+
+
+
+                        <a class="modern-button modern-button:hover modern-button-a" href="./index.html">
+                            <span>Reinicio</span>
+                        </a>
+
+                    </div>
+
+
+                </section>
+
+                <br>
+                <br>
+
+                <a href="cuestionario1.html" class="boton boton--primario">Demostración interactiva</a>
+
+
+
+            </article>
+
+        </main>
+
+        <aside class="sidebar">
+            <h3>Un poco de teoría</h3>
+
+            <ul class="cursos no-padding">
+                <li class="widget-curso">
+                    <h4 class="no-margin">Vectores paralelos y ortogonales</h4>
+                    <p class="widget-curso__label">Definición 1.
+                        <span class="widget-curso__info">Los vectores \( x \) \( \text{y}\) \( y\)
+                            \( \text{son ortogonales} \) \( x\bot y \) \( \text{si forman un ángulo de 90°.} \) </span>
+                    </p>
+
+                    <p class="widget-curso__label">Definición 2.
+                        <span class="widget-curso__info">Los vectores \( x \) \( \text{y}\) \( y,\)
+                            \( \text{son paralelos} \) \( x\parallel y \) \( \text{ si el ángulo entre ellos es} \) \( 0
+                            \) \( \text{ó} \) \( 180 \)
+                        </span>
+                    </p>
+
+                    <p class="widget-curso__label">Teorema 1.
+                        <span class="widget-curso__info">Los vectores \( x \) \( \text{y}\) \( y,\) son ortogonales
+                            \( x\bot y \) \( \text{ si} \) \( x\cdot y=0 \) </span>
+                    </p>
+
+                    <p class="widget-curso__label">Teorema 2.
+                        <span class="widget-curso__info">Los vectores \( x \) \( \text{y}\) \( y,\)
+                            \( \text{son paralelos} \) \( x\parallel y \) \( \text{ si} \) \( v= \lambda y. \) </span>
+                    </p>
+                    <!--  <a href="entrada.html" class="boton boton--secundario">Más Información sobre nuestros cursos</a>  -->
+
+
+                </li>
+            </ul>
+            <div class="contentbutton">
+                <a href="cuestionario1.html" class="modern-button">Consulta la teoría completa</a>
+            </div>
+        </aside>
+
+    </div>
+
+    <footer class="footer">
+
+        <div class="contenedor">
+
+            <div class="barra logo__nombre no-margin centrar-texto">
+                <h5> </h5>
+
+                <a class="logo" href="index.html">
+                    <h4 class="logo__nombre no-margin centrar-texto">Blog de Matemáticas interactivas aasd asdadsa</h4>
+
+                </a>
+
+
+            </div>
+        </div>
+    </footer>
+
+
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="js/flechas_correctas.js"></script>
+    <script id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="js/modernizr.js"></script>
+
+</body>
+
+</html>
