@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog de Matemáticas Acatlán</title>
+    <meta name="description" content="Facultad de Estudios Superiores de Acatlán">
+
+    <!-- Prefetch -->
+
+
+    <!-- Preload -->
+    <link rel="preload" href="css/normalize.css" as="style">
+    <link rel="stylesheet" href="css/normalize.css">
+
+    <link rel="preload"
+        href="https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans:wght@400;700&display=swap"
+        crossorigin="crossorigin" as="font">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans:wght@400;700&display=swap"
+        rel="stylesheet">
+
+   
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+</head>
+
+<body>
+
+    <header class="header ">
+
+        <div class="contenedor">
+            <div class="barra">
+                <a class="logo" href="index.html">
+                    <h1 class="logo__nombre no-margin centrar-texto">Prueba Didáctica FES Acatlán</h1>
+
+                </a>
+
+            </div>
+        </div>
+
+        <div class="header__texto">
+            <h2 class="no-margin">Blog dinámico de Matemáticas </h2>
+            <p class="no-margin">Un espacio para la imaginación y el aprendizaje colaborativo</p>
+        </div>
+    </header>
+
+    <div class="contenedor ">
+
+
+        <main class="blog">
+
+            <!-- Completar Párrafo -->
+
+
+            <article class="entrada">
+
+
+                <div class="entrada__contenido">
+
+                    <br>
+                    <br>
+
+
+
+                    <h4 class="no-margin">Actividad 2. Completar párrafo</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate, rerum, reprehenderit
+                        consequatur perferendis officia, vitae fuga animi temporibus itaque atque reiciendis ea
+                        excepturi! Molestias aperiam fugiat deleniti laudantium atque numquam?</p>
+                    <!--  <a href="entrada.html" class="boton boton--primario">Leer Entrada</a> -->
+                </div>
+
+
+                <section class="contenedor2">
+                    <div>
+
+                        <p>La función es continua en el punto,
+                            <span class="posiciones" id="posicion1" ondrop="drop(event)"
+                                ondragover="allowDrop(event)">respuesta1</span> \( \)
+                            Por lo tanto, tiene <span class="posiciones" id="posicion2" ondrop="drop(event)"
+                                ondragover="allowDrop(event)">respuesta2</span>
+                        </p>
+
+                        <p>Como la segunda derivada es positiva, podemos deducir que la función es cóncava hacia arriba
+                            <span class="posiciones" id="posicion3" ondrop="drop(event)"
+                                ondragover="allowDrop(event)">respuesta3</span>
+
+                        </p>
+
+                    </div>
+
+                </section>
+
+                <section class="contenedor2 ">
+
+                    <div class="sombra">
+
+                        <span class="respuestas" id="respu1" draggable="true" ondragstart="drag(event)"> \( f(x)=x^2
+                            \)</span>
+                        <span class="respuestas" id="respu2" draggable="true" ondragstart="drag(event)"> \( a \in A
+                            \)</span>
+                        <span class="respuestas" id="respu3" draggable="true" ondragstart="drag(event)">El
+                            máximo </span>
+
+                        <span class="respuestas" id="respu4" draggable="true" ondragstart="drag(event)">\(
+                            a^2+b^2=c^2 \)</span>
+
+                        <span class="respuestas" id="respu5" draggable="true" ondragstart="drag(event)">\(x \in
+                            A \)</span>
+
+
+                    </div>
+
+                    <div class="button-container">
+
+                        <button class="  modern-button" onclick="validarRespuesta()">Validar respuestas</button>
+
+                        <a class="modern-button" href="./parrafo.html">reinicio</a>
+
+                    </div>
+
+                </section>
+
+
+            </article>
+
+            <br>
+
+            <article class="entrada">
+
+
+                <div class="entrada__contenido">
+                    <h4 class="no-margin">Beneficios del Café</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate, rerum, reprehenderit
+                        consequatur perferendis officia, vitae fuga animi temporibus itaque atque reiciendis ea
+                        excepturi! Molestias aperiam fugiat deleniti laudantium atque numquam?</p>
+                    <!--  <a href="entrada.html" class="boton boton--primario">Leer Entrada</a>  -->
+                </div>
+
+            </article>
+
+        </main>
+
+    </div>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="js/flechas_correctas.js"></script>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="js/jquery.2.2.4.js"></script>
+
+    <script src="js/parrafo.js"></script>
+
+    <footer class="footer">
+        <div class="contenedor">
+            <div class="barra">
+                <a class="logo" href="index.html">
+                    <h1 class="logo__nombre no-margin centrar-texto">Blog<span class="logo__bold">-Matemáticas</span>
+                    </h1>
+                </a>
+
+                <!--
+                    <nav class="navegacion">
+                    <a href="nosotros.html" class="navegacion__enlace">Nosotros</a>
+                    <a href="cursos.html" class="navegacion__enlace">Cursos</a>
+                    <a href="contacto.html" class="navegacion__enlace">Contacto</a>
+                </nav>
+
+                -->
+
+
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/modernizr.js"></script>
+
+
+</body>
+
+</html>
