@@ -52,7 +52,7 @@ function validarFlechas() {
     }
 
 }
-
+/*
 window.addEventListener("resize", function () {
     // tu código aquí
     console.log('La pantalla ha cambiado de tamaño');
@@ -69,6 +69,7 @@ window.addEventListener("resize", function () {
         }
     }
 });
+*/
 
 
 
