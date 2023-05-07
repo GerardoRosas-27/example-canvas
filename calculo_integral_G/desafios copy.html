@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog de Matemáticas</title>
+    <meta name="description" content="Página web de matemáticas interactivas">
+
+    <!-- Prefetch -->
+    <link rel="prefetch" href="nosotros.html" as="document">
+
+    <!-- Preload -->
+    <link rel="preload" href="css/normalize.css" as="style">
+    <link rel="stylesheet" href="css/normalize.css">
+
+    <link rel="preload"
+        href="https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans:wght@400;700&display=swap"
+        crossorigin="crossorigin" as="font">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="preload" href="css/style.css" as="style">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <header class="header">
+
+        <section class="header-transparencia">
+
+            <div class="contenedor">
+
+                <div class="barra">
+                    <a class="logo" href="index.html">
+                        <h1 class="logo__nombre no-margin centrar-texto">Blog<span
+                                class="logo__bold">DeMatemáticas</span>
+                        </h1>
+                    </a>
+
+                    <nav class="navegacion">
+                        <a href="nosotros.html" class="navegacion__enlace">Nosotros</a>
+                        <a href="desafios.html" class="navegacion__enlace">Desafios</a>
+                        <a href="contacto.html" class="navegacion__enlace">Contacto</a>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="header__texto ">
+                <h2 class="no-margin">Aprende de los expertos con las mejores estrategias didácticas</h2>
+                <h4 class="no-margin">Un espacio para la creatividad y la esquizofrenia matemática</h4>
+                <p class="no-margin"> © Dr. Gabriel Herrera. Abril 2023</p>
+            </div>
+
+        </section>
+
+    </header>
+
+
+    <!-- Escenario 1. Implicaciones correctas -->
+    <div class="contenedor contenido-principal">
+
+        <main class="blog">
+
+            <article class="entrada">
+
+                <h3>Actividad 1. Implicaciones correctas</h3>
+
+                <p class="no-margin cortartext"> \( \text{Sea} \) \(\theta \) \( \text{el ángulo entre los vectores} \)
+                    \( x
+                    \) \(
+                    \text{y}\) \( y,\) \( \text{y sea} \) \( y\bot z .\)
+                </p>
+
+                <p>Arrastra las respuestas a las casillas vacías de tal modo que la implicación se cumpla.</p>
+
+                <div class="entrada__imagen contenedor2">
+
+                    <div class="grid-container linea-divisora">
+
+                        <div id="posicion1" ondrop="dropImpli(event)" ondragover="allowDropImpli(event)"> </div>
+
+
+                        <div class="content-flecha">
+                            <div class="flecha content-flecha-columm" style="transform: rotate(90deg);">
+                                <div class="flecha-up"></div>
+                                <div class="flecha-up-linea"></div>
+                            </div>
+                        </div>
+
+
+                        <div id="posicion2" ondrop="dropImpli(event)" ondragover="allowDropImpli(event)"> </div>
+
+                        <div class="content-flecha content-flecha-row">
+                            <div class="flecha">
+                                <div class="flecha-up"></div>
+                                <div class="flecha-up-linea"></div>
+                            </div>
+                        </div>
+
+                        <div> </div>
+
+                        <div> </div>
+
+                        <div id="posicion3" ondrop="dropImpli(event)" ondragover="allowDropImpli(event)"> </div>
+
+                        <div class="content-flecha">
+                            <div class="flecha content-flecha-columm " style="transform: rotate(-90deg);">
+                                <div class="flecha-up"></div>
+                                <div class="flecha-up-linea"></div>
+                            </div>
+                        </div>
+
+
+                        <div id="posicion4" ondrop="dropImpli(event)" ondragover="allowDropImpli(event)"> </div>
+
+
+                    </div>
+
+                    <div class="sombra linea-divisora">
+
+                        <span class="respuestas" id="respuesta3" draggable="true" ondragstart="dragImpli(event)">
+                            \( x\parallel y \)</span>
+                        <span class="respuestas" id="respuesta1" draggable="true" ondragstart="dragImpli(event)">
+                            \( x \bot z \)</span>
+                        <span class="respuestas" id="respuesta4" draggable="true" ondragstart="dragImpli(event)">
+                            \( \theta=0 \)</span>
+                        <span class="respuestas" id="respuesta2" draggable="true" ondragstart="dragImpli(event)">
+                            \(x\cdot z=0 \)
+                        </span>
+
+
+                    </div>
+
+                    <div class="button-container">
+
+                        <button class="modern-button modern-button:hover" onclick="validarRespuestaImpli()">Validar
+                            respuestas</button>
+
+                        <a class="modern-button modern-button:hover modern-button-a" href="./desafios.html">
+                            <span>Reinicio</span>
+                        </a>
+
+                    </div>
+
+
+                </div>
+
+                <div class="entrada__contenido">
+                    <h4 class="no-margin">Escenario interactivo</h4>
+                    <p>Este escenario tiene el propósito de que comprendas la relación que hay entre el producto punto,
+                        los vectores paralelos y los ortogonales.</p>
+                    <a href="entrada.html" class="boton boton--primario">Siguiente ejercicio</a>
+                </div>
+            </article>
+        </main>
+
+        <aside class="sidebar">
+            <h3>Un poco de teoría y sugerencias</h3>
+
+            <ul class="cursos no-padding">
+                <li class="widget-curso">
+                    <h4 class="no-margin">Vectores paralelos y ortogonales</h4>
+                    <p class="widget-curso__label">Definición 1.
+                        <span class="widget-curso__info">Los vectores \( x \) \( \text{y}\) \( y\)
+                            \( \text{son ortogonales} \) \( x\bot y \) \( \text{si forman un ángulo de 90°.} \)</span>
+                    </p>
+                    <p class="widget-curso__label">Definición 2.
+                        <span class="widget-curso__info">Los vectores \( x \) \( \text{y}\) \( y,\)
+                            \( \text{son paralelos} \) \( x\parallel y \) \( \text{ si el ángulo entre ellos es} \) \( 0
+                            \) \( \text{ó} \) \( 180 \)</span>
+                    </p>
+
+                    <p class="widget-curso__label">Teorema 1.
+                        <span class="widget-curso__info">Los vectores \( x \) \( \text{y}\) \( y,\) son ortogonales
+                            \( x\bot y \) \( \text{ si} \) \( x\cdot y=0 \) </span>
+                    </p>
+
+                    <p class="widget-curso__label">Teorema 2.
+                        <span class="widget-curso__info">Los vectores \( x \) \( \text{y}\) \( y,\)
+                            \( \text{son paralelos} \) \( x\parallel y \) \( \text{ si} \) \( v= \lambda y. \) </span>
+                    </p>
+                    <br>
+
+                    <a href="entrada.html" class="boton boton--secundario">Más teoría</a>
+                </li>
+
+                <li class="widget-curso">
+                    <h4 class="no-margin">La interpretación geométrica del teorema de Rolle</h4>
+                    <p class="widget-curso__label">Pistas:
+                        <span class="widget-curso__info">Usar el teorema de weierstrass y la proposición 1 </span>
+                    </p>
+                    <p class="widget-curso__label">Teorema de Weierstrass:
+                        <span class="widget-curso__info">Funciones continuas en intervalos cerrados y acotados</span>
+                    </p>
+                    <a href="entrada.html" class="boton boton--secundario">Más Información sobre nuestros cursos</a>
+                </li>
+            </ul>
+        </aside>
+
+
+    </div>
+    <!-- Escenario 2. Completar el Párrafo -->
+    <div class="contenedor contenido-principal">
+
+        <main class="blog">
+            <article class="entrada">
+
+                <h3>Actividad 2. Completa la demostración del teorema de Rolle </h3>
+
+                <p class="no-margin cortartext">
+                <p> \( \text{Sea} \) \(f:\left[ a,b \right]\to \mathrm{R} \) \( \text{una función continua y derivable
+                    en } \)
+                    \( \left( a,b \right). \) \( \text{Supongamos que} \) \(f(a)=f(b).\)
+                    \( \text{Entonces, existe un} \) \( \ x_{0}\in (a,b) \) \( \text{tal que} \)
+                    \( f'(x_{0})= 0 \) </p>
+                </p>
+
+                <p>Arrastra las respuestas a las casillas vacías de tal modo que la implicación se cumpla.</p>
+
+                <div class="entrada__imagen contenedor2">
+
+
+
+                    <div class="linea-divisora">
+
+
+                        <p class="cortartext"> \( \text{Como} \) \(\ f \) \( \text{es continua en el intervalo,} \) \(
+                            \text{entonces } \)
+                            \( \text{por el teorema} \) \( \text{de Weierstrass} \) \( f \)
+                            <span class="posiciones" id="posicion1" ondrop="dropParrafo(event)"
+                                ondragover="allowDropParrafo(event)">respuesta1</span> \( \)
+                            \( \text{en} \) \( \left[ a,b \right] \). \( \text{Caso 1. Supongamos que el valor
+                            máximo ocurre en un punto} \)
+                            \( x\in \left( a,b \right). \) \( \text{Entonces por la proposición 1} \) <span
+                                class="posiciones" id="posicion2" ondrop="dropParrafo(event)"
+                                ondragover="allowDropParrafo(event)">respuesta2</span>
+                        </p>
+
+                        <p class="cortartext"> \( \text{La misma situación se tiene si el mínimo lo alcanza en un punto}
+                            \) \( \text{
+                            en el abierto.} \)
+
+                            \( \text{Caso 2. Si el máximo y mínimo lo alcanza en los extremos del } \)
+                            \( \text{intervalo, entonces, como} \) \( f(a)=f(b), \) \(f \) \( \text{sería} \) <span
+                                class="posiciones" id="posicion3" ondrop="dropParrafo(event)"
+                                ondragover="allowDropParrafo(event)">respuesta3</span> \( \text{y bastaría elegir
+                            cualquier
+                            punto en el abierto, ya que la} \) \( \text{derivada sería 0.} \)
+
+                        </p>
+
+                    </div>
+
+                    <div class="sombra linea-divisora">
+
+                        <span class="respuestas" id="respuesta1p" draggable="true" ondragstart="dragParrafo(event)"> \(
+                            \text{alcanza su máx y su mín}
+                            \)</span>
+                        <span class="respuestas" id="respuesta2p" draggable="true" ondragstart="dragParrafo(event)"> \(
+                            f'\left(
+                            x \right)=0
+                            \)</span>
+                        <span class="respuestas" id="respuesta3p" draggable="true" ondragstart="dragParrafo(event)"> \(
+                            \text{constante} \) </span>
+
+                        <span class="respuestas" id="respuesta4p" draggable="true" ondragstart="dragParrafo(event)">\(
+                            \text{creciente} \)</span>
+
+                        <span class="respuestas" id="respuesta5p" draggable="true" ondragstart="dragParrafo(event)">\(
+                            f'(x)\neq
+                            0 \)</span>
+
+
+                    </div>
+
+                    <div class="button-container">
+
+                        <button class="  modern-button" onclick="validarRespuestaParrafo()">Validar respuestas</button>
+
+                        <a class="modern-button" href="./desafios.html">reinicio</a>
+
+                    </div>
+
+
+                </div>
+
+                <div class="entrada__contenido">
+                    <h4 class="no-margin">Escenario de párrafo</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate, rerum, reprehenderit
+                        consequatur perferendis officia, vitae fuga animi temporibus itaque atque reiciendis ea
+                        excepturi! Molestias aperiam fugiat deleniti laudantium atque numquam?</p>
+                    <a href="entrada.html" class="boton boton--primario">Leer Entrada</a>
+                </div>
+            </article>
+
+        </main>
+
+        <aside class="sidebar">
+            <h3>Escenario2</h3>
+
+            <ul class="cursos no-padding">
+                <li class="widget-curso">
+                    <h4 class="no-margin">Vectores paralelos y ortogonales</h4>
+                    <p class="widget-curso__label">Definición 1.
+                        <span class="widget-curso__info">Los vectores \( x \) \( \text{y}\) \( y\)
+                            \( \text{son ortogonales} \) \( x\bot y \) \( \text{si forman un ángulo de 90°.} \) </span>
+                    </p>
+
+                    <p class="widget-curso__label">Definición 2.
+                        <span class="widget-curso__info">Los vectores \( x \) \( \text{y}\) \( y,\)
+                            \( \text{son paralelos} \) \( x\parallel y \) \( \text{ si el ángulo entre ellos es} \) \( 0
+                            \) \( \text{ó} \) \( 180 \)
+                        </span>
+                    </p>
+
+                    <p class="widget-curso__label">Teorema 1.
+                        <span class="widget-curso__info">Los vectores \( x \) \( \text{y}\) \( y,\) son ortogonales
+                            \( x\bot y \) \( \text{ si} \) \( x\cdot y=0 \) </span>
+                    </p>
+
+                    <p class="widget-curso__label">Teorema 2.
+                        <span class="widget-curso__info">Los vectores \( x \) \( \text{y}\) \( y,\)
+                            \( \text{son paralelos} \) \( x\parallel y \) \( \text{ si} \) \( v= \lambda y. \) </span>
+                    </p>
+                    <!--  <a href="entrada.html" class="boton boton--secundario">Más Información sobre nuestros cursos</a>  -->
+
+
+                </li>
+            </ul>
+            <div class="contentbutton">
+                <a href="#" class="modern-button">Consulta la teoría completa</a>
+            </div>
+        </aside>
+    </div>
+
+    <!--  Escenario 3. Ordenar la demostración-->
+    <div class="contenedor contenido-principal">
+
+        <main class="blog">
+
+
+            <article class="entrada">
+
+                <h3>Actividad 3. Ordena la prueba de la proposición</h3>
+
+                <p class="no-margin cortartext"> \( \text{Sea} \) \(\theta \) \( \text{el ángulo entre los vectores} \)
+                    \( x
+                    \) \(
+                    \text{y}\) \( y,\) \( \text{y sea} \) \( y\bot z .\)
+                </p>
+
+                <p>Arrastra las respuestas a las casillas vacías de tal modo que la implicación se cumpla.</p>
+
+                <div class="entrada__imagen">
+                    <picture>
+                        <source loading="lazy" srcset="img/galaxia.webp" type="image/webp">
+                        <img loading="lazy" src="img/galaxia.jpg" alt="imagen blog">
+                    </picture>
+                </div>
+
+                <div class="entrada__contenido">
+                    <h4 class="no-margin">Escenario de ordenación</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate, rerum, reprehenderit
+                        consequatur perferendis officia, vitae fuga animi temporibus itaque atque reiciendis ea
+                        excepturi! Molestias aperiam fugiat deleniti laudantium atque numquam?</p>
+                    <a href="entrada.html" class="boton boton--primario">Leer Entrada</a>
+                </div>
+            </article>
+        </main>
+
+        <aside class="sidebar">
+            <h3>Escenario3</h3>
+
+            <ul class="cursos no-padding">
+                <li class="widget-curso">
+                    <h4 class="no-margin">Vectores paralelos y ortogonales</h4>
+                    <p class="widget-curso__label">Definición 1.
+                        <span class="widget-curso__info">Los vectores \( x \) \( \text{y}\) \( y\)
+                            \( \text{son ortogonales} \) \( x\bot y \) \( \text{si forman un ángulo de 90°.} \) </span>
+                    </p>
+
+                    <p class="widget-curso__label">Definición 2.
+                        <span class="widget-curso__info">Los vectores \( x \) \( \text{y}\) \( y,\)
+                            \( \text{son paralelos} \) \( x\parallel y \) \( \text{ si el ángulo entre ellos es} \) \( 0
+                            \) \( \text{ó} \) \( 180 \)
+                        </span>
+                    </p>
+
+                    <p class="widget-curso__label">Teorema 1.
+                        <span class="widget-curso__info">Los vectores \( x \) \( \text{y}\) \( y,\) son ortogonales
+                            \( x\bot y \) \( \text{ si} \) \( x\cdot y=0 \) </span>
+                    </p>
+
+                    <p class="widget-curso__label">Teorema 2.
+                        <span class="widget-curso__info">Los vectores \( x \) \( \text{y}\) \( y,\)
+                            \( \text{son paralelos} \) \( x\parallel y \) \( \text{ si} \) \( v= \lambda y. \) </span>
+                    </p>
+                    <!--  <a href="entrada.html" class="boton boton--secundario">Más Información sobre nuestros cursos</a>  -->
+
+
+                </li>
+            </ul>
+            <div class="contentbutton">
+                <a href="#" class="modern-button">Consulta la teoría completa</a>
+            </div>
+        </aside>
+    </div>
+    <!--  Escenario 4. Ordenar validar flechas-->
+    <div class="contenedor contenido-principal">
+
+        <main class="blog">
+            <article class="entrada">
+
+
+                <h3>Actividad 1. Implicaciones correctas</h3>
+                <p class="no-margin cortartext"> \( \text{Sea} \) \(\ f \) \( \text{una función continua en} \) \(
+                    \left[
+                    a,b \right] \)
+                    \( \text{y derivable en}\) \( \left( a,b \right) \) \( \text{.} \)
+                </p>
+                <p>Haz click en la flechas de tal modo que la implicación sea correcta.</p>
+
+
+
+
+
+                <section class="entrada__imagen contenedor2">
+
+                    <div class="grid-container linea-divisora">
+
+                        <div id="posicion1" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+                            <span>\( f^{''}\left( x \right)\gt 0 \)</span>
+
+                        </div>
+
+
+                        <div class="content-flecha">
+                            <div id="flecha1" onclick="selecteFlecha('flecha1')"
+                                class="flecha content-flecha-columm flecha-responsive1">
+                                <div class="flecha-up"></div>
+                                <div class="flecha-up-linea"></div>
+                            </div>
+                        </div>
+
+
+                        <div id="posicion2" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+                            <span> \( f \) \( \text{decrece y luego crece} \)</span>
+                        </div>
+
+                        <div class="content-flecha">
+                            <div id="flecha2" onclick="selecteFlecha('flecha2')"
+                                class="flecha content-flecha-columm flecha-responsive2">
+                                <div class="flecha-up"></div>
+                                <div class="flecha-up-linea"></div>
+                            </div>
+                        </div>
+
+
+                        <div class="content-flecha content-flecha-row flecha-responsive3">
+                            <div id="flecha3" onclick="selecteFlecha('flecha3')" class="flecha">
+                                <div class="flecha-up"></div>
+                                <div class="flecha-up-linea"></div>
+                            </div>
+                        </div>
+
+                        <div class="content-flecha">
+                            <div id="flecha4" onclick="selecteFlecha('flecha4')"
+                                class="flecha content-flecha-columm flecha-responsive4">
+                                <div class="flecha-up"></div>
+                                <div class="flecha-up-linea"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <span> \( f \) \( \text{tiene un mínimo local} \)</span>
+                        </div>
+
+
+                        <div id="posicion3" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+
+                        </div>
+
+
+                        <div id="posicion4" ondrop="drop(event)" ondragover="allowDrop(event)">
+                            <span> \( f \) \( \text{tiene un punto de inflexión} \)</span>
+                        </div>
+
+
+                    </div>
+
+
+                </section>
+
+
+                <section class="contenedor2">
+
+                    <div class="button-container">
+
+                        <button class="modern-button modern-button:hover" onclick="validarFlechas()">Validar
+                            respuestas</button>
+
+
+
+                        <a class="modern-button modern-button:hover modern-button-a" href="./implicaciones.html">
+                            <span>Reinicio</span>
+                        </a>
+
+                    </div>
+
+
+                </section>
+
+                <br>
+                <br>
+
+                <a href="#" class="boton boton--primario">Demostración interactiva</a>
+
+
+            </article>
+
+
+        </main>
+
+        <aside class="sidebar">
+            <h3>Un poco de teoría</h3>
+
+            <ul class="cursos no-padding">
+                <li class="widget-curso">
+                    <h4 class="no-margin">Vectores paralelos y ortogonales</h4>
+                    <p class="widget-curso__label">Definición 1.
+                        <span class="widget-curso__info">Los vectores \( x \) \( \text{y}\) \( y\)
+                            \( \text{son ortogonales} \) \( x\bot y \) \( \text{si forman un ángulo de 90°.} \) </span>
+                    </p>
+
+                    <p class="widget-curso__label">Definición 2.
+                        <span class="widget-curso__info">Los vectores \( x \) \( \text{y}\) \( y,\)
+                            \( \text{son paralelos} \) \( x\parallel y \) \( \text{ si el ángulo entre ellos es} \) \( 0
+                            \) \( \text{ó} \) \( 180 \)
+                        </span>
+                    </p>
+
+                    <p class="widget-curso__label">Teorema 1.
+                        <span class="widget-curso__info">Los vectores \( x \) \( \text{y}\) \( y,\) son ortogonales
+                            \( x\bot y \) \( \text{ si} \) \( x\cdot y=0 \) </span>
+                    </p>
+
+                    <p class="widget-curso__label">Teorema 2.
+                        <span class="widget-curso__info">Los vectores \( x \) \( \text{y}\) \( y,\)
+                            \( \text{son paralelos} \) \( x\parallel y \) \( \text{ si} \) \( v= \lambda y. \) </span>
+                    </p>
+                    <!--  <a href="entrada.html" class="boton boton--secundario">Más Información sobre nuestros cursos</a>  -->
+
+
+                </li>
+            </ul>
+            <div class="contentbutton">
+                <a href="#" class="modern-button">Consulta la teoría completa</a>
+            </div>
+        </aside>
+    </div>
+
+
+
+
+
+    <footer class="footer">
+        <div class="contenedor">
+            <div class="barra">
+                <a class="logo" href="index.html">
+                    <h1 class="logo__nombre no-margin centrar-texto">Blog<span class="logo__bold">DeMatemáticas</span>
+                    </h1>
+                </a>
+
+                <nav class="navegacion">
+                    <a href="nosotros.html" class="navegacion__enlace">Nosotros</a>
+                    <a href="desafios.html" class="navegacion__enlace">Desafios</a>
+                    <a href="contacto.html" class="navegacion__enlace">Contacto</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/modernizr.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="js/implicaciones.js"></script>
+    <script src="js/implicacionesflechas.js"></script>
+    <script src="js/parrafo.js"></script>
+    <script id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+</body>
+
+</html>
