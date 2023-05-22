@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="box" style="width: 500px; height: 500px;">
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsxgraph/1.2.0/jsxgraphcore.js"></script>
+    <script>
+
+        var board = JXG.JSXGraph.initBoard('box', { boundingbox: [-4, 6, 6, -4], axis: true });
+        board.suspendUpdate();
+
+        var f = function (x) {
+            if (x < 1) {
+                return 0.5 * x * x;
+            } else {
+                return x + 1;
+            }
+        };
+        var graph = board.create('functiongraph', [f], { strokeColor: '#0000ff' });
+
+        var s = board.create('slider', [[0, -1], [4, -1], [0, 1, 1]], { name: '&delta;' });
+
+        var x1 = board.create('glider', [-2, 0, board.defaultAxes.x], { name: 'a' });
+        board.suspendUpdate();
+        var x2 = board.create('point', [function () { return x1.X() - s.Value(); }, 0], { size: 2, face: '[]', name: ' ' });
+        var x3 = board.create('point', [function () { return x1.X() + s.Value(); }, 0], { size: 2, face: '[]', name: ' ' });
+        var y1 = board.create('point', [function () { return x1.X(); }, function () { return f(x1.X()); }], { size: 2, face: '[]', name: 'f(a)' });
+        var y2 = board.create('point', [function () { return x2.X(); }, function () { return f(x2.X()); }], { size: 2, face: '[]', name: ' ' });
+        var y3 = board.create('point', [function () { return x3.X(); }, function () { return f(x3.X()); }], { size: 2, face: '[]', name: ' ' });
+        var v1 = board.create('segment', [x1, y1], { strokeColor: 'gray', dash: 2, strokeWidth: 1 });
+        var v2 = board.create('line', [x2, y2], { strokeColor: 'gray', dash: 2, strokeWidth: 1 });
+        var v3 = board.create('line', [x3, y3], { strokeColor: 'gray', dash: 2, strokeWidth: 1 });
+
+        var h1 = board.create('curve', [function (t) { return t }, function (t) { return y1.Y(); }], { strokeColor: 'gray', dash: 2, strokeWidth: 1 });
+        var h2 = board.create('curve', [function (t) { return t }, function (t) { return y2.Y(); }], { strokeColor: 'gray', dash: 2, strokeWidth: 1 });
+        var h3 = board.create('curve', [function (t) { return t }, function (t) { return y3.Y(); }], { strokeColor: 'gray', dash: 2, strokeWidth: 1 });
+
+        var txt = board.create('text', [4.2, -1.5, function () {
+            return '&epsilon; = ' + Math.max(Math.abs(y2.Y() - y1.Y()), Math.abs(y1.Y() - y3.Y())).toFixed(5);
+        }], { strokeColor: 'blue' });
+        board.unsuspendUpdate();
+
+    </script>
+
+</body>
+
+</html>

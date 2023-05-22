@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="box" style="width: 800px; height: 800px;">
+    </div>
+    <button onclick="validar()">Validar</button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsxgraph/1.2.0/jsxgraphcore.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+
+        let resultMaximo = [0, 0];
+        let resultMini = [0, 0.69];
+
+        var board = JXG.JSXGraph.initBoard('box', { boundingbox: [-2.3, 2.3, 2.3, -2.3], axis: true });
+        var f = function (x) {
+            return (x * x * x) - (x * x);
+        };
+        var graph = board.create('functiongraph', [f], { strokeColor: '#0000ff' });
+        var s1 = board.create('slider', [[0, -0.3], [2, -0.3], [-1.3, 1, 1.5]], { name: '&delta;' });
+        var s2 = board.create('slider', [[0, -0.8], [2, -0.8], [-1.3, 1, 1.5]], { name: '&delta;' });
+        var p1 = board.create('point', [
+            function () { return s1.Value(); },
+            function () { return f(s1.Value()); }
+        ], { trace: false, size: 10 }
+        )
+        var p2 = board.create('point', [
+            function () { return s2.Value(); },
+            function () { return f(s2.Value()); }
+        ], { trace: false, size: 10 }
+        )
+
+
+        function validar() {
+            console.log('coordenadas P1: ', p1.X(), p1.Y())
+            console.log('coordenadas P2: ', p1.X(), p1.Y())
+            if (p1.X() === resultMaximo[0] && p1.Y() === resultMaximo[1] && p2.X() === resultMini[0] && p1.Y() === resultMini[1]) {
+                swal({
+                    title: "Muy bien!",
+                    text: "el numero es correcto",
+                    icon: "success"
+                });
+            } else {
+                swal({
+                    title: "Muy mal!",
+                    text: "el numero no es correcto",
+                    icon: "error"
+                });
+            }
+        }
+
+
+    </script>
+
+</body>
+
+</html>
