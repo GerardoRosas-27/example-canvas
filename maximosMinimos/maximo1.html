@@ -16,8 +16,8 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script>
 
-        let resultMaximo = [0, 0];
-        let resultMini = [0, 0.69];
+        let resultMaximo = [-0.10, 0.10];
+        let resultMini = [0.64, 0.68];
 
         var board = JXG.JSXGraph.initBoard('box', { boundingbox: [-2.3, 2.3, 2.3, -2.3], axis: true });
         var f = function (x) {
@@ -39,9 +39,13 @@
 
 
         function validar() {
-            console.log('coordenadas P1: ', p1.X(), p1.Y())
-            console.log('coordenadas P2: ', p1.X(), p1.Y())
-            if (p1.X() === resultMaximo[0] && p1.Y() === resultMaximo[1] && p2.X() === resultMini[0] && p1.Y() === resultMini[1]) {
+ 
+            let p1x = p1.X().toFixed(2);
+            let p2x = p2.X().toFixed(2);
+            console.log('coordenadas P1: ', p1x)
+            console.log('coordenadas P2: ', p2x)
+
+            if ((p1x >= resultMaximo[0] && p1x <= resultMaximo[1]) && (p2x >= resultMini[0] && p2x <= resultMini[1])) {
                 swal({
                     title: "Muy bien!",
                     text: "el numero es correcto",

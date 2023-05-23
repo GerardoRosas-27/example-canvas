@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="box" style="width: 800px; height: 800px;">
+    </div>
+    <button onclick="validar()">Validar</button>
+    <input id="inputStar1" type="text" onchange="obtenerInputs()">
+    <input id="inputEnd1" type="text" onchange="obtenerInputs()">
+    <input id="inputStar2" type="text" onchange="obtenerInputs()">
+    <input id="inputEnd2" type="text" onchange="obtenerInputs()">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsxgraph/1.2.0/jsxgraphcore.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+
+        let function1 = [-1.5, -0.7];
+        let function2 = [0.0, 0.7];
+
+        var board = JXG.JSXGraph.initBoard('box', { boundingbox: [-3, 3, 3, -3], axis: true });
+        var f = function (x) {
+            return (x * x * x * x) - (x * x);
+        };
+
+        var startLimt = -1.5; // Punto inicial
+        var endLimit = 1.5; // Punto final
+
+        var start = -1; // Punto inicial
+        var end = 1; // Punto final
+        var start1 = -1; // Punto inicial
+        var end1 = 1; // Punto final
+
+        var fModifiedLimit = function (x) {
+            if (x >= startLimt && x <= endLimit) {
+                return f(x);
+            } else {
+                return NaN; // Devolver NaN fuera del rango para que no se trace la curva
+            }
+        };
+
+
+        var fModified = function (x) {
+            if (x >= start && x <= end) {
+                return f(x);
+            } else {
+                return NaN; // Devolver NaN fuera del rango para que no se trace la curva
+            }
+        };
+
+        var fModified2 = function (x) {
+            if (x >= start1 && x <= end1) {
+                return f(x);
+            } else {
+                return NaN; // Devolver NaN fuera del rango para que no se trace la curva
+            }
+        };
+
+
+        var graph = board.create('functiongraph', [fModifiedLimit], { strokeColor: '#0000ff', strokeWidth: 3 });
+        var graph1 = board.create('functiongraph', [fModified], { strokeColor: 'rgb(255, 42, 42)', strokeWidth: 3 });
+        var graph2 = board.create('functiongraph', [fModified2], { strokeColor: 'rgb(42, 255, 110)', strokeWidth: 3 });
+
+        var s1 = board.create('slider', [[0, -1], [2, -1], [startLimt, start, endLimit]], {
+            name: '&delta;'
+        });
+        var s2 = board.create('slider', [[0, -1.2], [2, -1.2], [startLimt, end, endLimit]], {
+            name: '&delta;'
+        });
+        var s3 = board.create('slider', [[0, -1.5], [2, -1.5], [startLimt, start1, endLimit]], {
+            name: '&delta;'
+        });
+        var s4 = board.create('slider', [[0, -1.7], [2, -1.7], [startLimt, end1, endLimit]], {
+            name: '&delta;'
+        });
+        var p1 = board.create('point', [
+            function () { return s1.Value(); },
+            function () { return f(s1.Value()); }
+        ], { trace: false, size: 10 }
+        )
+        var p2 = board.create('point', [
+            function () { return s2.Value(); },
+            function () { return f(s2.Value()); }
+        ], { trace: false, size: 10 }
+        )
+        var p3 = board.create('point', [
+            function () { return s3.Value(); },
+            function () { return f(s3.Value()); }
+        ], { trace: false, size: 10, color: 'rgb(42, 255, 110)' }
+        )
+        var p4 = board.create('point', [
+            function () { return s4.Value(); },
+            function () { return f(s4.Value()); }
+        ], { trace: false, size: 10, color: 'rgb(42, 255, 110)' }
+        )
+
+
+        s1.on('drag', function () {
+            console.log("entra al evento slider x1P:", s1.Value());
+            start = s1.Value(); // Actualizar el valor de 'start' cuando se cambie el valor del slider
+            graph1.updateCurve();
+        });
+
+        s2.on('drag', function () {
+            console.log("entra al evento slider x1P:", s2.Value());
+            end = s2.Value(); // Actualizar el valor de 'start' cuando se cambie el valor del slider
+            graph1.updateCurve();
+        });
+        s3.on('drag', function () {
+            console.log("entra al evento slider x1P:", s3.Value());
+            start1 = s3.Value(); // Actualizar el valor de 'start' cuando se cambie el valor del slider
+            graph2.updateCurve();
+        });
+
+        s4.on('drag', function () {
+            console.log("entra al evento slider x1P:", s4.Value());
+            end1 = s4.Value(); // Actualizar el valor de 'start' cuando se cambie el valor del slider
+            graph2.updateCurve();
+        });
+
+
+
+        function disabledSlider(x1, x2) {
+            //let disabled = disabledSlider(s1.Value(), s2.Value())
+            //s1.setAttribute({ fixed: !disabled.s1 });
+            if (x1 <= x2) {
+                return { "s1": true, "s2": true }
+            } else {
+                return { "s1": false, "s2": true }
+            }
+        }
+
+
+        function obtenerInputs() {
+            let inputStar1 = parseFloat(document.getElementById('inputStar1').value);
+            let inputEnd1 = parseFloat(document.getElementById('inputEnd1').value);
+
+            let inputStar2 = parseFloat(document.getElementById('inputStar2').value);
+            let inputEnd2 = parseFloat(document.getElementById('inputEnd2').value);
+
+
+            console.log('coordenadas P1: ', inputStar1)
+            console.log('coordenadas P2: ', inputEnd1)
+            console.log('coordenadas P3: ', inputStar2)
+            console.log('coordenadas P4: ', inputEnd2)
+
+          //actualizar grafica
+
+
+        }
+
+
+        function validar() {
+
+            let inputStar1 = parseFloat(document.getElementById('inputStar1').value).toFixed(1);
+            let inputEnd1 = parseFloat(document.getElementById('inputEnd1').value).toFixed(1);
+
+            let inputStar2 = parseFloat(document.getElementById('inputStar2').value).toFixed(0);
+            let inputEnd2 = parseFloat(document.getElementById('inputEnd2').value).toFixed(1);
+
+            let p1x = inputStar1;
+            let p2x = inputEnd1;
+            let p3x = inputStar2;
+            let p4x = inputEnd2;
+
+            console.log('coordenadas P1: ', p1x, function1[0])
+            console.log('coordenadas P2: ', p2x, function1[1])
+            console.log('coordenadas P3: ', p3x, parseFloat(function2[0]))
+            console.log('coordenadas P4: ', p4x, function2[1])
+
+            if (p1x === parseFloat(function1[0]) && p2x === parseFloat(function1[1]) && p3x === parseFloat(function2[0]) && p4x === parseFloat(function2[1])) {
+                swal({
+                    title: "Muy bien!",
+                    text: "el numero es correcto",
+                    icon: "success"
+                });
+            } else {
+                swal({
+                    title: "Muy mal!",
+                    text: "el numero no es correcto",
+                    icon: "error"
+                });
+            }
+        }
+
+
+
+
+    </script>
+
+</body>
+
+</html>
