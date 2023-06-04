@@ -3,111 +3,270 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maximo y minimo locales</title>
+    <title>Blog De Matemáticas</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <div id="box" style="width: 650px; height: 650px;">
+
+    <header class="header">
+
+
+        <section class="header-transparencia">
+
+            <div class="contenedor">
+
+                <div class="barra">
+                    <a class="logo" href="index.html">
+                        <h1 class="logo__nombre no-margin centrar-texto">Blog<span
+                                class="logo__bold">DeMatemáticas</span>
+                        </h1>
+                    </a>
+
+                    <nav class="navegacion">
+                        <a href="nosotros.html" class="navegacion__enlace">Nosotros</a>
+                        <a href="desafios.html" class="navegacion__enlace">Desafios</a>
+                        <a href="contacto.html" class="navegacion__enlace">Contacto</a>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="header__texto ">
+                <h2 class="no-margin">Exposición COA para definitividad "Cálculo Diferencial e Integral I"</h2>
+                <h4 class="no-margin">Facultad de Ciencias, UNAM</h4>
+                <p class="no-margin"> © Dr. Gabriel Herrera</p>
+                </div>
+
+        </section>
+    </header>
+
+    <div class="contenedor contenido-principal">
+
+        <main class="blog">
+
+            <article class="entrada ">
+
+                <h3> Actividad 5. Teorema del valor medio </h3>
+
+                <p class="no-margin cortartext">
+                    <p> \( \text{Sea} \) \(f:\left[ a,b \right]\to \mathrm{R} \) \( \text{una función continua en} \) \( \left[ a,b \right] \) 
+                        \( \text{y derivable en } \) \( \left( a,b \right). \) 
+                        \( \text{Entonces, existe un} \) \( \ c \in (a,b) \) \( \text{tal que} \)
+                        \( f'(c)= \frac{f(b)-f(a)}{b-a}. \) 
+                    </p>
+                </p>
+
+                <p class="no-margin cortartext"> 
+                    \( \text{El propósito de este ejercicio es que puedas interpretar de manera geométrica el TVM.} \)
+                </p>
+
+                <p> <b>Mueve los deslizadores D y E para formar un intervalo cerrado. Posteriormente, mueve el deslizador omega para encontrar un punto en el intervalo que formaste que cumpla con el TVM.  las respuestas a las casillas vacías de tal modo que la implicación se cumpla.</b></p>
+
+                <br>
+                <section class="contenedor2 ">
+                    <!--   <hr>   -->
+                    <h3 class="centrar-texto">Teorema del valor medio P</h3>
+                    <div id="box" style="width: 700px; height: 700px;">
+                    </div>
+                    <br>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsxgraph/1.2.0/jsxgraphcore.js"></script>
+                    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+                    <script>
+                        // las soluciones son x=0 y x=0.66
+
+                        var board = JXG.JSXGraph.initBoard('box', { boundingbox: [-2.3, 2.3, 2.3, -2.3], axis: true });
+                        var f = function (x) {
+                            return (x * x * x) - x + .5;
+                        };
+                        var graph = board.create('functiongraph', [f], { strokeColor: '#0000ff', strokeWidth: 2 });
+
+                        var s1 = board.create('slider', [[-1, -1.5], [2, -1.5], [-1.5, 1, 1.5]], { name: 'D' });
+                        var s2 = board.create('slider', [[-1, -1.8], [2, -1.8], [-1.5, 0.5, 1.5]], { name: 'E' });
+                        var s3 = board.create('slider', [[-1, -2.1], [2, -2.1], [-1.5, 1, 1.5]], { name: '&omega;' });
+
+                        //var c1 = board.create('curve', [function (t) { return t }, function (t) { return t * t * t; }]);
+                        var g1 = board.create('glider', [
+                            function () { return s3.Value(); },
+                            function () { return f(s3.Value()); },
+                            graph], { trace: false, size: 3, Color: 'red' });
+                        var t1 = board.create('tangent', [g1], { trace: false, size: 4, strokeColor: 'red', color: 'orange', strokeWidth: 3 });
+
+                        var p1 = board.create('point', [
+                            function () { return s1.Value(); },
+                            function () { return f(s1.Value()); }
+                        ], { trace: false, size: 4, strokeColor: 'violet', color: 'violet' }
+                        )
+                        var p2 = board.create('point', [
+                            function () { return s2.Value(); },
+                            function () { return f(s2.Value()); }
+                        ], { trace: false, size: 4, Color: 'violet' }
+                        )
+
+                        var p3 = board.create('point', [
+                            function () { return s1.Value(); },
+                            0
+                        ], {  name: 'D', trace: false, size: 2, strokeColor: 'violet', color: 'green', face: '[]' }
+                        )
+                        var p4 = board.create('point', [
+                            function () { return s2.Value(); },
+                            0
+                        ], { name: 'E', trace: false, size: 2, Color: 'green', face: '[]' }
+                        )
+
+                        var p5 = board.create('point', [
+                            function () { return s3.Value(); },
+                            0
+                        ], { name: '&omega;', trace: false, size: 3, Color: 'red' }
+                        )
+
+                        var line = board.create('segment', [p3, p4], { trace: false, size: 4, strokeColor: 'green', dash: 0, strokeWidth: 5 })
+
+                        var lineVertical = board.create('segment', [g1, p5], { trace: false, size: 4, strokeColor: 'red', dash: 2, strokeWidth: 2 })
+
+
+                        var l = board.create('line', [p1, p2], { trace: false, size: 4, strokeColor: 'violet', dash: 9, strokeWidth: 3 })
+
+                        s3.on('drag', function () {
+                            console.log("entra al evento slider3:", t1.getSlope());
+                            console.log("line:", l.getSlope());
+
+                        });
+
+                        function validar() {
+                            let p1x = p1.X().toFixed(2);
+                            let p2x = p2.X().toFixed(2);
+                            let p1y = p1.Y().toFixed(2);
+                            let p2y = p2.Y().toFixed(2);
+                            console.log('abscisa P1: ', p1x)
+                            console.log('abscisa P2: ', p2x)
+                            console.log('ordenada P1: ', p1y)
+                            console.log('ordenadas P2: ', p2y)
+                            let pendiente = parseFloat(t1.getSlope().toFixed(1))
+                            let m1 = parseFloat(((p2y - p1y) / (p2x - p1x)).toFixed(1));
+                            console.log("La pendiente m1 es: ", pendiente, m1);
+
+                            if (pendiente === m1) {
+                                swal({
+                                    title: "Muy bien!",
+                                    text: "Las rectas son paralelas",
+                                    icon: "success"
+                                });
+                            } else {
+                                swal({
+                                    title: "Algo anda mal!",
+                                    text: "Las rectas no son paralelas",
+                                    icon: "error"
+                                });
+                            }
+                        }
+
+                    </script>
+
+                    <div class="button-container">
+
+                        <button class="modern-button modern-button:hover" onclick="validar()">Validar</button>
+
+                        <a class="modern-button modern-button:hover modern-button-a" href="./tvm.html"><span>Reinicio</span> </a>
+
+                    </div>
+
+                </section>
+
+                <br>
+                <a href="#" class="boton boton--primario">Criterio de la primera derivada</a>
+
+                <h4> Actividad 6. Aplicación del TVM</h4>
+
+                <p class="no-margin cortartext">
+                    <p> \( \text{Sea} \) \(f:\left[ a,b \right]\to \mathrm{R} \) \( \text{una función continua en} \) \( \left[ a,b \right] \) 
+                        \( \text{y derivable en } \) \( \left( a,b \right). \) 
+                        \( \text{Entonces, existe un} \) \( \ c \in (a,b) \) \( \text{tal que} \)
+                        \( f'(c)= \frac{f(b)-f(a)}{b-a}. \) 
+                    </p>
+                </p>
+
+                <p>Una patrulla de caminos acaba de detener a un coche deportivo que corría en un autopista en línea recta. El policía argumenta que el conductor recorrió \( s(t) \) kilómetros en \( t \) horas. Como la función de posición \( s(t) \) es diferenciable
+                   en todo instante \( t, \) según el policía, y como el auto recorrió 271 kilómetros en 3 horas, según los tickets de las casetas. Entonces hubo un instante en el que el conductor rebazó el límite de velocidad permitido (90 km/h) y por tanto debe ser multado. ¿Tiene razón el policía?</p>
+
+            </article>
+
+        </main>
+
+        <aside class="sidebar">
+            <h3>Teorema del valor medio</h3>
+
+            <ul class="cursos no-padding">
+                <li class="widget-curso">
+                    <h4 class="no-margin">Comentarios</h4>
+
+                    <p class="widget-curso__label">\( \text{El TVM es una consecuencia} \) \( \text{inmediata del teorema de Rolle,} \)
+                        \( \text{el cual a su vez es una consecuencia}\) 
+                        \( \text{del teorema de Weierstass y la } \) 
+                        \( \text{Proposición 1.} \)
+                        <span class="widget-curso__info"></span>
+                    </p>
+
+
+                    <p class="widget-curso__label"> </p>
+
+                    <p class="widget-curso__label"> Teorema (Weierstrass)
+                        <span class="widget-curso__info">  \( \text{Sea} \) \(f:\left[ a,b \right]\to \mathrm{R} \) \( \text{una función continua
+                            en } \)
+                            \( [ a,b], \) \( \text{entonces} \) \(f\)
+                            \( \text{alcanza su máximo y su mínimo en} \) \( [a,b].\) 
+                        </span>
+                    </p>
+                        
+                    <p class="widget-curso__label">Proposición 1.
+                        <span class="widget-curso__info"> \( \text{Sea} \) \(f:\left[ a,b \right]\to \mathrm{R} \) 
+                            \( \text{y} \) \( \ p \in (a,b). \) \( \text{Si} \) \( f \) \( \text{alcanza un valor máximo local} \)
+                            \( \text{(o mínimo local) en} \) \( p \) \( \text{y} \)  \( f'(p) \) \( \text{existe, entonces} \) \( f'(p)=0. \) 
+                        </span>
+                    </p>
+
+                    <br>
+
+                    <a href="monotonia.html" class="boton boton--secundario">Más teoría</a>
+                </li>
+
+               
+            </ul>
+        </aside>
+
+
     </div>
-    <button onclick="validar()">Validar</button>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsxgraph/1.2.0/jsxgraphcore.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script>
 
-        // las soluciones son x=0 y x=0.66
+    <footer class="footer">
+        <div class="contenedor">
+            <div class="barra">
+                <a class="logo" href="index.html">
+                    <h1 class="logo__nombre no-margin centrar-texto">Blog<span class="logo__bold">DeMatemáticas</span>
+                    </h1>
+                </a>
 
-        let resultMaximo = [-0.10, 0.10];
-        let resultMini = [0.64, 0.68];
+                <nav class="navegacion">
+                    <a href="nosotros.html" class="navegacion__enlace">Nosotros</a>
+                    <a href="desafios.html" class="navegacion__enlace">Desafios</a>
+                    <a href="contacto.html" class="navegacion__enlace">Contacto</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
 
-        var board = JXG.JSXGraph.initBoard('box', { boundingbox: [-2.3, 2.3, 2.3, -2.3], axis: true });
-        var f = function (x) {
-            return (x * x * x) - x;
-        };
-        var graph = board.create('functiongraph', [f], { strokeColor: '#0000ff', strokeWidth: 2 });
+    <script src="js/modernizr.js"></script>
 
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script
+        type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath:  [['$','$'],['\\(','\\)']]}});</script>
 
+    <script src="js/jquery.2.2.4.js"></script>
 
+    <script id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
-        var s1 = board.create('slider', [[-1, -1], [2, -1], [-1.3, 1, 1.5]], { name: '&alpha;' });
-        var s2 = board.create('slider', [[-1, -1.3], [2, -1.3], [-1.3, 0.5, 1.5]], { name: '&beta;' });
-        var s3 = board.create('slider', [[-1, -1.6], [2, -1.6], [-1.3, 1, 1.5]], { name: '&alpha;' });
-
-        //var c1 = board.create('curve', [function (t) { return t }, function (t) { return t * t * t; }]);
-        var g1 = board.create('glider', [
-            function () { return s3.Value(); },
-            function () { return f(s3.Value()); },
-            graph]);
-        var t1 = board.create('tangent', [g1]);
-
-        var p1 = board.create('point', [
-            function () { return s1.Value(); },
-            function () { return f(s1.Value()); }
-        ], { trace: false, size: 4, strokeColor: 'violet', color: 'violet' }
-        )
-        var p2 = board.create('point', [
-            function () { return s2.Value(); },
-            function () { return f(s2.Value()); }
-        ], { trace: false, size: 4, Color: 'violet' }
-        )
-
-        var p3 = board.create('point', [
-            function () { return s1.Value(); },
-            0
-        ], { trace: false, size: 4, strokeColor: 'violet', color: 'violet' }
-        )
-        var p4 = board.create('point', [
-            function () { return s2.Value(); },
-            0
-        ], { trace: false, size: 4, Color: 'violet' }
-        )
-
-
-        var line = board.create('line', [p3, p4], { trace: false, size: 4, strokeColor: 'red', dash: 2, strokeWidth: 2 })
-
-        var l = board.create('line', [p1, p2], { trace: false, size: 4, strokeColor: 'violet', dash: 2, strokeWidth: 2 })
-
-
-        s3.on('drag', function () {
-            console.log("entra al evento slider3:", t1.getSlope());
-            console.log("line:", l.getSlope());
-
-        });
-
-
-
-        function validar() {
-
-            let p1x = p1.X().toFixed(2);
-            let p2x = p2.X().toFixed(2);
-            let p1y = p1.Y().toFixed(2);
-            let p2y = p2.Y().toFixed(2);
-            console.log('abscisa P1: ', p1x)
-            console.log('abscisa P2: ', p2x)
-            console.log('ordenada P1: ', p1y)
-            console.log('ordenadas P2: ', p2y)
-            let pendiente = parseFloat(t1.getSlope().toFixed(1))
-            let m1 = parseFloat(((p2y - p1y) / (p2x - p1x)).toFixed(1));
-            console.log("La pendiente m1 es: ", pendiente, m1);
-
-            if (pendiente === m1) {
-                swal({
-                    title: "Muy bien!",
-                    text: "el numero es correcto",
-                    icon: "success"
-                });
-            } else {
-                swal({
-                    title: "Algo anda mal!",
-                    text: "el numero no es correcto",
-                    icon: "error"
-                });
-            }
-        }
-
-
-    </script>
 
 </body>
 
