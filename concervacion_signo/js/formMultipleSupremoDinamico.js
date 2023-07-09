@@ -1,10 +1,17 @@
+let btnSiguente = document.getElementById('btn-siguiente');
+let btnValidar = document.getElementById('btn-validar');
 
 document.addEventListener('DOMContentLoaded', function () {
     // Función a ejecutar cuando se haya cargado el HTML
     crearFormularioMultiple(1);
+
+    btnValidar.style.display = 'none';
+
+
 });
 
 let opcionesCorrectasSupremo = ["opcion1", "opcion2", "opcion3", "opcion4"];
+let opcionesPistasSupremo = ["Pista 1", "Pista 2", "Pista 3", "Pista 4"];
 let formulario = [
     ["pre 1", "ejemplo2", "opcion3", "opcion4"],
     ["opcion1", "opcion2", "opcion3", "opcion4"],
@@ -15,6 +22,12 @@ let formulario = [
 function preguntaSiguente(element) {
 
     let preguntaData = 1 + parseInt(element.getAttribute('data-pregunta'));
+
+    if (preguntaData === 5) {
+        btnSiguente.style.display = 'none';
+        btnValidar.style.display = 'block';
+    }
+
 
     console.log("pregunta: ", preguntaData);
     obtenerValores();
@@ -74,9 +87,12 @@ function validarForm() {
 
     let contador = 0;
     let valoresCorrectos = [];
+    let valoresIncorrectos = [];
     valoresSeleccionados.forEach(elemento => {
         if (opcionesCorrectasSupremo[contador] === elemento) {
             valoresCorrectos.push(elemento);
+        } else {
+            valoresIncorrectos.push({ "valor": elemento, "pista": opcionesPistasSupremo[contador] })
         }
         contador++;
     });
@@ -91,10 +107,25 @@ function validarForm() {
     } else {
         swal({
             title: "Incorrecto!",
-            text: "La función esta mal",
             icon: "error",
+            content: {
+                element: "div",
+                attributes: {
+                    innerHTML: '<h4>Preguntas incorrectas: </h4>, ' + getValoresIncorrectos(valoresIncorrectos)
+                }
+            }
         });
+        console.log("incorectas p: ", getValoresIncorrectos(valoresIncorrectos))
     }
 }
+
+function getValoresIncorrectos(valoresIncorrectos) {
+    let htmlP = "";
+    valoresIncorrectos.map(item => {
+        htmlP = htmlP + '<p style="color: rgb(205, 105, 105)">' + item.valor + ' | ' + item.pista + '</p>';
+    })
+    return htmlP
+}
+
 
 
