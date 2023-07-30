@@ -111,7 +111,7 @@ function validarFormConjunto() {
             content: {
                 element: "div",
                 attributes: {
-                    innerHTML: '<h4>Preguntas incorrectas: </h4>, ' + getValoresIncorrectos(valoresIncorrectosConjunto)
+                    innerHTML: '<h4>Preguntas incorrectas: </h4>, ' + getValoresIncorrectosConjunto(valoresIncorrectosConjunto)
                 }
             }
         });
