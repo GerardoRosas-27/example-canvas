@@ -4,7 +4,9 @@ let btnValidarSupremo = document.getElementById('btn-validar-Supremo');
 document.addEventListener('DOMContentLoaded', function () {
     // Función a ejecutar cuando se haya cargado el HTML
     crearFormularioMultipleSupremo(1);
+
     btnValidarSupremo.style.display = 'none';
+
 
 });
 
