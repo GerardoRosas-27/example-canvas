@@ -46,6 +46,168 @@
     <div class="contenedor contenido-principal">
       <main class="blog">
         <article class="entrada">
+          <h3 class="no-margin">Primera Actividad. </h3>
+
+          <br />
+
+          <p class="no-margin cortartext">
+            \( \text{El propósito de este ejercicio es que puedas identificar
+            los intervalos donde la función es decreciente.} \)
+          </p>
+
+          <p>
+            <b
+              >Mueve los deslizadores de tal modo que indiques los trozos de la
+              gráfica donde la función es estrictamente decreciente.</b
+            >
+          </p>
+
+          <br />
+
+          <section class="contenedor2">
+            <!--   <hr>   -->
+
+            <h3 class="centrar-texto">Eleccion Conjunto</h3>
+
+            <div id="box00" style="width: 650px; height: 650px"></div>
+
+            <br />
+
+            <div class="button-container"></div>
+          </section>
+
+          <br />
+          <p></p>
+
+          <a href="tvm.html" class="boton boton--primario"
+            >Teorema del valor medio</a
+          >
+        </article>
+      </main>
+
+      <aside class="sidebar">
+        <h3>Un poco de teoría</h3>
+
+        <ul class="cursos no-padding">
+          <li class="widget-curso">
+            <h4 class="no-margin">Funciones monótonas</h4>
+            <p class="widget-curso__label">
+              Definición 1.
+              <span class="widget-curso__info"
+                >Una función es creciente en un intervalo \( I, \) \(
+                \text{si}\) \( x_{1} \lt x_{2} \) \( \text{entonces} \) \(
+                f(x_{1}) \le f(x_{2}) \)
+              </span>
+            </p>
+
+            <p class="widget-curso__label">
+              Definición 2.
+              <span class="widget-curso__info"
+                >Una función es decreciente en un intervalo \( I, \) \(
+                \text{si}\) \( x_{1} \lt x_{2} \) \( \text{entonces} \) \(
+                f(x_{1}) \ge f(x_{2}) \)
+              </span>
+            </p>
+
+            <p class="widget-curso__label">
+              Definición 3.
+              <span class="widget-curso__info"
+                >Una función es estrictamente creciente en un intervalo \( I, \)
+                \( \text{si}\) \( x_{1} \lt x_{2} \) \( \text{entonces} \) \(
+                f(x_{1}) \lt f(x_{2}) \)
+              </span>
+            </p>
+
+            <p class="widget-curso__label">
+              Definición 4.
+              <span class="widget-curso__info"
+                >Una función es estrictamente decreciente en un intervalo \( I,
+                \) \( \text{si}\) \( x_{1} \lt x_{2} \) \( \text{entonces} \) \(
+                f(x_{1}) \gt f(x_{2}) \)
+              </span>
+            </p>
+
+            <!--  <a href="entrada.html" class="boton boton--secundario">Más Información sobre nuestros cursos</a>  -->
+          </li>
+        </ul>
+        <div class="contentbutton">
+          <a href="#" class="modern-button">Consulta la teoría completa</a>
+        </div>
+      </aside>
+    </div>
+    <div class="contenedor contenido-principal">
+      <main class="blog">
+        <article class="entrada">
+          <h3 class="no-margin">Cuestionario Conjuntos</h3>
+
+          <br />
+
+          <p class="no-margin cortartext">
+            \( \text{El propósito de este ejercicio es que puedas identificar
+            los intervalos donde la función es decreciente.} \)
+          </p>
+
+          <br />
+
+          <section class="contenedor2">
+            <!--   <hr>   -->
+
+            <h3 class="centrar-texto">Responde el cuestionario</h3>
+
+            <form id="formMultipleConjunto">
+              
+
+            </form>
+
+            <br />
+
+            <div class="button-container">
+              <button id="btn-siguiente-conjunto" data-pregunta="1" onclick="preguntaSiguenteConjunto(this)" class="modern-button modern-button:hover">Siguiente</button>
+              <button id="btn-validar-conjunto"
+                class="modern-button modern-button:hover"
+                onclick="validarFormConjunto()"
+              >
+                Validar
+              </button>
+            </div>
+          </section>
+
+          <br />
+          <p></p>
+
+          <a href="tvm.html" class="boton boton--primario"
+            >Teorema del valor medio</a
+          >
+        </article>
+      </main>
+
+      <aside class="sidebar">
+        <h3>Un poco de teoría</h3>
+
+        <ul class="cursos no-padding">
+          <li class="widget-curso">
+            <h4 class="no-margin">Funciones monótonas</h4>
+            <p class="widget-curso__label">
+              Definición 1.
+              <span class="widget-curso__info"
+                >Una función es creciente en un intervalo \( I, \) \(
+                \text{si}\) \( x_{1} \lt x_{2} \) \( \text{entonces} \) \(
+                f(x_{1}) \le f(x_{2}) \)
+              </span>
+            </p>
+
+            <!--  <a href="entrada.html" class="boton boton--secundario">Más Información sobre nuestros cursos</a>  -->
+          </li>
+        </ul>
+        <div class="contentbutton">
+          <a href="#" class="modern-button">Consulta la teoría completa</a>
+        </div>
+      </aside>
+    </div>
+
+    <div class="contenedor contenido-principal">
+      <main class="blog">
+        <article class="entrada">
           <h3 class="no-margin">Actividad. Intervalos de monotonía</h3>
 
           <br />
@@ -353,6 +515,10 @@
 
     <script src="./eleccionSupremo.js"></script>
     <script src="./formMultipleSupremoDinamico.js"></script>
+
+    <script src="./eleccionConjuntos.js"></script>
+    <script src="./formMultipleDinamicoConjuntos.js"></script>
+    
     <script src="./manoAlsada.js"></script>
   </body>
 </html>
