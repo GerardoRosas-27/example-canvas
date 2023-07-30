@@ -160,6 +160,75 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.18/dist/sweetalert2.all.min.js
         </div>
       </aside>
     </div>
+    <div class="contenedor contenido-principal">
+      <main class="blog">
+        <article class="entrada">
+          <h3 class="no-margin">Cuestionario Elección Supremo Izquierda</h3>
+
+          <br />
+
+          <p class="no-margin cortartext">
+            \( \text{El propósito de este ejercicio es que puedas identificar
+            los intervalos donde la función es decreciente.} \)
+          </p>
+
+          <br />
+
+          <section class="contenedor2">
+            <!--   <hr>   -->
+
+            <h3 class="centrar-texto">Responde el cuestionario</h3>
+
+            <form id="formMultipleSupremoIzquierda">
+              
+
+            </form>
+
+            <br />
+
+            <div class="button-container">
+              <button id="btn-siguiente" data-pregunta="1" onclick="preguntaSiguente(this)" class="modern-button modern-button:hover">Siguiente</button>
+              <button id="btn-validar"
+                class="modern-button modern-button:hover"
+                onclick="validarForm()"
+              >
+                Validar
+              </button>
+            </div>
+          </section>
+
+          <br />
+          <p></p>
+
+          <a href="tvm.html" class="boton boton--primario"
+            >Teorema del valor medio</a
+          >
+        </article>
+      </main>
+
+      <aside class="sidebar">
+        <h3>Un poco de teoría</h3>
+
+        <ul class="cursos no-padding">
+          <li class="widget-curso">
+            <h4 class="no-margin">Funciones monótonas</h4>
+            <p class="widget-curso__label">
+              Definición 1.
+              <span class="widget-curso__info"
+                >Una función es creciente en un intervalo \( I, \) \(
+                \text{si}\) \( x_{1} \lt x_{2} \) \( \text{entonces} \) \(
+                f(x_{1}) \le f(x_{2}) \)
+              </span>
+            </p>
+
+            <!--  <a href="entrada.html" class="boton boton--secundario">Más Información sobre nuestros cursos</a>  -->
+          </li>
+        </ul>
+        <div class="contentbutton">
+          <a href="#" class="modern-button">Consulta la teoría completa</a>
+        </div>
+      </aside>
+    </div>
 
     <footer class="footer">
       <div class="contenedor">
@@ -194,5 +263,6 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.18/dist/sweetalert2.all.min.js
       src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
     ></script>
     <script src="./js/eleccionSupremoIzquierdo.js"></script>
+    <script src="./js/formMultipleEleccionSupremoIzquierda.js"></script>
   </body>
 </html>

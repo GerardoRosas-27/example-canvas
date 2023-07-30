@@ -1,10 +1,10 @@
-
+let puntosCorrectos = false;
 var board0 = JXG.JSXGraph.initBoard("box0", {
     boundingbox: [-4, 4, 4, -4],
     axis: true,
 });
 
-let puntosCorrectos = false;
+
 
 var getMouseCoords = function (e, i) {
     var cPos = board0.getCoordsTopLeftCorner(e, i),
