@@ -1,5 +1,5 @@
 
-var board0 = JXG.JSXGraph.initBoard("box0", {
+var board0 = JXG.JSXGraph.initBoard("box00", {
     boundingbox: [-4, 4, 4, -4],
     axis: true,
 });
@@ -43,13 +43,18 @@ var getMouseCoords = function (e, i) {
                 );
             }
 
+            console.log("validar: ",  p3.Y() , coords.usrCoords[2], p4.Y(), coords.usrCoords[2])
+            let newPunto = board0.create("point", [
+                coords.usrCoords[1],
+                coords.usrCoords[2],
+            ]);
             if (canCreate) {
-                if (
-                    p1.X() <= coords.usrCoords[1] &&
-                    coords.usrCoords[1] <= p2.X() &&
-                    coords.usrCoords[2] < 0.02 &&
-                    coords.usrCoords[2] > -0.02 &&
-                    puntosCorrectos == false
+
+                if ( p3.Y() >= coords.usrCoords[2] &&
+                coords.usrCoords[2] >= p4.Y() &&
+                coords.usrCoords[1] < 0.02 &&
+                coords.usrCoords[1] > -0.02 &&
+                puntosCorrectos == false
                 ) {
                     puntosCorrectos = true;
 
@@ -59,11 +64,6 @@ var getMouseCoords = function (e, i) {
                         icon: "success",
                     });
 
-                    let newPunto = board0.create("point", [
-                        coords.usrCoords[1],
-                        coords.usrCoords[2],
-                    ]);
-                    crearSegmentosDivididos(newPunto);
                 } else {
                     swal({
                         title: "Incorrecto!",
@@ -90,8 +90,15 @@ function crearSegmentosDivididos(point) {
 
 const p1 = board0.create("point", [1, 0], { color: "none" });
 const p2 = board0.create("point", [4, 0], { color: "none" });
+const p3 = board0.create("point", [0, -1], { color: "none" });
+const p4 = board0.create("point", [0, -4], { color: "none" });
+
 
 let line = board0.create("segment", [p1, p2], {
     strokeColor: "blue",
+    strokeWidth: 6,
+});
+let line2 = board0.create("segment", [p3, p4], {
+    strokeColor: "red",
     strokeWidth: 6,
 });
