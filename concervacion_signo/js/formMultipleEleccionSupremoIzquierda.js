@@ -1,50 +1,50 @@
-let btnSiguente = document.getElementById('btn-siguiente');
-let btnValidar = document.getElementById('btn-validar');
+let btnSiguenteSupremoIzquierda = document.getElementById('btn-siguiente-SupremoIzquierda');
+let btnValidarSupremoIzquierda = document.getElementById('btn-validar-SupremoIzquierda');
 
 document.addEventListener('DOMContentLoaded', function () {
     // Función a ejecutar cuando se haya cargado el HTML
-    crearFormularioMultiple(1);
+    crearFormularioMultipleSupremoIzquierda(1);
 
-    btnValidar.style.display = 'none';
+    btnValidarSupremoIzquierda.style.display = 'none';
 
 
 });
 
-let opcionesCorrectasSupremo = ["opcion1", "opcion2", "opcion3", "opcion4"];
-let opcionesPistasSupremo = ["Pista 1", "Pista 2", "Pista 3", "Pista 4"];
-let formulario = [
+let opcionesCorrectasSupremoIzquierda = ["opcion1", "opcion2", "opcion3", "opcion4"];
+let opcionesPistasSupremoSupremoIzquierda = ["Pista 1", "Pista 2", "Pista 3", "Pista 4"];
+let formularioSupremoIzquierda = [
     ["pre 1", "ejemplo2", "opcion3", "opcion4"],
     ["opcion1", "opcion2", "opcion3", "opcion4"],
     ["opcion1", "opcion2", "opcion3", "opcion4"],
     ["opcion1", "opcion2", "opcion3", "opcion4"]
 ]
 
-function preguntaSiguente(element) {
+function preguntaSiguenteSupremoIzquierda(element) {
 
     let preguntaData = 1 + parseInt(element.getAttribute('data-pregunta'));
 
     if (preguntaData === 5) {
-        btnSiguente.style.display = 'none';
-        btnValidar.style.display = 'block';
+        btnSiguenteSupremoIzquierda.style.display = 'none';
+        btnValidarSupremoIzquierda.style.display = 'block';
     }
 
 
     console.log("pregunta: ", preguntaData);
-    obtenerValores();
-    crearFormularioMultiple(preguntaData);
+    obtenerValoresSupremoIzquierda();
+    crearFormularioMultipleSupremoIzquierda(preguntaData);
     element.setAttribute('data-pregunta', preguntaData);
 
 }
 
 
-function crearFormularioMultiple(numPregunta) {
+function crearFormularioMultipleSupremoIzquierda(numPregunta) {
     console.log("numPregunta: ", parseInt(numPregunta));
     let form = document.getElementById("formMultipleSupremoIzquierda");
 
     let html = "";
     index0 = 1;
 
-    formulario.forEach(element => {
+    formularioSupremoIzquierda.forEach(element => {
         console.log("sin entrar: ", parseInt(numPregunta), index0);
         if (parseInt(numPregunta) === index0) {
             console.log("parseInt(numPregunta): ", parseInt(numPregunta), index0);
@@ -68,31 +68,31 @@ function crearFormularioMultiple(numPregunta) {
 
 }
 
-let valoresSeleccionados = [];
-function obtenerValores() {
+let valoresSeleccionadosSupremoIzquierda = [];
+function obtenerValoresSupremoIzquierda() {
     var formulario = document.getElementById("formMultipleSupremoIzquierda");
     var elementos = formulario.querySelectorAll("input[type='radio']");
 
     elementos.forEach(function (elemento) {
         if (elemento.checked) {
-            valoresSeleccionados.push(elemento.value);
+            valoresSeleccionadosSupremoIzquierda.push(elemento.value);
         }
     });
 
 
 }
 
-function validarForm() {
-    console.log("valoresSeleccionados: ", valoresSeleccionados)
+function validarFormSupremoIzquierda() {
+    console.log("valoresSeleccionadosSupremoIzquierda: ", valoresSeleccionadosSupremoIzquierda)
 
     let contador = 0;
     let valoresCorrectos = [];
     let valoresIncorrectos = [];
-    valoresSeleccionados.forEach(elemento => {
-        if (opcionesCorrectasSupremo[contador] === elemento) {
+    valoresSeleccionadosSupremoIzquierda.forEach(elemento => {
+        if (opcionesCorrectasSupremoIzquierda[contador] === elemento) {
             valoresCorrectos.push(elemento);
         } else {
-            valoresIncorrectos.push({ "valor": elemento, "pista": opcionesPistasSupremo[contador] })
+            valoresIncorrectos.push({ "valor": elemento, "pista": opcionesPistasSupremoSupremoIzquierda[contador] })
         }
         contador++;
     });
@@ -113,15 +113,15 @@ function validarForm() {
             icon: 'warning',
             title: 'Incorrecto!',
             html:
-                '<h5>Preguntas incorrectas: </h5>, ' + getValoresIncorrectos(valoresIncorrectos),
+                '<h5>Preguntas incorrectas: </h5>, ' + getValoresIncorrectosSupremoIzquierda(valoresIncorrectos),
             showConfirmButton: false,
         })
 
-        console.log("incorectas p: ", getValoresIncorrectos(valoresIncorrectos))
+        console.log("incorectas p: ", getValoresIncorrectosSupremoIzquierda(valoresIncorrectos))
     }
 }
 
-function getValoresIncorrectos(valoresIncorrectos) {
+function getValoresIncorrectosSupremoIzquierda(valoresIncorrectos) {
     let htmlP = "";
     valoresIncorrectos.map(item => {
         htmlP = htmlP + '<p style="color: rgb(205, 105, 105); font-size: 15px;">' + item.valor + ' | ' + item.pista + '</p>';

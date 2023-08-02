@@ -1,22 +1,22 @@
 
 
-var board = JXG.JSXGraph.initBoard("box", {
+var boardSupremoDerecha = JXG.JSXGraph.initBoard("boxSupremoDerecha", {
     boundingbox: [-2, 6, 6, -2],
     axis: true,
 });
 
-let puntosCorrectos = 0;
-let pontoSeleccionado;
-var getMouseCoords = function (e, i) {
-    var cPos = board.getCoordsTopLeftCorner(e, i),
+let puntosCorrectosSupremoDerecha = 0;
+let pontoSeleccionadoSupremoDerecha;
+var getMouseCoordsSupremoDerecha = function (e, i) {
+    var cPos = boardSupremoDerecha.getCoordsTopLeftCorner(e, i),
         absPos = JXG.getPosition(e, i),
         dx = absPos[0] - cPos[0],
         dy = absPos[1] - cPos[1];
 
-    return new JXG.Coords(JXG.COORDS_BY_SCREEN, [dx, dy], board);
+    return new JXG.Coords(JXG.COORDS_BY_SCREEN, [dx, dy], boardSupremoDerecha);
 },
-    down = function (e) {
-        if (puntosCorrectos < 2) {
+    downSupremoDerecha = function (e) {
+        if (puntosCorrectosSupremoDerecha < 2) {
             var canCreate = true,
                 i,
                 coords,
@@ -25,12 +25,12 @@ var getMouseCoords = function (e, i) {
             if (e[JXG.touchProperty]) {
                 i = 0;
             }
-            coords = getMouseCoords(e, i);
+            coords = getMouseCoordsSupremoDerecha(e, i);
 
-            for (el in board.objects) {
+            for (el in boardSupremoDerecha.objects) {
                 if (
-                    JXG.isPoint(board.objects[el]) &&
-                    board.objects[el].hasPoint(
+                    JXG.isPoint(boardSupremoDerecha.objects[el]) &&
+                    boardSupremoDerecha.objects[el].hasPoint(
                         coords.scrCoords[1],
                         coords.scrCoords[2]
                     )
@@ -38,7 +38,7 @@ var getMouseCoords = function (e, i) {
                     canCreate = false;
                     break;
                 }
-                let puntos = board.objects[el].hasPoint(
+                let puntos = boardSupremoDerecha.objects[el].hasPoint(
                     coords.scrCoords[1],
                     0
                 );
@@ -47,19 +47,19 @@ var getMouseCoords = function (e, i) {
             if (canCreate) {
 
                 if (
-                    p3.X() <= coords.usrCoords[1] &&
-                    coords.usrCoords[1] <= p4.X() &&
+                    p3SupremoDerecha.X() <= coords.usrCoords[1] &&
+                    coords.usrCoords[1] <= p4SupremoDerecha.X() &&
                     coords.usrCoords[2] < 0.02 &&
                     coords.usrCoords[2] > -0.02 &&
-                    puntosCorrectos < 2
+                    puntosCorrectosSupremoDerecha < 2
                 ) {
-                    puntosCorrectos = puntosCorrectos + 1;
-                    if (puntosCorrectos === 1) {
-                        let newPunto = board.create("point", [
+                    puntosCorrectosSupremoDerecha = puntosCorrectosSupremoDerecha + 1;
+                    if (puntosCorrectosSupremoDerecha === 1) {
+                        let newPunto = boardSupremoDerecha.create("point", [
                             coords.usrCoords[1],
                             0
                         ], { fixed: true });
-                        pontoSeleccionado = newPunto;
+                        pontoSeleccionadoSupremoDerecha = newPunto;
                         Swal.fire({
                             position: 'top-end',
                             icon: 'success',
@@ -68,12 +68,12 @@ var getMouseCoords = function (e, i) {
                         })
                     } else {
 
-                        let newPunto = board.create("point", [
+                        let newPunto = boardSupremoDerecha.create("point", [
                             coords.usrCoords[1],
                             0
                         ], { fixed: true });
                      
-                        pontoSeleccionado2 = newPunto;
+                        pontoSeleccionadoSupremoDerecha2 = newPunto;
                     }
                 } else {
 
@@ -89,27 +89,27 @@ var getMouseCoords = function (e, i) {
         }
     };
 
-board.on("down", down);
+boardSupremoDerecha.on("down", downSupremoDerecha);
 
-const s1 = board.create('slider', [[0, -1], [2, -1], [0, 0, 4]], {
+const s1SupremoDerecha = boardSupremoDerecha.create('slider', [[0, -1], [2, -1], [0, 0, 4]], {
     name: '&delta;'
 });
 
-const p1 = board.create("point", [
+const p1SupremoDerecha = boardSupremoDerecha.create("point", [
     0,
     0
 ], { color: "none" });
 
-const p2 = board.create("point", [
+const p2SupremoDerecha = boardSupremoDerecha.create("point", [
     0,
     0
 ], { color: "none" });
 
 
-const p3 = board.create("point", [0, 0], { color: "none" });
-const p4 = board.create("point", [5, 0], { color: "none" });
+const p3SupremoDerecha = boardSupremoDerecha.create("point", [0, 0], { color: "none" });
+const p4SupremoDerecha = boardSupremoDerecha.create("point", [5, 0], { color: "none" });
 
-let line = board.create("segment", [p3, p4], {
+let lineSupremoDerecha = boardSupremoDerecha.create("segment", [p3SupremoDerecha, p4SupremoDerecha], {
     strokeColor: "blue",
     strokeWidth: 8,
 });
@@ -117,19 +117,19 @@ let line = board.create("segment", [p3, p4], {
 
 
 
-s1.on('drag', function () {
-    if (pontoSeleccionado) {
-        let punto1x = pontoSeleccionado.X() - s1.Value();
-        let punto2x = pontoSeleccionado.X() + s1.Value();
+s1SupremoDerecha.on('drag', function () {
+    if (pontoSeleccionadoSupremoDerecha) {
+        let punto1x = pontoSeleccionadoSupremoDerecha.X() - s1SupremoDerecha.Value();
+        let punto2x = pontoSeleccionadoSupremoDerecha.X() + s1SupremoDerecha.Value();
         if (punto1x > 0 && punto2x < 5) {
-            p1.moveTo([punto1x, 0]);
-            p2.moveTo([punto2x, 0]);
+            p1SupremoDerecha.moveTo([punto1x, 0]);
+            p2SupremoDerecha.moveTo([punto2x, 0]);
 
-            let line1 = board.create("segment", [p1, pontoSeleccionado], {
+            let lineSupremoDerecha1 = boardSupremoDerecha.create("segment", [p1SupremoDerecha, pontoSeleccionadoSupremoDerecha], {
                 strokeColor: "red",
                 strokeWidth: 6,
             });
-            let line2 = board.create("segment", [pontoSeleccionado, p2], {
+            let lineSupremoDerecha2 = boardSupremoDerecha.create("segment", [pontoSeleccionadoSupremoDerecha, p2SupremoDerecha], {
                 strokeColor: "yellow",
                 strokeWidth: 6,
             });
@@ -138,7 +138,7 @@ s1.on('drag', function () {
 });
 
 
-s1.on('up', function () {
+s1SupremoDerecha.on('up', function () {
     Swal.fire({
         position: 'top-end',
         icon: 'success',
@@ -148,9 +148,9 @@ s1.on('up', function () {
 });
 
 
-function validar() {
-    let puntox = pontoSeleccionado2.X();
-    if (pontoSeleccionado.X() < puntox && puntox < p2.X()) {
+function validarSupremoDerecha() {
+    let puntox = pontoSeleccionadoSupremoDerecha2.X();
+    if (pontoSeleccionadoSupremoDerecha.X() < puntox && puntox < p2SupremoDerecha.X()) {
         Swal.fire({
             position: 'top-end',
             icon: 'success',
