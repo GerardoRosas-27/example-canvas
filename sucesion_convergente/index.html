@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraph.css">
+    <!--MathJax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+</head>
+
+<body>
+
+    <h1><b> Actividad 1</b></h1>
+    <h1 class=""> Convergencia de sucesiones &nbsp;</h1>
+    <h3 class="">Con ayuda del siguiente interactivo muestra que, $$ \lim_{n \to \infty } \frac{n}{n+1}=1 $$<br></h3>
+    <div class="card-header"> En el interactivo debes proponer un valor pequeño entre 0 y 1 para tu vecindad de radio Épsilon. Posteriormente, realiza los cálculos<br></div>
+    <div class="card-header"> correspondientes para deducir el valor de N que cumpla la definición de límite.  <br></div>
+    <h4 class="text-left">Elige un valor para épsilon</h4>
+
+    <div>
+        <label for="inputEpsilon" class="col-2 col-form-label">\( \varepsilon : \)</label>
+        
+    </div>
+
+    <div>
+    <p>  Dada, \( \varepsilon = \)  <input onchange="changeEpsilon()"  type="number" class="form-control w-50" id="inputEpsilon" value="0" max="1" min="0" step="0.1">  existe  \( n  \in  \mathrm{I}\!\mathrm{N}  \) tal que para toda,  \( n \gt  N  \) se satisface que,  </p>
+
+	<p>  \( \vert  \frac{n}{n+1}-1  \vert   \lt     \)  <span id="epsilonChange1">0</span></p>
+	<p> \( \vert  \frac{-1}{n+1}  \vert  = \frac{1}{n+1} \lt  \) <span id="epsilonChange2">0</span></p>
+
+	<label for="inputVerificaEpsilon">  \(n \gt \) </label>
+	
+	<input onchange="ejecutarValidacionEpsilon()"  type="number" id="inputVerificaEpsilon" value="0" max="3" min="0" step="0.1" >
+    </div>
+
+
+
+    <button onclick="ejecutarEpsilon()" (click)="expression">Ejecutar Sucesión</button>
+
+    <a class="custom-button" href="./index2.html">reinicio</a>
+
+    <div id="edvi" style="width:650px; height:400px;display:block;margin-left:auto;margin-right:auto;"> </div>
+
+    <script type="text/javascript" charset="UTF-8"
+        src="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraphcore.js"></script>
+   
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script type="text/javascript" language="javascript" src="js2/sucesion1.js"></script>
+</body>
+
+</html>
+
