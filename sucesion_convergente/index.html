@@ -29,14 +29,14 @@
     </div>
 
     <div>
-    <p>  Dada, \( \varepsilon = \)  <input onchange="changeEpsilon()"  type="number" class="form-control w-50" id="inputEpsilon" value="0" max="1" min="0" step="0.1">  existe  \( n  \in  \mathrm{I}\!\mathrm{N}  \) tal que para toda,  \( n \gt  N  \) se satisface que,  </p>
+    <p>  Dada, \( \varepsilon = \)  <input onchange="changeEpsilon()"  type="number" class="form-control w-50" id="inputEpsilon" min="0" max="0.5" step="0.01">  existe  \( n  \in  \mathrm{I}\!\mathrm{N}  \) tal que para toda,  \( n \gt  N  \) se satisface que,  </p>
 
 	<p>  \( \vert  \frac{n}{n+1}-1  \vert   \lt     \)  <span id="epsilonChange1">0</span></p>
 	<p> \( \vert  \frac{-1}{n+1}  \vert  = \frac{1}{n+1} \lt  \) <span id="epsilonChange2">0</span></p>
 
 	<label for="inputVerificaEpsilon">  \(n \gt \) </label>
 	
-	<input onchange="ejecutarValidacionEpsilon()"  type="number" id="inputVerificaEpsilon" value="0" max="3" min="0" step="0.1" >
+	<input onchange="ejecutarN()"  type="number" id="inputVerificaEpsilon" min="1" max="10" step="1" >
     </div>
 
 

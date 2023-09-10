@@ -191,6 +191,7 @@ function changeEpsilon() {
 		console.error("No se encontró el elemento con el id 'epsilonChange1'.");
 	}
 
+	animaRegion()
 
 }
 
@@ -198,18 +199,19 @@ function changeEpsilon() {
 function ejecutarEpsilon() {
 
 	animaSucesion();
-	animaRegion();
+	
 	MathJax.typeset();
 }
 
 
-function ejecutarValidacionEpsilon() {
+function ejecutarValidacionN() {
 	var validaEpsilom = document.getElementById("inputVerificaEpsilon");
-
+    let NInicio = parseInt(validaEpsilom.value); 
 	var valorValidar = ((1 - epsilon) / epsilon);
 	console.log(valorValidar);
+	limpiarGrafica();
 	if (valorValidar < parseFloat(validaEpsilom.value)) {
-		limpiarGrafica();
+		
 		swal({
 			title: "Muy bien!",
 			text: "El valor " + validaEpsilom.value + " es correcto.",
@@ -218,7 +220,7 @@ function ejecutarValidacionEpsilon() {
 
 		incy = parseFloat(limite) + parseFloat(epsilon);
 		decy = parseFloat(limite) - parseFloat(epsilon);
-		board.create('polygon', [[valorValidar, decy], [valorValidar, incy], [30, incy], [30, decy]], {
+		board.create('polygon', [[NInicio + 1 , decy], [NInicio + 1, incy], [30, incy], [30, decy]], {
 			borders: {
 				strokeColor: 'black',
 				dash: 2,

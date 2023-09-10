@@ -2,13 +2,13 @@
 JXG.Options.board.minimizeReflow = 'none'
 let limiteSucesion = 0;
 var board = JXG.JSXGraph.initBoard('edvi', {
-	boundingbox: [-3, 1, 3, -1], //xmin,ymax,xmax,ymin			
+	boundingbox: [-1, 6, 1, -1], //xmin,ymax,xmax,ymin			
 	keepaspectratio: false,
 	axis: false,
 	grid: false,
 	showCopyright: false,
 	zoomX: 1.2,  //En PC y iPad 1.5 es suficiente
-	zoomY: 1.2,  //En PC y iPad 1.5 es suficiente
+	zoomY: 5,  //En PC y iPad 1.5 es suficiente
 	showNavigation: true,
 	needsRegularUpdate: false,
 	fixed: true,
@@ -18,12 +18,8 @@ var board = JXG.JSXGraph.initBoard('edvi', {
 		needShift: false,
 		needTwoFingers: false,
 		enabled: false
-	},
-	zoom: {
-		factorX: 1,
-		factorY: 1,
-		wheel: false,
 	}
+
 });
 
 //-----------------------------Dibuja ejes----------------------//
@@ -145,37 +141,54 @@ animaLimite()
 let isAnimating = true; // Bandera para controlar la animación
 
 function animaSucesion() {
-    console.log("anima sucesion");
+	console.log("anima sucesion");
 
-    (async () => {
-        let i = 1;
-        while (isAnimating) {
-            await new Promise(resolve => setTimeout(() => {
-                let puntos = parseFloat(i / (i + 1));
-                console.log("puntos: ", puntos, " limiteSucesion: ", limiteSucesion);
-                if (puntos < limiteSucesion) {
-                    board.create('point', [0, puntos], { name: ' ', color: colorVerde });   
-                } else {
-                    isAnimating = false; // Detener la animación cuando no se cumple la condición
-                }
-                resolve();
-                i++;
-            }, 300)); // velocidad de la animación
-        }
-    })();
+	(async () => {
+		let i = 1;
+		while (isAnimating) {
+			await new Promise(resolve => setTimeout(() => {
+				let puntos = parseFloat(i / (i + 1));
+				console.log("puntos: ", puntos, " limiteSucesion: ", limiteSucesion);
+				if (i <= limiteSucesion && puntos < (1 - epsilon)) {
+					board.create('point', [0, puntos], { name: ' ', color: colorVerde });
+				} else {
+					isAnimating = false; // Detener la animación cuando no se cumple la condición
+				}
+				resolve();
+				i++;
+			}, 300)); // velocidad de la animación
+		}
+	})();
+
+
 }
 
 //-------------------------Anima la región-------------------//
 
 
-
+let existeLineLimite = false;
 function changeEpsilon() {
-	
-	epsilon = parseFloat(document.getElementById('inputEpsilon').value);
-	limiteSucesion = (1 - epsilon)
 
-   console.log("limiteSucesion: ", limiteSucesion)
+	epsilon = parseFloat(document.getElementById('inputEpsilon').value);
+
+	if (existeLineLimite) {
+		board.removeObject("limiteLine2");
+	}
+
+	let linelimite = board.create("line", [[-0.02, (1 - epsilon)], [0.02, (1 - epsilon)]], {
+		straightFirst: false,
+		straightLast: false,
+		strokeWidth: 1,
+		strokeColor: "red",
+		name: "limiteLine2"
+	});
+	existeLineLimite = true;
+
+
+
+
 }
+
 
 
 function ejecutarEpsilon() {
@@ -191,39 +204,34 @@ function ejecutarEpsilon() {
 }
 
 
-function ejecutarValidacionEpsilon() {
-	var validaEpsilom = document.getElementById("inputVerificaEpsilon");
-
-	var valorValidar = ((1 - epsilon) / epsilon);
+function ejecutarN() {
+	var valorN = document.getElementById("inputVerificaEpsilon");
+	limiteSucesion = parseInt(valorN.value);
+	var valorValidar = (1 - epsilon);
 	console.log(valorValidar);
-	if (valorValidar < parseFloat(validaEpsilom.value)) {
-		limpiarGrafica();
-		swal({
-			title: "Muy bien!",
-			text: "El valor " + validaEpsilom.value + " es correcto.",
-			icon: "success"
-		});
 
-		incy = parseFloat(limite) + parseFloat(epsilon);
-		decy = parseFloat(limite) - parseFloat(epsilon);
-		board.create('polygon', [[valorValidar, decy], [valorValidar, incy], [30, incy], [30, decy]], {
-			borders: {
-				strokeColor: 'black',
-				dash: 2,
-			},
-			fillOpacity: 0.08,
-			fillColor: "0b268a",
-			vertices: { visible: false }
-		});
-		
+	limpiarGrafica();
+	swal({
+		title: "Muy bien!",
+		text: "El valor " + valorN.value + " es correcto.",
+		icon: "success"
+	});
 
-	} else {
-		swal({
-			title: "Ups! Revisa tus cálculos!",
-			text: "El valor " + validaEpsilom.value + " no es correcto.",
-			icon: "error"
-		});
-	}
+	incy = parseFloat(limite) + parseFloat(epsilon);
+	decy = parseFloat(limite) - parseFloat(epsilon);
+	board.create('polygon', [[valorValidar, decy], [valorValidar, incy], [30, incy], [30, decy]], {
+		borders: {
+			strokeColor: 'black',
+			dash: 2,
+		},
+		fillOpacity: 0.08,
+		fillColor: "0b268a",
+		vertices: { visible: false }
+	});
+
+
+
+
 
 }
 
